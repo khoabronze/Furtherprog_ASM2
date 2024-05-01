@@ -16,16 +16,20 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         // Create a new instance of Filereader
-        Filereader filereader = new Filereader();
+        //Filereader filereader = new Filereader();
 
         // Call the readClaimsFromFile method with the path to your file
-        HashMap<String, Claim> claims = filereader.readClaimsFromFile("claim.txt");
-        HashMap<String, InsuranceCard> insurancecards = filereader.readInsuranceCardsFromFile("insurancecard.txt");
-        InsuranceCardViewText ICview = new InsuranceCardViewText();
-        ClaimProcessViewText view = new ClaimProcessViewText();
-        InsuranceCardController ICcontroller = new InsuranceCardController(new InsuranceCard(), ICview, insurancecards);
-        ClaimProcessController controller = new ClaimProcessController(new Claim(), view, claims, new Filewriter());
-        view.setController(controller,ICcontroller);
-        view.MainMenu(controller,ICcontroller);
+        //HashMap<String, Claim> claims = filereader.readClaimsFromFile("claim.txt");
+        //HashMap<String, InsuranceCard> insurancecards = filereader.readInsuranceCardsFromFile("insurancecard.txt");
+        //InsuranceCardViewText ICview = new InsuranceCardViewText();
+        //ClaimProcessViewText view = new ClaimProcessViewText();
+        // ICcontroller = new InsuranceCardController(new InsuranceCard(), ICview, insurancecards);
+        //ClaimProcessController controller = new ClaimProcessController(new Claim(), view, claims, new Filewriter());
+        //view.setController(controller,ICcontroller);
+        //view.MainMenu(controller,ICcontroller);
+
+        Db_function db = new Db_function();
+        db.connect_to_db("FurtherProg_asm2", "postgres", "khoa1002");
+
     }
 }
