@@ -29,7 +29,7 @@ public class Main {
         //view.MainMenu(controller,ICcontroller);
 
         Db_function db = new Db_function();
-        db.connect_to_db("FurtherProg_asm2", "postgres", "khoa1002");
+        db.connect_to_db();
 
     }
 }
