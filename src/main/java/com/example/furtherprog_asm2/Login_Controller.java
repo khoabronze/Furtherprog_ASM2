@@ -1,5 +1,6 @@
 package com.example.furtherprog_asm2;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -28,27 +29,15 @@ public class Login_Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        login_button.setOnAction(event -> {
-            String username = Username_box.getText();
-            String password = Password_box.getText();
 
-            if (login(username, password)) {
-                System.out.println("Login successful");
-                // Navigate to the next page
-            } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Login Failed");
-                alert.setHeaderText(null);
-                alert.setContentText("Invalid username or password");
-                alert.showAndWait();
-            }
-        });
     }
 
-    private boolean login(String username, String password) {
-        Connection conn = db.connect_to_db();
-        String query = "SELECT * FROM Admin WHERE Username = ?";
+    public void login(ActionEvent event) {
+        String username = Username_box.getText();
+        String password = Password_box.getText();
 
+        Connection conn = db.connect_to_db();
+        String query = "SELECT * FROM \"Admin\" WHERE \"Username\" = ?";
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
@@ -56,13 +45,17 @@ public class Login_Controller implements Initializable {
             if (rs.next()) {
                 String dbPassword = rs.getString("password"); // replace "password" with your actual password column name
                 if (dbPassword.equals(password)) {
-                    return true;
+                    System.out.println("Login successful");
+                    // Navigate to the next page
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Login Failed");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Invalid username or password");
+                    alert.showAndWait();
                 }
             }
         } catch (SQLException e) {
             System.out.println(e);
         }
-
-        return false;
-    }
-}
+    }}

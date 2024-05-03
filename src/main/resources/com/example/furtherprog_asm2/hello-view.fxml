@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.furtherprog_asm2.Login_Controller">
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -23,9 +23,9 @@
    <right>
       <AnchorPane prefHeight="400.0" prefWidth="347.0" style="-fx-background-color: #2655F9;" BorderPane.alignment="CENTER">
          <children>
-            <TextField id="Username_box" layoutX="104.0" layoutY="73.0" promptText="Username" />
-            <PasswordField id="Password_box" layoutX="104.0" layoutY="140.0" promptText="Password" />
-            <Button id="login_button" layoutX="106.0" layoutY="219.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Login" />
+            <TextField fx:id="Username_box" layoutX="104.0" layoutY="73.0" promptText="Username" />
+            <PasswordField fx:id="Password_box" layoutX="104.0" layoutY="140.0" promptText="Password" />
+            <Button id="login_button" onAction="#login"  layoutX="106.0" layoutY="219.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Login" />
          </children>
       </AnchorPane>
    </right>
