@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class Login_Controller implements Initializable {
+public class Login_Controller  {
     @FXML
     private TextField Username_box;
 
@@ -27,10 +27,6 @@ public class Login_Controller implements Initializable {
 
     private Db_function db = new Db_function();
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 
     public void login(ActionEvent event) {
         String username = Username_box.getText();
