@@ -28,7 +28,7 @@
                <children>
                   <ImageView fitHeight="36.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../IMG/user-solid%20(1).png" />
+                        <Image url="@../../../IMG/user-solid.png" />
                      </image>
                   </ImageView>
                   <Label alignment="TOP_CENTER" prefHeight="17.0" prefWidth="94.0" text="User" />
@@ -38,7 +38,7 @@
                <children>
                   <ImageView fitHeight="36.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../IMG/house-solid%20(1).png" />
+                        <Image url="@../../../IMG/house-solid.png" />
                      </image>
                   </ImageView>
                   <Label alignment="TOP_CENTER" prefHeight="17.0" prefWidth="94.0" text="Home" />
@@ -54,7 +54,7 @@
                <children>
                   <ImageView fitHeight="52.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../IMG/users-solid%20(1).png" />
+                        <Image url="@../../../IMG/users-solid.png" />
                      </image>
                   </ImageView>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="62.0" text="Account">
@@ -68,7 +68,7 @@
                <children>
                   <ImageView fitHeight="52.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../IMG/file-solid%20(1).png" />
+                        <Image url="@../../../IMG/file-solid.png" />
                      </image>
                   </ImageView>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="62.0" text="Claim">
@@ -82,7 +82,7 @@
                <children>
                   <ImageView fitHeight="52.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../IMG/address-card-solid%20(1).png" />
+                        <Image url="@../../../IMG/address-card-solid (1).png" />
                      </image>
                   </ImageView>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="98.0" text="Insurance Card">
