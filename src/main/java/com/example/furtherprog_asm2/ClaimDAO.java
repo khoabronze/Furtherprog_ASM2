@@ -11,8 +11,8 @@ import java.util.Map;
 
 public class ClaimDAO implements DAO<Claim> {
     private static final String INSERT_CLAIM_SQL = "INSERT INTO claims" +
-            "  (id, claim_date, insured_person, card_number, exam_date, claim_amount, status, bank_info) VALUES " +
-            " (?, ?, ?, ?, ?, ?, ?, ?);";
+            "  (id, claim_date, insured_person, card_number, exam_date, claim_amount, status, bank_info, document) VALUES " +
+            " (?, ?, ?, ?, ?, ?, ?, ?, ?);";
     private Map<Integer, Claim> claimMap = new HashMap<>();
     private Db_function dbFunction = new Db_function();
 
@@ -39,11 +39,11 @@ public class ClaimDAO implements DAO<Claim> {
             preparedStatement.setString(3, claim.getInsuredPerson());
             preparedStatement.setString(4, claim.getCardNumber());
             preparedStatement.setDate(5, new java.sql.Date(claim.getExamDate().getTime()));
-            PreparedStatement.setArray(6, claim.getDocuments());
-            preparedStatement.setDouble(7, claim.getClaimAmount());
-            preparedStatement.setString(8, claim.getStatus().toString());
-            preparedStatement.setString(9, claim.getReiveBankingInfo().toString());
-
+            preparedStatement.setDouble(6, claim.getClaimAmount());
+            preparedStatement.setString(7, claim.getStatus().toString());
+            preparedStatement.setString(8, claim.getReiveBankingInfo().toString());
+            String documents = String.join(",", claim.getDocuments());
+            preparedStatement.setString(9, documents);
             System.out.println(preparedStatement);
             // Execute the query or update query
             preparedStatement.executeUpdate();

@@ -1,6 +1,7 @@
 
 package com.example.furtherprog_asm2;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -41,11 +42,11 @@ public class CreateClaimController {
     private TextField Bank_number_form;
 
     @FXML
-    private ChoiceBox<ClaimStatus> Claim_status_form;
+    private ChoiceBox<ClaimStatus> CLaim_status_form;
 
     @FXML
     public void initialize() {
-        Claim_status_form.getItems().setAll(ClaimStatus.values());
+        CLaim_status_form.getItems().setAll(ClaimStatus.values());
     }
     public CreateClaimController() {
         this.ClaimService = new ClaimService(new ClaimDAO());
@@ -58,6 +59,22 @@ public class CreateClaimController {
         if (selectedFile != null) {
             documentName = selectedFile.getName(); // store the name of the file
         }
+    }
+    public void chooseFile(){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+            documentName = selectedFile.getName(); // store the name of the file
+        }
+    }
+    public void showAlert(String title, String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+
+        alert.showAndWait();
     }
     public void submit() {
         Claim claim = new Claim();
@@ -76,8 +93,7 @@ public class CreateClaimController {
         double claimAmount = Double.parseDouble(Claim_amount_form.getText());
         claim.setClaimAmount(claimAmount);
 
-        claim.setStatus(Claim_status_form.getValue());
-
+        claim.setStatus(CLaim_status_form.getValue());
         BankingInfo bankingInfo = new BankingInfo();
         bankingInfo.setBank(Bank_form.getText());
         bankingInfo.setName(Bank_name_form.getText());
