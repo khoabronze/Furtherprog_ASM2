@@ -1,10 +1,7 @@
 package com.example.furtherprog_asm2;
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +12,12 @@ public class ClaimDAO implements DAO<Claim> {
             " (?, ?, ?, ?, ?, ?, ?, ?, ?);";
     private Map<Integer, Claim> claimMap = new HashMap<>();
     private Db_function dbFunction = new Db_function();
+    private ClaimDAO claimDAO;
+        private Connection connection;
 
+        public ClaimDAO(Connection connection) {
+            this.connection = connection;
+        }
     @Override
     public Claim get(int id) {
         // Implementation to get a claim by its id
@@ -30,6 +32,7 @@ public class ClaimDAO implements DAO<Claim> {
 
     @Override
     public void save(Claim claim) {
+
         try (Connection connection = dbFunction.connect_to_db();
 
              // Create a statement using connection object
@@ -48,11 +51,17 @@ public class ClaimDAO implements DAO<Claim> {
             // Execute the query or update query
             preparedStatement.executeUpdate();
 
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            // print SQL exception information
-            System.out.println(e);;
+            if (e.getSQLState().equals("23505")) {
+                throw new IllegalArgumentException("A claim with the same id already exists", e);
+            } else {
+                throw new RuntimeException("Error saving claim", e);
+            }
         }
     }
+
+
 
     @Override
     public void update(Claim claim) {

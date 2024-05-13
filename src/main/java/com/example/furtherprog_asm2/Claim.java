@@ -21,7 +21,7 @@ public class Claim {
     private BankingInfo reiveBankingInfo;
 
     public Claim() {
-        this.id = generateUniqueId();
+        this.id = id;
         this.claimDate = new Date();
         InsuredPerson = "Default";
         this.cardNumber = "default";
@@ -43,15 +43,7 @@ public class Claim {
         this.reiveBankingInfo = reiveBankingInfo;
     }
 
-    private String generateUniqueId() {
-        StringBuilder sb = new StringBuilder("f-");
-        Random random = new Random();
-        // Generate 10 random digits
-        for (int i = 0; i < 10; i++) {
-            sb.append(random.nextInt(10)); // Append a random digit (0-9)
-        }
-        return sb.toString();
-    }
+
     public String getId() {
         return id;
     }

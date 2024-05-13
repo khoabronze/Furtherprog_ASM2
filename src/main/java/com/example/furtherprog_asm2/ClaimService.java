@@ -7,9 +7,8 @@ public class ClaimService {
         this.claimDAO = claimDAO;
     }
 
-    public void createClaim(Claim claim) {
-        claimDAO.save(claim);
-    }
+    public void submitClaim(Claim claim) throws IllegalArgumentException {
 
-    // Other methods for reading, updating, and deleting claims...
-}
+               claimDAO.save(claim);
+
+}}

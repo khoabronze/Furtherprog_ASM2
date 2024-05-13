@@ -8,9 +8,12 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.Optional;
+
 public class CreateClaimController {
     private String documentName; // new field to hold the name of the uploaded document
     private ClaimService ClaimService;
@@ -49,7 +52,9 @@ public class CreateClaimController {
         CLaim_status_form.getItems().setAll(ClaimStatus.values());
     }
     public CreateClaimController() {
-        this.ClaimService = new ClaimService(new ClaimDAO());
+        Db_function dbFunction = new Db_function();
+        Connection connection = dbFunction.connect_to_db();
+        this.ClaimService = new ClaimService(new ClaimDAO(connection));
     }
     @FXML
     public void uploadDocument() {
@@ -77,33 +82,86 @@ public class CreateClaimController {
         alert.showAndWait();
     }
     public void submit() {
-        Claim claim = new Claim();
-        claim.setId(Claim_ID_form.getText());
+        try {
+            // Validate the claim id
+            String id = Claim_ID_form.getText();
+            if (!id.matches("\\d{10}")) {
+                showAlert("Error Dialog", "Input Error", "Invalid claim id. Must be 10 numbers.");
+                return;
+            }
 
-        LocalDate localDate = Claim_Date_form.getValue();
-        Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-        claim.setClaimDate(date);
+            // Validate the claim date
+            LocalDate localDate = Optional.ofNullable(Claim_Date_form.getValue())
+                    .orElseThrow(() -> new IllegalArgumentException("Claim date is required"));
+            Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
-        claim.setCardNumber(Card_number_form.getText());
+            // Validate the card number
+            String cardNumber = Card_number_form.getText();
+            if (cardNumber.isEmpty()) {
+                showAlert("Error Dialog", "Input Error", "Card number is required");
+                return;
+            }
 
-        LocalDate localExamDate = Claim_exam_date_form.getValue();
-        Date examDate = Date.from(localExamDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-        claim.setExamDate(examDate);        claim.setInsuredPerson(Claim_IP_form.getText());
+            // Validate the exam date
+            LocalDate localExamDate = Optional.ofNullable(Claim_exam_date_form.getValue())
+                    .orElseThrow(() -> new IllegalArgumentException("Exam date is required"));
+            Date examDate = Date.from(localExamDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
-        double claimAmount = Double.parseDouble(Claim_amount_form.getText());
-        claim.setClaimAmount(claimAmount);
+            // Validate the insured person
+            String insuredPerson = Claim_IP_form.getText();
+            if (insuredPerson.isEmpty()) {
+                showAlert("Error Dialog", "Input Error", "Insured person is required");
+                return;
+            }
 
-        claim.setStatus(CLaim_status_form.getValue());
-        BankingInfo bankingInfo = new BankingInfo();
-        bankingInfo.setBank(Bank_form.getText());
-        bankingInfo.setName(Bank_name_form.getText());
-        bankingInfo.setNumber(Bank_number_form.getText());
-        claim.setReiveBankingInfo(bankingInfo);
+            // Validate the claim amount
+            String claimAmountStr = Claim_amount_form.getText();
+            double claimAmount = Double.parseDouble(claimAmountStr);
+            if (claimAmount < 0) {
+                showAlert("Error Dialog", "Input Error", "Claim amount cannot be negative");
+                return;
+            }
 
-        if (documentName != null) {
-            claim.getDocuments().add(documentName);
+            // Validate the claim status
+            ClaimStatus status = CLaim_status_form.getValue();
+            if (status == null) {
+                showAlert("Error Dialog", "Input Error", "Claim status is required");
+                return;
+            }
+            String bankName = Bank_name_form.getText();
+            if (bankName.isEmpty()) {
+                showAlert("Error Dialog", "Input Error", "Bank name is required");
+                return;
+            }
+
+            // Validate the bank number
+            String bankNumber = Bank_number_form.getText();
+            if (bankNumber.isEmpty()) {
+                showAlert("Error Dialog", "Input Error", "Bank number is required");
+                return;
+            }
+
+            // Create a new BankingInfo object and set its properties
+            BankingInfo bankingInfo = new BankingInfo();
+            bankingInfo.setName(bankName);
+            bankingInfo.setNumber(bankNumber);
+            // Create a new Claim object and set its properties
+            Claim claim = new Claim();
+            claim.setId(id);
+            claim.setClaimDate(date);
+            claim.setCardNumber(cardNumber);
+            claim.setExamDate(examDate);
+            claim.setReiveBankingInfo(bankingInfo);
+            claim.setInsuredPerson(insuredPerson);
+            claim.setClaimAmount(claimAmount);
+            claim.setStatus(status);
+
+            // Submit the claim
+            ClaimService.submitClaim(claim);
+        } catch (NumberFormatException e) {
+            showAlert("Error Dialog", "Input Error", "Invalid number format");
+        } catch (IllegalArgumentException e) {
+            showAlert("Error Dialog", "Input Error", e.getMessage());
         }
-        ClaimService.createClaim(claim);
     }
-
 }
