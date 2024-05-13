@@ -9,5 +9,5 @@ public interface DAO<IC> {
     void getOne(IC ic);
     boolean add(IC ic);
     void update(IC ic);
-    void delete(IC ic);
+    boolean delete(IC ic);
 }
