@@ -14,8 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.furtherprog_asm2.CreateInsuranceCard_Controller">
    <top>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -91,7 +90,7 @@
                         <Insets left="60.0" top="40.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="cardNumber">
                      <HBox.margin>
                         <Insets left="40.0" top="35.0" />
                      </HBox.margin>
@@ -105,7 +104,7 @@
                         <Insets left="60.0" top="40.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="cardHolder">
                      <HBox.margin>
                         <Insets left="50.0" top="35.0" />
                      </HBox.margin>
@@ -119,7 +118,7 @@
                         <Insets left="60.0" top="40.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="policyOwner">
                      <HBox.margin>
                         <Insets left="45.0" top="35.0" />
                      </HBox.margin>
@@ -133,7 +132,7 @@
                         <Insets left="60.0" top="40.0" />
                      </HBox.margin>
                   </Label>
-                  <DatePicker>
+                  <DatePicker fx:id="expirationDate">
                      <HBox.margin>
                         <Insets left="35.0" top="35.0" />
                      </HBox.margin>
@@ -144,7 +143,7 @@
       </VBox>
    </center>
    <bottom>
-      <Button mnemonicParsing="false" style="-fx-background-color: blue;" text="Submit" textFill="WHITE" BorderPane.alignment="BOTTOM_RIGHT">
+      <Button onAction="#submit" fx:id="submit" mnemonicParsing="false" style="-fx-background-color: blue;" text="Submit" textFill="WHITE" BorderPane.alignment="BOTTOM_RIGHT">
          <BorderPane.margin>
             <Insets bottom="35.0" right="50.0" />
          </BorderPane.margin>
