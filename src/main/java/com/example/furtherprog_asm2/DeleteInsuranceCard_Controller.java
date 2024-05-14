@@ -33,6 +33,7 @@ public class DeleteInsuranceCard_Controller {
                     alert.setTitle("Success");
                     alert.setContentText("Insurance Card deleted successfully!");
                     alert.showAndWait();
+                    cardNumber.clear(); // Clear the input field after delete
                 } else {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setHeaderText(null);

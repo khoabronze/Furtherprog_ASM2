@@ -37,8 +37,26 @@ public class InsuranceCardDao implements DAO<InsuranceCard> {
     }
 
     @Override
-    public void getOne(InsuranceCard insuranceCard) {
-
+    public InsuranceCard getOne(String cardNumber) {
+        Connection con = db.connect_to_db();
+        String query = "SELECT * FROM \"Insurance Card\" WHERE \"cardNumber\" = ?";
+        try (PreparedStatement stmt = con.prepareStatement(query)){
+            stmt.setString(1, cardNumber);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                String cardHolder = rs.getString("cardHolder");
+                String policyOwner = rs.getString("policyOwner");
+                LocalDate expirationDate = rs.getDate("expirationDate").toLocalDate();
+                String expirationDateString = expirationDate.toString();
+                InsuranceCard insuranceCard = new InsuranceCard(cardNumber, cardHolder, policyOwner, expirationDateString);
+                return insuranceCard;
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+            return null;
+        }
     }
 
     @Override

@@ -6,7 +6,7 @@ import java.util.Optional;
 public interface DAO<IC> {
     HashMap<String, IC> getAll();
     Optional<IC> get(String cardNumber);
-    void getOne(IC ic);
+    InsuranceCard getOne(String cardNumber);
     boolean add(IC ic);
     void update(IC ic);
     boolean delete(IC ic);
