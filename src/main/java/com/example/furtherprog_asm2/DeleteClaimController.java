@@ -18,13 +18,13 @@ public class DeleteClaimController {
         this.claimService = new ClaimService(new ClaimDAO(connection));
     }
 
-    public void Delete(){
+    public void Delete() {
         String id = ID_DELETE_BOX.getText();
-        if (id.isEmpty()){
+        if (id.isEmpty()) {
             return;
         }
         Claim claim = claimService.getClaim(id);
-        if (claim != null){
+        if (claim != null) {
             claimService.DeleteClaim(claim);
 
             // Show a notification
@@ -33,6 +33,12 @@ public class DeleteClaimController {
             alert.setHeaderText(null);
             alert.setContentText("The claim has been deleted successfully.");
             alert.showAndWait();
+        } else {
+            // Show a different notification
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Claim Not Found");
+            alert.setHeaderText(null);
+            alert.setContentText("No claim with the provided ID was found.");
+            alert.showAndWait();
         }
-    }
-}
+    }}
