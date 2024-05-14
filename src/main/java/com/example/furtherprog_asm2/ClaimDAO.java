@@ -2,6 +2,7 @@ package com.example.furtherprog_asm2;
 
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,8 @@ public class ClaimDAO implements DAO<Claim> {
             " (?, ?, ?, ?, ?, ?, ?, ?, ?);";
     private static final String SELECT_CLAIM_BY_ID_SQL = "SELECT * FROM claims WHERE id = ?";
     private static final String DELETE_CLAIM_BY_ID_SQL = "DELETE FROM claims WHERE id = ?";
+    private static final String SELECT_ALL_CLAIMS_SQL = "SELECT * FROM claims";
+
 
 
     private Map<Integer, Claim> claimMap = new HashMap<>();
@@ -24,8 +27,39 @@ public class ClaimDAO implements DAO<Claim> {
 
     @Override
     public List<Claim> getAll() {
-        return null;
+        List<Claim> claims = new ArrayList<>();
+        try (Connection connection = dbFunction.connect_to_db();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_CLAIMS_SQL)) {
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Claim claim = new Claim();
+                claim.setId(resultSet.getString("id"));
+                claim.setClaimDate(resultSet.getDate("claim_date"));
+                claim.setInsuredPerson(resultSet.getString("insured_person"));
+                claim.setCardNumber(resultSet.getString("card_number"));
+                claim.setExamDate(resultSet.getDate("exam_date"));
+                claim.setClaimAmount(resultSet.getDouble("claim_amount"));
+                claim.setStatus(ClaimStatus.valueOf(resultSet.getString("status")));
+                String[] bankInfoParts = resultSet.getString("bank_info").split(" – ");
+                BankingInfo bankingInfo = new BankingInfo();
+                bankingInfo.setBank(bankInfoParts[0]);
+                bankingInfo.setName(bankInfoParts[1]);
+                bankingInfo.setNumber(bankInfoParts[2]);
+                claim.setReiveBankingInfo(bankingInfo);
+                String document = resultSet.getString("document");
+                claim.setDocuments(document);
+                claims.add(claim);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all claims", e);
+        }
+
+        return claims;
     }
+
+
 
     @Override
     public Claim get(String id) {
