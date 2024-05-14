@@ -2,15 +2,35 @@ package com.example.furtherprog_asm2;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 
 public class InsuranceCardDao implements DAO<InsuranceCard> {
-    private HashMap<String, InsuranceCard> insuranceCardHashMap = new HashMap<>();
+    private ArrayList<InsuranceCard> insuranceCards = new ArrayList<>();
     private Db_function db = new Db_function();
+
     @Override
-    public HashMap<String, InsuranceCard> getAll() {
-        return null;
+    public List<InsuranceCard> getAll() {
+        List<InsuranceCard> insuranceCards = new ArrayList<>();
+        Connection con = db.connect_to_db();
+        String query = "SELECT * FROM \"Insurance Card\"";
+        try (Statement stmt = con.createStatement()){
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                String cardNumber = rs.getString("cardNumber");
+                String cardHolder = rs.getString("cardHolder");
+                String policyOwner = rs.getString("policyOwner");
+                LocalDate expirationDate = rs.getDate("expirationDate").toLocalDate();
+                String expirationDateString = expirationDate.toString();
+                InsuranceCard insuranceCard = new InsuranceCard(cardNumber, cardHolder, policyOwner, expirationDateString);
+                insuranceCards.add(insuranceCard);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return insuranceCards;
     }
 
     @Override

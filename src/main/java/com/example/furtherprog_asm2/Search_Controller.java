@@ -20,6 +20,8 @@ public class Search_Controller {
     private TableColumn<InsuranceCard, String> expirationDate;
     @FXML
     private Button search;
+    @FXML
+    private Button viewAll;
 
     @FXML
     public void initialize() {
@@ -45,5 +47,12 @@ public class Search_Controller {
             alert.showAndWait();
         }
         cardNumberInput.clear(); // Clear the input field at the search bar
+    }
+
+    @FXML
+    public void viewAll(ActionEvent event) {
+        InsuranceCardDao insuranceCardDao = new InsuranceCardDao();
+        tableView.getItems().clear();
+        tableView.getItems().addAll(insuranceCardDao.getAll());
     }
 }
