@@ -10,6 +10,8 @@ public class ClaimDAO implements DAO<Claim> {
             "  (id, claim_date, insured_person, card_number, exam_date, claim_amount, status, bank_info, document) VALUES " +
             " (?, ?, ?, ?, ?, ?, ?, ?, ?);";
     private static final String SELECT_CLAIM_BY_ID_SQL = "SELECT * FROM claims WHERE id = ?";
+    private static final String DELETE_CLAIM_BY_ID_SQL = "DELETE FROM claims WHERE id = ?";
+
 
     private Map<Integer, Claim> claimMap = new HashMap<>();
     private Db_function dbFunction = new Db_function();
@@ -26,11 +28,11 @@ public class ClaimDAO implements DAO<Claim> {
     }
 
     @Override
-    public Claim get(int id) {
+    public Claim get(String id) {
         try (Connection connection = dbFunction.connect_to_db();
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CLAIM_BY_ID_SQL)) {
 
-            preparedStatement.setInt(1, id);
+            preparedStatement.setString(1, id); // Use setString instead of setInt
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
@@ -94,6 +96,12 @@ public class ClaimDAO implements DAO<Claim> {
 
     @Override
     public void delete(Claim claim) {
-        // Implementation to delete a claim
+        try (Connection connection = dbFunction.connect_to_db();
+             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CLAIM_BY_ID_SQL)) {
+            preparedStatement.setString(1, claim.getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting claim", e);
+        }
     }
 }
