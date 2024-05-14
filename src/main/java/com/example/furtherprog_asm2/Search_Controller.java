@@ -18,6 +18,8 @@ public class Search_Controller {
     private TableColumn<InsuranceCard, String> policyOwner;
     @FXML
     private TableColumn<InsuranceCard, String> expirationDate;
+    @FXML
+    private Button search;
 
     @FXML
     public void initialize() {
