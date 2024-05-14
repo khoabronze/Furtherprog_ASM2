@@ -15,7 +15,7 @@ public class Claim {
     private String InsuredPerson;
     private String cardNumber;
     private Date examDate;
-    private ArrayList<String> documents;
+    private String documents;
     private double claimAmount;
     private ClaimStatus status;
     private BankingInfo reiveBankingInfo;
@@ -26,12 +26,12 @@ public class Claim {
         InsuredPerson = "Default";
         this.cardNumber = "default";
         this.examDate = new Date();
-        this.documents = new ArrayList<>();
+        this.documents = "Default";
         this.claimAmount = 0.00;
         this.status = null;
         this.reiveBankingInfo = reiveBankingInfo;
     }
-    public Claim(String id, Date claimDate, String insuredPerson, String cardNumber, Date examDate, ArrayList<String> documents, double claimAmount, ClaimStatus status, BankingInfo reiveBankingInfo) {
+    public Claim(String id, Date claimDate, String insuredPerson, String cardNumber, Date examDate, String documents, double claimAmount, ClaimStatus status, BankingInfo reiveBankingInfo) {
         this.id = id;
         this.claimDate = new Date();
         InsuredPerson = insuredPerson;
@@ -84,11 +84,11 @@ public class Claim {
         this.examDate = examDate;
     }
 
-    public ArrayList<String> getDocuments() {
+    public String getDocuments() {
         return documents;
     }
 
-    public void setDocuments(ArrayList<String> documents) {
+    public void setDocuments(String documents) {
         this.documents = documents;
     }
 

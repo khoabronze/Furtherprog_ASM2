@@ -56,15 +56,7 @@ public class CreateClaimController {
         Connection connection = dbFunction.connect_to_db();
         this.ClaimService = new ClaimService(new ClaimDAO(connection));
     }
-    @FXML
-    public void uploadDocument() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
-        File selectedFile = fileChooser.showOpenDialog(null);
-        if (selectedFile != null) {
-            documentName = selectedFile.getName(); // store the name of the file
-        }
-    }
+
     public void chooseFile(){
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
@@ -128,9 +120,16 @@ public class CreateClaimController {
                 showAlert("Error Dialog", "Input Error", "Claim status is required");
                 return;
             }
+
+            String Bank = Bank_form.getText();
+            if (Bank.isEmpty()) {
+                showAlert("Error Dialog", "Input Error", "Bank is required");
+                return;
+            }
+
             String bankName = Bank_name_form.getText();
             if (bankName.isEmpty()) {
-                showAlert("Error Dialog", "Input Error", "Bank name is required");
+                showAlert("Error Dialog", "Input Error", "Name is required");
                 return;
             }
 
@@ -154,6 +153,7 @@ public class CreateClaimController {
             claim.setReiveBankingInfo(bankingInfo);
             claim.setInsuredPerson(insuredPerson);
             claim.setClaimAmount(claimAmount);
+            claim.setDocuments(documentName); // set the document name
             claim.setStatus(status);
 
             // Submit the claim
