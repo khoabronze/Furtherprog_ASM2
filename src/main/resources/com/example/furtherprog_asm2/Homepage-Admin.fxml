@@ -13,6 +13,11 @@
    <top>
       <HBox prefHeight="70.0" prefWidth="736.0" BorderPane.alignment="CENTER">
          <children>
+            <ImageView fitHeight="125.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../IMG/Liberty-Mutual-Logo.png" />
+               </image>
+            </ImageView>
             <Label alignment="CENTER" prefHeight="70.0" prefWidth="247.0" text="Claim Management System">
                <font>
                   <Font size="18.0" />
@@ -64,7 +69,7 @@
                   </Label>
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" layoutX="235.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
+            <VBox alignment="TOP_CENTER" layoutX="218.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
                <children>
                   <ImageView fitHeight="52.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                      <image>
