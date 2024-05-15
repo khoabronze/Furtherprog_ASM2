@@ -2,19 +2,21 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.furtherprog_asm2.CreateInsuranceCard_Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.furtherprog_asm2.Search_Controller">
    <top>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -26,7 +28,7 @@
                   <Insets left="40.0" />
                </HBox.margin>
             </ImageView>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CREATE NEW INSURANCE CARD">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="INSURANCE CARD ">
                <font>
                   <Font name="Microsoft Sans Serif" size="23.0" />
                </font>
@@ -80,76 +82,72 @@
          </BorderPane.margin>
       </VBox>
    </left>
-   <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+   <right>
+      <VBox prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: CORNFLOWERBLUE;" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="Card Number">
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../IMG/insurance-card.png" />
+                     </image>
                      <HBox.margin>
-                        <Insets left="60.0" top="40.0" />
+                        <Insets left="40.0" top="15.0" />
                      </HBox.margin>
-                  </Label>
-                  <TextField fx:id="cardNumber">
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Console">
+                     <font>
+                        <Font name="Microsoft Sans Serif" size="13.0" />
+                     </font>
                      <HBox.margin>
-                        <Insets left="40.0" top="35.0" />
+                        <Insets left="10.0" top="35.0" />
                      </HBox.margin>
-                  </TextField>
+                  </Text>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="Card Holder">
-                     <HBox.margin>
-                        <Insets left="60.0" top="40.0" />
-                     </HBox.margin>
-                  </Label>
-                  <TextField fx:id="cardHolder">
-                     <HBox.margin>
-                        <Insets left="50.0" top="35.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="Policy Owner">
-                     <HBox.margin>
-                        <Insets left="60.0" top="40.0" />
-                     </HBox.margin>
-                  </Label>
-                  <TextField fx:id="policyOwner">
-                     <HBox.margin>
-                        <Insets left="45.0" top="35.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="Expiration Date">
-                     <HBox.margin>
-                        <Insets left="60.0" top="40.0" />
-                     </HBox.margin>
-                  </Label>
-                  <DatePicker fx:id="expirationDate">
-                     <HBox.margin>
-                        <Insets left="35.0" top="35.0" />
-                     </HBox.margin>
-                  </DatePicker>
-               </children>
-            </HBox>
+            <TextField fx:id="cardNumberInput" maxHeight="23.0" maxWidth="130.0" promptText="CARD NUMBER">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="13.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="40.0" />
+               </VBox.margin></TextField>
+            <Button fx:id="search" maxHeight="23.0" maxWidth="90.0" mnemonicParsing="false" onAction="#search" text="Search">
+               <effect>
+                  <DropShadow height="13.0" offsetX="1.3" offsetY="1.3" radius="6.0" width="13.0" />
+               </effect>
+               <VBox.margin>
+                  <Insets left="60.0" top="20.0" />
+               </VBox.margin></Button>
+            <Button onAction="#viewAll" fx:id="viewAll" maxHeight="23.0" maxWidth="90.0" mnemonicParsing="false" text="View All">
+               <VBox.margin>
+                  <Insets left="60.0" top="20.0" />
+               </VBox.margin>
+               <effect>
+                  <DropShadow height="13.0" offsetX="1.3" offsetY="1.3" radius="6.0" width="13.0" />
+               </effect>
+            </Button>
          </children>
-      </VBox>
-   </center>
-   <bottom>
-      <Button onAction="#submit" fx:id="submit" mnemonicParsing="false" style="-fx-background-color: blue;" text="Submit" textFill="WHITE" BorderPane.alignment="BOTTOM_RIGHT">
          <BorderPane.margin>
-            <Insets bottom="35.0" right="50.0" />
+            <Insets top="20.0" />
          </BorderPane.margin>
-         <effect>
-            <DropShadow height="13.0" offsetX="1.3" offsetY="1.3" radius="6.0" width="13.0" />
-         </effect>
-      </Button>
-   </bottom>
+      </VBox>
+   </right>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="tableView" prefHeight="520.0" prefWidth="520.0">
+              <columns>
+                <TableColumn fx:id="cardNumber" minWidth="130.0" prefWidth="75.0" text="CARD NUMBER" />
+                <TableColumn fx:id="cardHolder" minWidth="130.0" prefWidth="75.0" text="CARD HOLDER" />
+                  <TableColumn fx:id="policyOwner" minWidth="130.0" prefWidth="75.0" text="POLICY OWNER" />
+                  <TableColumn fx:id="expirationDate" minWidth="130.0" prefWidth="75.0" text="EXPIRATION DATE" />
+              </columns>
+            </TableView>
+         </children>
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin>
+      </AnchorPane>
+   </center>
 </BorderPane>
