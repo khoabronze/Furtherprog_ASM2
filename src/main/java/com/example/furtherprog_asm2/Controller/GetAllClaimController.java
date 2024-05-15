@@ -1,5 +1,6 @@
-package com.example.furtherprog_asm2;
+package com.example.furtherprog_asm2.Controller;
 
+import com.example.furtherprog_asm2.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

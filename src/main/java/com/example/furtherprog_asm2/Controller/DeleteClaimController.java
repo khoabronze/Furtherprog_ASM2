@@ -1,5 +1,9 @@
-package com.example.furtherprog_asm2;
+package com.example.furtherprog_asm2.Controller;
 
+import com.example.furtherprog_asm2.Claim;
+import com.example.furtherprog_asm2.ClaimDAO;
+import com.example.furtherprog_asm2.ClaimService;
+import com.example.furtherprog_asm2.Db_function;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;

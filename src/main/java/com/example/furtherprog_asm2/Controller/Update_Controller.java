@@ -1,6 +1,8 @@
 // Update_Controller.java
-package com.example.furtherprog_asm2;
+package com.example.furtherprog_asm2.Controller;
 
+import com.example.furtherprog_asm2.InsuranceCard;
+import com.example.furtherprog_asm2.InsuranceCardDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;

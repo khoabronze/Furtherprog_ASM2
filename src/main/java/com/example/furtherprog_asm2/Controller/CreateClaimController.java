@@ -1,5 +1,6 @@
 
-package com.example.furtherprog_asm2;
+package com.example.furtherprog_asm2.Controller;
+import com.example.furtherprog_asm2.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
@@ -16,7 +17,7 @@ import java.util.Optional;
 
 public class CreateClaimController {
     private String documentName; // new field to hold the name of the uploaded document
-    private ClaimService ClaimService;
+    private com.example.furtherprog_asm2.ClaimService ClaimService;
     @FXML
     private TextField Claim_ID_form;
 

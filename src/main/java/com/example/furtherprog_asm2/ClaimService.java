@@ -11,7 +11,7 @@ public class ClaimService {
     }
 
     public void submitClaim(Claim claim) throws IllegalArgumentException {
-        claimDAO.save(claim);
+        claimDAO.add(claim);
     }
 
     public void deleteClaim(Claim claim) throws IllegalArgumentException {
@@ -27,11 +27,6 @@ public class ClaimService {
     }
 
     public Optional<Claim> getClaim(String id) {
-        Claim claim = claimDAO.get(id);
-        if (claim != null) {
-            return Optional.of(claim);
-        } else {
-            return Optional.empty();
-        }
+        return claimDAO.get(id);
     }
 }

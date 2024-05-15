@@ -1,5 +1,7 @@
-package com.example.furtherprog_asm2;
+package com.example.furtherprog_asm2.Controller;
 
+import com.example.furtherprog_asm2.InsuranceCard;
+import com.example.furtherprog_asm2.InsuranceCardDao;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

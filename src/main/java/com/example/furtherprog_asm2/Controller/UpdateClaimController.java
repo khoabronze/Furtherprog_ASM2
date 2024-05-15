@@ -1,8 +1,10 @@
-package com.example.furtherprog_asm2;
+package com.example.furtherprog_asm2.Controller;
 
+import com.example.furtherprog_asm2.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -66,40 +68,10 @@ public class UpdateClaimController {
     public void initializeData(String claimIdData) {
         this.claimIdData = claimIdData;
         CLaim_status_form.getItems().setAll(ClaimStatus.values());
-
+        Claim_ID_form.setEditable(false);
     }
 
-    public void search() throws IOException {
-        claimIdData = Claim_ID_Box.getText();
-        Optional<Claim> optionalClaim = claimService.getClaim(claimIdData);
-        if (optionalClaim.isPresent()) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Update-Claim-Form.fxml"));
-            Parent newSceneParent = loader.load();
 
-            // Get the controller of the scene
-            UpdateClaimController controller = loader.getController();
-            // Pass the claim id to the controller
-            controller.initializeData(claimIdData);
-
-            // Create a new scene
-            Scene newScene = new Scene(newSceneParent);
-
-            // Get the current stage
-            Stage currentStage = (Stage) search_button.getScene().getWindow();
-
-            // Set the new scene on the current stage
-            currentStage.setScene(newScene);
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("No Claim found with the provided claim id.");
-            alert.showAndWait();
-
-            // Clear the claim id input
-            Claim_ID_Box.clear();
-        }
-    }
     public void chooseFile(){
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));

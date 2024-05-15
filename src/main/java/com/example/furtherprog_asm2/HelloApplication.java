@@ -12,11 +12,11 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         Db_function db = new Db_function();
         db.connect_to_db();
- Claimfunction
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Update-Claim-Search.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Update-Navbar.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
-
+        stage.setScene(scene); // Set the scene to the stage
+        stage.show(); // Show the stage
     }
 
     public static void main(String[] args) {

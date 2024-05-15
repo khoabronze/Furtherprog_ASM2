@@ -1,4 +1,4 @@
-package com.example.furtherprog_asm2;
+package com.example.furtherprog_asm2.Controller;
 
 
 import javafx.fxml.FXML;

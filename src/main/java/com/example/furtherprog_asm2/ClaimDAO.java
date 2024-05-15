@@ -2,10 +2,9 @@ package com.example.furtherprog_asm2;
 
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.sql.Date;
+import java.util.*;
+
 public class ClaimDAO implements DAO<Claim> {
     private static final String INSERT_CLAIM_SQL = "INSERT INTO claims" +
             "  (id, claim_date, insured_person, card_number, exam_date, claim_amount, status, bank_info, document) VALUES " +
@@ -60,10 +59,42 @@ public class ClaimDAO implements DAO<Claim> {
         return claims;
     }
 
+    @Override
+    public Optional<Claim> get(String id) {
+        try (Connection connection = dbFunction.connect_to_db();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CLAIM_BY_ID_SQL)) {
 
+            preparedStatement.setString(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                Claim claim = new Claim();
+                claim.setId(resultSet.getString("id"));
+                claim.setClaimDate(resultSet.getDate("claim_date"));
+                claim.setInsuredPerson(resultSet.getString("insured_person"));
+                claim.setCardNumber(resultSet.getString("card_number"));
+                claim.setExamDate(resultSet.getDate("exam_date"));
+                claim.setClaimAmount(resultSet.getDouble("claim_amount"));
+                claim.setStatus(ClaimStatus.valueOf(resultSet.getString("status")));
+                String[] bankInfoParts = resultSet.getString("bank_info").split(" – ");
+                BankingInfo bankingInfo = new BankingInfo();
+                bankingInfo.setBank(bankInfoParts[0]);
+                bankingInfo.setName(bankInfoParts[1]);
+                bankingInfo.setNumber(bankInfoParts[2]);
+                claim.setReiveBankingInfo(bankingInfo);
+                String document = resultSet.getString("document");
+                claim.setDocuments(document);
+                return Optional.of(claim);
+            } else {
+                return Optional.empty();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving claim", e);
+        }
+    }
 
     @Override
-    public Claim get(String id) {
+    public Claim getOne(String id) {
         try (Connection connection = dbFunction.connect_to_db();
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CLAIM_BY_ID_SQL)) {
 
@@ -97,7 +128,7 @@ public class ClaimDAO implements DAO<Claim> {
     }
 
     @Override
-    public void save(Claim claim) {
+    public boolean add(Claim claim) {
         try (Connection connection = dbFunction.connect_to_db();
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CLAIM_SQL)) {
             preparedStatement.setString(1, claim.getId());
@@ -112,7 +143,8 @@ public class ClaimDAO implements DAO<Claim> {
             preparedStatement.setString(9, documents);
             System.out.println(preparedStatement);
             // Execute the query or update query
-            preparedStatement.executeUpdate();
+            int affectedRows = preparedStatement.executeUpdate();
+            return affectedRows > 0;
         } catch (SQLException e) {
             if (e.getSQLState().equals("23505")) {
                 throw new IllegalArgumentException("A claim with the same id already exists", e);
@@ -151,11 +183,12 @@ public class ClaimDAO implements DAO<Claim> {
     }
 
     @Override
-    public void delete(Claim claim) {
+    public boolean delete(Claim claim) {
         try (Connection connection = dbFunction.connect_to_db();
              PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CLAIM_BY_ID_SQL)) {
             preparedStatement.setString(1, claim.getId());
-            preparedStatement.executeUpdate();
+            int affectedRows = preparedStatement.executeUpdate();
+            return affectedRows > 0;
         } catch (SQLException e) {
             throw new RuntimeException("Error deleting claim", e);
         }
