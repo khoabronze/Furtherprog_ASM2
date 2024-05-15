@@ -12,9 +12,9 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         Db_function db = new Db_function();
         db.connect_to_db();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Homepage-Admin.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
-        stage.setTitle("Hello!");
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Update-NavBar.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("HealthCare System");
         stage.setScene(scene);
         stage.show();
     }

@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.furtherprog_asm2.CreateInsuranceCard_Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.furtherprog_asm2.Update_Controller">
    <top>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -26,7 +26,7 @@
                   <Insets left="40.0" />
                </HBox.margin>
             </ImageView>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CREATE NEW INSURANCE CARD">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="UPDATE INSURANCE CARD">
                <font>
                   <Font name="Microsoft Sans Serif" size="23.0" />
                </font>
@@ -90,7 +90,7 @@
                         <Insets left="60.0" top="40.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="cardNumber">
+                  <TextField fx:id="cardNumber" editable="false">
                      <HBox.margin>
                         <Insets left="40.0" top="35.0" />
                      </HBox.margin>
@@ -143,7 +143,7 @@
       </VBox>
    </center>
    <bottom>
-      <Button onAction="#submit" fx:id="submit" mnemonicParsing="false" style="-fx-background-color: blue;" text="Submit" textFill="WHITE" BorderPane.alignment="BOTTOM_RIGHT">
+      <Button fx:id="update" mnemonicParsing="false" onAction="#update" style="-fx-background-color: blue;" text="Update" textFill="WHITE" BorderPane.alignment="BOTTOM_RIGHT">
          <BorderPane.margin>
             <Insets bottom="35.0" right="50.0" />
          </BorderPane.margin>
