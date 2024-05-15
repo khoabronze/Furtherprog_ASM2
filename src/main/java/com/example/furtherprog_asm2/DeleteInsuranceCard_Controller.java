@@ -40,6 +40,7 @@ public class DeleteInsuranceCard_Controller {
                     alert.setTitle("Failure");
                     alert.setContentText("Failed to delete the Insurance Card!");
                     alert.showAndWait();
+                    cardNumber.clear(); // Clear the input field after delete
                 }
             }
         } catch (Exception e) {
