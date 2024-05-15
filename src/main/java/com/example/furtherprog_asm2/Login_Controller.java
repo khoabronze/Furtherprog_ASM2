@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class Login_Controller  {
+public class Login_Controller {
     @FXML
     private TextField Username_box;
 
@@ -33,7 +33,12 @@ public class Login_Controller  {
         String password = Password_box.getText();
 
         Connection conn = db.connect_to_db();
-        String query = "SELECT * FROM \"Admin\" WHERE \"Username\" = ?";
+
+
+         String query = "SELECT * FROM \"Admin\" WHERE \"Username\" = ?";
+
+
+
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
@@ -54,4 +59,9 @@ public class Login_Controller  {
         } catch (SQLException e) {
             System.out.println(e);
         }
-    }}
+
+
+    }
+
+
+}

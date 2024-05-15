@@ -12,8 +12,31 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 // Main.java
-public class Main {
+public class Main extends Application {
+
+    //___________________running app____________________________//
+    public void start(Stage primaryStage) {
+        try {
+            // Load the FXML file for the login interface
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Login-Roles.fxml")); // Adjust the file name as needed
+            Parent root = loader.load();
+
+            // Set the scene and stage
+            primaryStage.setTitle("Login As Customer");
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    //___________________running app____________________________//
     public static void main(String[] args) {
         // Create a new instance of Filereader
         //Filereader filereader = new Filereader();
@@ -31,6 +54,7 @@ public class Main {
         Db_function db = new Db_function();
         db.connect_to_db();
 
+        launch(args); // Launch the JavaFX application
 
     }
 }
