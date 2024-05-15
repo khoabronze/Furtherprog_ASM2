@@ -12,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.sql.Connection;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 public class GetAllClaimController {
 
@@ -64,16 +65,18 @@ public class GetAllClaimController {
     }
     public void handleSearchButtonAction() {
         String id = ID_BOX.getText();
-        Claim claim = this.claimService.getClaim(id);
+        Optional<Claim> claim = this.claimService.getClaim(id);
         if (claim != null) {
             displayClaim(claim);
         } else {
             System.out.println("Claim not found");
         }
     }
-    public void displayClaim(Claim claim) {
+    public void displayClaim(Optional<Claim> claimOptional) {
         ObservableList<Claim> data = FXCollections.observableArrayList();
-        data.add(claim);
+        if (claimOptional.isPresent()) {
+            data.add(claimOptional.get());
+        }
         tableView.setItems(data);
     }
 

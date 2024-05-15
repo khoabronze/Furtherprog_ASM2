@@ -1,6 +1,7 @@
 package com.example.furtherprog_asm2;
 
 import java.util.List;
+import java.util.Optional;
 
 public class ClaimService {
     private DAO<Claim> claimDAO;
@@ -10,23 +11,27 @@ public class ClaimService {
     }
 
     public void submitClaim(Claim claim) throws IllegalArgumentException {
-
         claimDAO.save(claim);
-
     }
-    public void DeleteClaim(Claim claim) throws IllegalArgumentException {
 
+    public void deleteClaim(Claim claim) throws IllegalArgumentException {
         claimDAO.delete(claim);
-
     }
+
     public List<Claim> getAllClaims() {
-        // Use the DAO to get all the claims from the database
         return claimDAO.getAll();
-
-
-
     }
-    public Claim getClaim(String id) {
-        // Use the DAO to get the claim from the database
-        return claimDAO.get(id);
-}}
+
+    public boolean update(Claim claim) {
+        return claimDAO.update(claim);
+    }
+
+    public Optional<Claim> getClaim(String id) {
+        Claim claim = claimDAO.get(id);
+        if (claim != null) {
+            return Optional.of(claim);
+        } else {
+            return Optional.empty();
+        }
+    }
+}

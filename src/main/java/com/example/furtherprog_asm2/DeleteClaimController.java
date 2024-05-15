@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
 import java.sql.Connection;
+import java.util.Optional;
 
 public class DeleteClaimController {
     @FXML
@@ -23,9 +24,10 @@ public class DeleteClaimController {
         if (id.isEmpty()) {
             return;
         }
-        Claim claim = claimService.getClaim(id);
-        if (claim != null) {
-            claimService.DeleteClaim(claim);
+        Optional<Claim> optionalClaim = claimService.getClaim(id);
+        if (optionalClaim.isPresent()) {
+            Claim claim = optionalClaim.get();
+            claimService.deleteClaim(claim);
 
             // Show a notification
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -41,4 +43,5 @@ public class DeleteClaimController {
             alert.setContentText("No claim with the provided ID was found.");
             alert.showAndWait();
         }
-    }}
+    }
+    }

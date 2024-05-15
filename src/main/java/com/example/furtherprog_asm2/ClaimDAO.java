@@ -14,6 +14,7 @@ public class ClaimDAO implements DAO<Claim> {
     private static final String DELETE_CLAIM_BY_ID_SQL = "DELETE FROM claims WHERE id = ?";
     private static final String SELECT_ALL_CLAIMS_SQL = "SELECT * FROM claims";
 
+    private static final String UPDATE_CLAIM_SQL = "UPDATE claims SET claim_date = ?, insured_person = ?, card_number = ?, exam_date = ?, claim_amount = ?, status = ?, bank_info = ?, document = ? WHERE id = ?";
 
 
     private Map<Integer, Claim> claimMap = new HashMap<>();
@@ -123,9 +124,30 @@ public class ClaimDAO implements DAO<Claim> {
 
 
 
+
     @Override
-    public void update(Claim claim) {
-        // Implementation to update a claim
+    public boolean update(Claim claim) {
+        try (Connection connection = dbFunction.connect_to_db();
+             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CLAIM_SQL)) {
+            preparedStatement.setDate(1, new java.sql.Date(claim.getClaimDate().getTime()));
+            preparedStatement.setString(2, claim.getInsuredPerson());
+            preparedStatement.setString(3, claim.getCardNumber());
+            preparedStatement.setDate(4, new java.sql.Date(claim.getExamDate().getTime()));
+            preparedStatement.setDouble(5, claim.getClaimAmount());
+            if (claim.getStatus() != null) {
+                preparedStatement.setString(6, claim.getStatus().toString());
+            } else {
+                preparedStatement.setNull(6, Types.VARCHAR);
+            }
+            preparedStatement.setString(7, claim.getReiveBankingInfo().toString());
+            String documents = String.join(",", claim.getDocuments());
+            preparedStatement.setString(8, documents);
+            preparedStatement.setString(9, claim.getId());
+            int affectedRows = preparedStatement.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating claim", e);
+        }
     }
 
     @Override
