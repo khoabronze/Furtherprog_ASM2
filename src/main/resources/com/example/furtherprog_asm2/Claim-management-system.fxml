@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.BottomNavigationButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.furtherprog_asm2.ClaimManagementSystem">
+    <children>
+        <BorderPane layoutX="20.0" layoutY="40.0" prefHeight="430.0" prefWidth="100.0" style="-fx-background-color: #E0E0E0; -fx-border-radius: 50px; -fx-background-radius: 10px;">
+            <top>
+                <BottomNavigationButton alignment="CENTER" contentDisplay="TOP" prefHeight="100.0" prefWidth="100.0" text="Name" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="USER" size="50" text="" textAlignment="CENTER" />
+                    </graphic>
+                </BottomNavigationButton>
+            </top>
+            <right>
+                <BottomNavigationButton alignment="TOP_CENTER" contentDisplay="TOP" prefHeight="345.0" prefWidth="100.0" text="Home" BorderPane.alignment="CENTER">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="HOME" size="50" textAlignment="CENTER" />
+                    </graphic>
+                </BottomNavigationButton>
+            </right></BorderPane>
+        <Label layoutX="20.0" layoutY="14.0" prefHeight="22.0" prefWidth="207.0" text="Claim management system" textAlignment="CENTER">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </Label>
+        <BottomNavigationButton alignment="CENTER" contentDisplay="TOP" layoutX="140.0" layoutY="200.0" prefHeight="100.0" prefWidth="100.0" text="ADD">
+            <graphic>
+                <FontAwesomeIconView glyphName="PLUS" size="50" />
+            </graphic>
+        </BottomNavigationButton>
+        <BottomNavigationButton contentDisplay="TOP" layoutX="500.0" layoutY="200.0" prefHeight="100.0" prefWidth="100.0" text="GET ONE" textAlignment="CENTER">
+            <graphic>
+                <FontAwesomeIconView glyphName="FILE" size="50" />
+            </graphic>
+        </BottomNavigationButton>
+        <BottomNavigationButton alignment="CENTER" contentDisplay="TOP" layoutX="620.0" layoutY="200.0" prefHeight="100.0" prefWidth="100.0" text="GET ALL">
+            <graphic>
+                <FontAwesomeIconView glyphName="FOLDER" size="50" textAlignment="CENTER" />
+            </graphic>
+        </BottomNavigationButton>
+        <BottomNavigationButton alignment="CENTER" contentDisplay="TOP" layoutX="260.0" layoutY="200.0" prefHeight="100.0" prefWidth="100.0" text="DELETE" textAlignment="CENTER">
+            <graphic>
+                <FontAwesomeIconView glyphName="MINUS" size="50" />
+            </graphic>
+        </BottomNavigationButton>
+        <BottomNavigationButton alignment="CENTER" contentDisplay="TOP" layoutX="380.0" layoutY="200.0" prefHeight="100.0" prefWidth="100.0" text="UPDATE">
+            <graphic>
+                <FontAwesomeIconView glyphName="EDIT" size="50" />
+            </graphic>
+        </BottomNavigationButton>
+    </children>
+</AnchorPane>
