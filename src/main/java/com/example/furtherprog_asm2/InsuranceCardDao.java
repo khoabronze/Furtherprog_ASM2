@@ -98,15 +98,15 @@ public class InsuranceCardDao implements DAO<InsuranceCard> {
     }
 
     @Override
-    public boolean update(InsuranceCard insuranceCard) {
+    public boolean update(String cardNumber, String cardHolder, String policyOwner, String expirationDate) {
         Connection con = db.connect_to_db();
         String query = "UPDATE \"Insurance Card\" SET \"cardHolder\" = ?, \"policyOwner\" = ?, \"expirationDate\" = ? WHERE \"cardNumber\" = ?";
         try (PreparedStatement stmt = con.prepareStatement(query)) {
-            stmt.setString(1, insuranceCard.getCardHolder());
-            stmt.setString(2, insuranceCard.getPolicyOwner());
-            Date expirationDate = Date.valueOf(insuranceCard.getExpirationDate());
-            stmt.setDate(3, expirationDate);
-            stmt.setString(4, insuranceCard.getCardNumber());
+            stmt.setString(1, cardHolder);
+            stmt.setString(2, policyOwner);
+            Date expirationDateValue = Date.valueOf(expirationDate);
+            stmt.setDate(3, expirationDateValue);
+            stmt.setString(4, cardNumber);
             int rowsAffected = stmt.executeUpdate();
             return rowsAffected > 0;
         } catch (SQLException e) {

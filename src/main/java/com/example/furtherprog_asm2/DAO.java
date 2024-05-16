@@ -8,6 +8,6 @@ public interface DAO<IC> {
     Optional<IC> get(String cardNumber);
     InsuranceCard getOne(String cardNumber);
     boolean add(IC ic);
-    boolean update(IC ic);
+    boolean update(String cardNumber, String cardHolder, String policyOwner, String expirationDate);
     boolean delete(IC ic);
 }
