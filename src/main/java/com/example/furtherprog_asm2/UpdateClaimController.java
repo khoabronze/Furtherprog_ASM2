@@ -93,6 +93,7 @@ public class UpdateClaimController {
                 Bank_name_form.setText(originalClaim.getReiveBankingInfo().getName());
                 Bank_number_form.setText(originalClaim.getReiveBankingInfo().getNumber());
 
+                CLaim_status_form.getItems().setAll(ClaimStatus.values());
                 CLaim_status_form.setValue(originalClaim.getStatus());
                 Claim_ID_form.setEditable(false);
             } else {
