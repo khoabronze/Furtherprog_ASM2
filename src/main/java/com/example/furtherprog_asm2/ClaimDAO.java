@@ -22,8 +22,8 @@ public class ClaimDAO implements DAO<Claim> {
     private Connection connection;
 
     public ClaimDAO(Connection connection) {
-            this.connection = connection;
-        }
+        this.connection = connection;
+    }
 
     @Override
     public List<Claim> getAll() {
