@@ -1,5 +1,7 @@
 package com.example.furtherprog_asm2;
 
+import com.example.furtherprog_asm2.InsuranceCard;
+import com.example.furtherprog_asm2.InsuranceCardDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
