@@ -2,13 +2,18 @@ package com.example.furtherprog_asm2;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -115,7 +120,7 @@ public class Switch_Status_Controller {
     }
 
     @FXML
-    public void updateStatus() {
+    public void updateStatus() throws IOException {
         String claimIdData = Claim_ID_form.getText();
         ClaimStatus claimStatusData = CLaim_status_form.getValue();
 
@@ -144,6 +149,14 @@ public class Switch_Status_Controller {
         if (success) {
             alert.setTitle("Success");
             alert.setContentText("Claim status updated successfully!");
+
+            // Load the Switch-Status-NavBar.fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Switch-Status-NavBar.fxml"));
+            Parent root = loader.load();
+
+            // Get the current stage and set the scene to the loaded scene
+            Stage stage = (Stage) CLaim_status_form.getScene().getWindow();
+            stage.setScene(new Scene(root));
         } else {
             alert.setTitle("Failure");
             alert.setContentText("Failed to update Claim status. Please try again.");
