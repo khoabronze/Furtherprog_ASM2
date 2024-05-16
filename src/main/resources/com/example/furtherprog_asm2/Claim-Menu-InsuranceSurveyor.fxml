@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="736.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="736.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.furtherprog_asm2.Navigation_Controller">
     <top>
         <HBox prefHeight="70.0" prefWidth="736.0" BorderPane.alignment="CENTER">
             <children>
@@ -58,7 +58,7 @@
             <children>
                 <VBox alignment="TOP_CENTER" layoutX="59.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
                     <children>
-                        <ImageView fitHeight="52.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="claimViewButton" fitHeight="52.0" fitWidth="80.0" onMouseClicked="#handleClaimViewNavigation" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../../IMG/view.png" />
                             </image>
