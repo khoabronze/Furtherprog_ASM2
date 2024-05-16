@@ -1,5 +1,5 @@
 // Update_Controller.java
-package com.example.furtherprog_asm2.Controller;
+package com.example.furtherprog_asm2;
 
 import com.example.furtherprog_asm2.InsuranceCard;
 import com.example.furtherprog_asm2.InsuranceCardDao;
