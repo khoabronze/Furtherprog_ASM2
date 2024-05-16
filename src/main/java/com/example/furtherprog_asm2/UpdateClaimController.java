@@ -20,7 +20,11 @@ import java.util.Date;
 import java.util.Optional;
 
 public class UpdateClaimController {
-    private String documentName; // new field to hold the name of the uploaded document
+    private Claim originalClaim;
+    private ClaimDAO claimDao;
+    private ClaimService claimService;
+
+    private String documentName;
     @FXML
     private TextField Claim_ID_form;
 
@@ -50,7 +54,6 @@ public class UpdateClaimController {
 
     @FXML
     private ChoiceBox<ClaimStatus> CLaim_status_form;
-    private ClaimService claimService;
 
     @FXML
     private TextField Claim_ID_Box;
@@ -62,14 +65,43 @@ public class UpdateClaimController {
     public UpdateClaimController() {
         Db_function dbFunction = new Db_function();
         Connection connection = dbFunction.connect_to_db();
-        this.claimService = new ClaimService(new ClaimDAO(connection));
+        this.claimDao = new ClaimDAO(connection);
+        this.claimService = new ClaimService(claimDao);
     }
 
     public void initializeData(String claimIdData) {
-        this.claimIdData = claimIdData;
-        CLaim_status_form.getItems().setAll(ClaimStatus.values());
-        Claim_ID_form.setEditable(false);
-    }
+            Optional<Claim> claimOptional = claimService.getClaim(claimIdData);
+            if (claimOptional.isPresent()) {
+                originalClaim = claimOptional.get();
+                Claim originalClaim = claimService.getClaim(claimIdData).get();
+
+                Claim_ID_form.setText(originalClaim.getId());
+
+                LocalDate claimDate = LocalDate.parse(originalClaim.getClaimDate().toString());
+                Claim_Date_form.setValue(claimDate);
+
+                Card_number_form.setText(originalClaim.getCardNumber());
+
+                LocalDate examDate = LocalDate.parse(originalClaim.getExamDate().toString());
+                Claim_exam_date_form.setValue(examDate);
+
+                Claim_IP_form.setText(originalClaim.getInsuredPerson());
+
+                Claim_amount_form.setText(String.valueOf(originalClaim.getClaimAmount()));
+
+                Bank_form.setText(originalClaim.getReiveBankingInfo().getBank());
+                Bank_name_form.setText(originalClaim.getReiveBankingInfo().getName());
+                Bank_number_form.setText(originalClaim.getReiveBankingInfo().getNumber());
+
+                CLaim_status_form.setValue(originalClaim.getStatus());
+                Claim_ID_form.setEditable(false);
+            } else {
+                // Handle the case where the claim is not found
+                System.out.println("Claim not found with id: " + claimIdData);
+            }
+        }
+
+
 
 
     public void chooseFile(){
@@ -77,119 +109,85 @@ public class UpdateClaimController {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
         File selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) {
-            documentName = selectedFile.getName(); // store the name of the file
+            documentName = selectedFile.getName();
         }
     }
     @FXML
-    public void update(ActionEvent event) {
-        try {
-            String claimIdData = Claim_ID_form.getText();
+    public void update(ActionEvent event) throws IOException {
+        String newInsuredPerson = Claim_IP_form.getText();
+        String newCardNumber = Card_number_form.getText();
+        LocalDate newClaimDate = Claim_Date_form.getValue();
+        LocalDate newExamDate = Claim_exam_date_form.getValue();
+        double newClaimAmount = Double.parseDouble(Claim_amount_form.getText());
+        ClaimStatus newStatus = CLaim_status_form.getValue();
+        String newBank = Bank_form.getText();
+        String newBankName = Bank_name_form.getText();
+        String NewBankNumber = Bank_number_form.getText();
+        String newDocuments = documentName;
 
-            // Fetch the current claim from the database
-            Optional<Claim> optionalClaim = claimService.getClaim(claimIdData);
-            if (!optionalClaim.isPresent()) {
-                showAlert("Error", null, "No claim found with the provided claim id.");
-                return;
-            }
-            Claim currentClaim = optionalClaim.get();
+        if (newInsuredPerson.isEmpty()) {
+            newInsuredPerson = originalClaim.getInsuredPerson();
+        }
 
-            LocalDate claimDateData = Claim_Date_form.getValue();
-            Date date = null;
-            if (claimDateData != null) {
-                LocalDate localDate = claimDateData;
-                date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-            } else {
-                date = currentClaim.getClaimDate();
-            }
+        if (newCardNumber.isEmpty()) {
+            newCardNumber = originalClaim.getCardNumber();
+        }
 
-            String cardNumberData = Card_number_form.getText();
-            if (cardNumberData == null || cardNumberData.isEmpty()) {
-                cardNumberData = currentClaim.getCardNumber();
-            }
+        if (newClaimDate == null) {
+            newClaimDate = originalClaim.getClaimDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        }
 
-            LocalDate claimExamDateData = Claim_exam_date_form.getValue();
-            Date examdate = null;
-            if (claimExamDateData != null) {
-                LocalDate localExamDate = claimExamDateData;
-                examdate = Date.from(localExamDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-            } else {
-                examdate = currentClaim.getExamDate();
-            }
+        if (newExamDate == null) {
+            newExamDate = originalClaim.getExamDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        }
+        if (newDocuments == null || newDocuments.isEmpty()) {
+            newDocuments = String.join(",", originalClaim.getDocuments());
+        }
+        if (newClaimAmount == 0) {
+            newClaimAmount = originalClaim.getClaimAmount();
+        }
 
-            String claimIPData = Claim_IP_form.getText();
-            if (claimIPData == null || claimIPData.isEmpty()) {
-                claimIPData = currentClaim.getInsuredPerson();
-            }
+        if (newStatus == null) {
+            newStatus = originalClaim.getStatus();
+        }
 
-            String claimAmountStr = Claim_amount_form.getText();
-            Double claimAmount = null;
-            if (claimAmountStr != null && !claimAmountStr.isEmpty()) {
-                try {
-                    claimAmount = Double.parseDouble(claimAmountStr);
-                } catch (NumberFormatException e) {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Invalid Input");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Please enter a valid number for Claim Amount.");
-                    alert.showAndWait();
-                    return; // Exit the method if the input is invalid
-                }
-            } else {
-                claimAmount = currentClaim.getClaimAmount();
-            }
+        if (newBank.isEmpty()) {
+            newBank = originalClaim.getReiveBankingInfo().getBank();
+        }
 
-            String bankData = Bank_form.getText();
-            if (bankData == null || bankData.isEmpty()) {
-                bankData = currentClaim.getReiveBankingInfo().getBank();
-            }
+        if (newBankName.isEmpty()) {
+            newBankName = originalClaim.getReiveBankingInfo().getName();
+        }
+        if (NewBankNumber.isEmpty()) {
+            NewBankNumber = originalClaim.getReiveBankingInfo().getNumber();
+        }
+        if (newDocuments.isEmpty()) {
+            newDocuments = String.join(",", originalClaim.getDocuments());
+        }
 
-            String bankNameData = Bank_name_form.getText();
-            if (bankNameData == null || bankNameData.isEmpty()) {
-                bankNameData = currentClaim.getReiveBankingInfo().getName();
-            }
+        BankingInfo newBankInfo = new BankingInfo(newBank, newBankName, NewBankNumber);
+        Claim updatedClaim = new Claim();
+        updatedClaim.setId(originalClaim.getId());
+        updatedClaim.setInsuredPerson(newInsuredPerson);
+        updatedClaim.setCardNumber(newCardNumber);
+        updatedClaim.setClaimDate(Date.from(newClaimDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        updatedClaim.setExamDate(Date.from(newExamDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        updatedClaim.setClaimAmount(newClaimAmount);
+        updatedClaim.setStatus(newStatus);
+        updatedClaim.setReiveBankingInfo(newBankInfo);
+        updatedClaim.setDocuments(newDocuments);
 
-            String bankNumberData = Bank_number_form.getText();
-            if (bankNumberData == null || bankNumberData.isEmpty()) {
-                bankNumberData = currentClaim.getReiveBankingInfo().getNumber();
-            }
+        boolean updateSuccessful = claimDao.update(updatedClaim);
+        if (updateSuccessful) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Update-Claim-Search.fxml"));
+            Parent newSceneParent = loader.load();
+            Scene newScene = new Scene(newSceneParent);
+            Stage currentStage = (Stage) Claim_ID_form.getScene().getWindow();
+            currentStage.setScene(newScene);
 
-            BankingInfo bankingInfo = new BankingInfo();
-            bankingInfo.setBank(bankData);
-            bankingInfo.setName(bankNameData);
-            bankingInfo.setNumber(bankNumberData);
-
-            ClaimStatus claimStatusData = CLaim_status_form.getValue();
-            if (claimStatusData == null) {
-                claimStatusData = currentClaim.getStatus();
-            }
-
-            Claim claim = new Claim(claimIdData, date, claimIPData, cardNumberData, examdate, documentName, claimAmount, claimStatusData, bankingInfo);
-            boolean success = claimService.update(claim);
-
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText(null);
-            if (success) {
-                alert.setTitle("Success");
-                alert.setContentText("Claim updated successfully!");
-
-                // Clear the input in the text fields
-                Claim_ID_form.clear();
-                Claim_Date_form.setValue(null);
-                Card_number_form.clear();
-                Claim_exam_date_form.setValue(null);
-                Claim_IP_form.clear();
-                Claim_amount_form.clear();
-                Bank_form.clear();
-                Bank_name_form.clear();
-                Bank_number_form.clear();
-                CLaim_status_form.setValue(null);
-            } else {
-                alert.setTitle("Failure");
-                alert.setContentText("Failed to update Claim. Please try again.");
-            }
-            alert.showAndWait();
-        } catch (Exception e) {
-            e.printStackTrace();
+            showAlert("Success", null, "Update successful.");
+        } else {
+            showAlert("Error", null, "Update failed.");
         }
     }
 

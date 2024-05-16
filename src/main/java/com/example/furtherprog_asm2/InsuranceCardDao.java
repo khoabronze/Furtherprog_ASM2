@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
-public class InsuranceCardDao implements DAO<InsuranceCard> {
+public class InsuranceCardDao implements ICDAO<InsuranceCard> {
     private ArrayList<InsuranceCard> insuranceCards = new ArrayList<>();
     private Db_function db = new Db_function();
 
