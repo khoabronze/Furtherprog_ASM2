@@ -91,7 +91,7 @@
                                 <Insets left="90.0" top="40.0" />
                             </HBox.margin>
                         </Label>
-                        <TextField fx:id="claimID">
+                        <TextField fx:id="Claim_ID_form">
                             <HBox.margin>
                                 <Insets left="30.0" top="35.0" />
                             </HBox.margin>
@@ -101,7 +101,7 @@
                                 <Insets left="90.0" top="40.0" />
                             </HBox.margin>
                         </Label>
-                        <DatePicker fx:id="claimDate">
+                        <DatePicker fx:id="Claim_Date_form">
                             <HBox.margin>
                                 <Insets left="30.0" top="35.0" />
                             </HBox.margin>
@@ -115,7 +115,7 @@
                                 <Insets left="90.0" top="40.0" />
                             </HBox.margin>
                         </Label>
-                        <TextField fx:id="cardNumber">
+                        <TextField fx:id="Card_number_form">
                             <HBox.margin>
                                 <Insets left="30.0" top="35.0" />
                             </HBox.margin>
@@ -125,7 +125,7 @@
                                 <Insets left="60.0" top="40.0" />
                             </HBox.margin>
                         </Label>
-                        <DatePicker fx:id="examDate">
+                        <DatePicker fx:id="Claim_exam_date_form">
                             <HBox.margin>
                                 <Insets left="30.0" top="35.0" />
                             </HBox.margin>
@@ -139,7 +139,7 @@
                                 <Insets left="90.0" top="40.0" />
                             </HBox.margin>
                         </Label>
-                        <TextField fx:id="insuerdPerson">
+                        <TextField fx:id="Claim_IP_form">
                             <HBox.margin>
                                 <Insets left="30.0" top="35.0" />
                             </HBox.margin>
@@ -149,7 +149,7 @@
                                 <Insets left="50.0" top="40.0" />
                             </HBox.margin>
                         </Label>
-                        <TextField fx:id="claimAmount">
+                        <TextField fx:id="Claim_amount_form">
                             <HBox.margin>
                                 <Insets left="30.0" top="35.0" />
                             </HBox.margin>
@@ -173,7 +173,7 @@
                                 <Insets left="130.0" top="40.0" />
                             </HBox.margin>
                         </Label>
-                        <ChoiceBox fx:id="status" prefWidth="150.0">
+                        <ChoiceBox fx:id="CLaim_status_form" prefWidth="150.0">
                             <HBox.margin>
                                 <Insets left="30.0" top="35.0" />
                             </HBox.margin>
@@ -194,7 +194,7 @@
                                         <Insets left="40.0" top="20.0" />
                                     </HBox.margin>
                                 </Label>
-                                <TextField fx:id="bank">
+                                <TextField fx:id="Bank_form">
                                     <HBox.margin>
                                         <Insets left="30.0" top="15.0" />
                                     </HBox.margin>
@@ -204,7 +204,7 @@
                                         <Insets left="30.0" top="20.0" />
                                     </HBox.margin>
                                 </Label>
-                                <TextField fx:id="name">
+                                <TextField fx:id="Bank_name_form">
                                     <HBox.margin>
                                         <Insets left="30.0" top="15.0" />
                                     </HBox.margin>
@@ -214,7 +214,7 @@
                                         <Insets left="30.0" top="20.0" />
                                     </HBox.margin>
                                 </Label>
-                                <TextField fx:id="number">
+                                <TextField fx:id="Bank_number_form">
                                     <HBox.margin>
                                         <Insets left="30.0" top="15.0" />
                                     </HBox.margin>
@@ -230,7 +230,7 @@
         </VBox>
     </center>
     <bottom>
-        <Button id="update_button" mnemonicParsing="false" onAction="#update" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: blue;" text="Save" textFill="WHITE" BorderPane.alignment="CENTER">
+        <Button id="update_button" mnemonicParsing="false" onAction="#updateStatus" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: blue;" text="Submit" textFill="WHITE" BorderPane.alignment="CENTER">
             <BorderPane.margin>
                 <Insets bottom="20.0" left="120.0" />
             </BorderPane.margin>

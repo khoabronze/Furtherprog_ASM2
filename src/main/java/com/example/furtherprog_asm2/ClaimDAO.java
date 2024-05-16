@@ -193,4 +193,16 @@ public class ClaimDAO implements DAO<Claim> {
             throw new RuntimeException("Error deleting claim", e);
         }
     }
+
+    @Override
+    public void switchStatus(String id, String status) {
+        try (Connection connection = dbFunction.connect_to_db();
+             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE claims SET status = ? WHERE id = ?")) {
+            preparedStatement.setString(1, status);
+            preparedStatement.setString(2, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating claim status", e);
+        }
+    }
 }

@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.furtherprog_asm2.Switch_Status_Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.furtherprog_asm2.Status_SearchClaimController">
     <top>
         <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
@@ -82,14 +82,14 @@
     <center>
         <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <children>
-                <TextField maxHeight="28.0" maxWidth="180.0" promptText="CLAIM ID">
+                <TextField fx:id="Claim_ID_Box" maxHeight="28.0" maxWidth="180.0" promptText="CLAIM ID">
                     <VBox.margin>
                         <Insets left="60.0" top="80.0" />
                     </VBox.margin>
                 </TextField>
-                <Button maxHeight="23.0" maxWidth="100.0" mnemonicParsing="false" style="-fx-background-color: blue;" text="Search" textFill="WHITE">
+                <Button fx:id="search_button" maxHeight="23.0" maxWidth="100.0" mnemonicParsing="false" onAction="#search" style="-fx-background-color: blue;" text="Search" textFill="WHITE">
                     <VBox.margin>
-                        <Insets left="100.0" top="80.0" />
+                        <Insets left="105.0" top="80.0" />
                     </VBox.margin>
                     <effect>
                         <DropShadow height="13.0" offsetX="1.3" offsetY="1.3" radius="6.0" width="13.0" />
