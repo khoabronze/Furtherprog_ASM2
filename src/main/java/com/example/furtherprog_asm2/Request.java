@@ -11,11 +11,11 @@ public class Request {
     public Request() {}
 
     // Constructor
-    public Request(String rid, String id, String note, Approval approval) {
+    public Request(String rid, String id, String note) {
         this.rid = rid;
         this.id = id;
         this.note = note;
-        this.approval = approval;
+        this.approval = Approval.PENDING; // Set approval to PENDING by default
     }
 
     // Getters and Setters

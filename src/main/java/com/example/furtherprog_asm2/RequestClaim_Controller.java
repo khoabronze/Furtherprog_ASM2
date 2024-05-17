@@ -46,8 +46,7 @@ public class RequestClaim_Controller {
         Request request = new Request(
                 ridText,
                 id.getText(),
-                note.getText(),
-                null
+                note.getText()
         );
 
         // Use the RequestDAO to store the new Request in the database

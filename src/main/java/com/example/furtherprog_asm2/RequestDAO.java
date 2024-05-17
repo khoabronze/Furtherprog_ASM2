@@ -25,7 +25,7 @@ public class RequestDAO implements Request_DAO<Request>{
                 String id = rs.getString("id");
                 String note = rs.getString("note");
                 String approval = rs.getString("approval");
-                Request request = new Request(rid, id, note, Approval.valueOf(approval));
+                Request request = new Request(rid, id, note);
                 requestList.add(request);
             }
         } catch (SQLException e) {
@@ -45,7 +45,7 @@ public class RequestDAO implements Request_DAO<Request>{
                 String id = rs.getString("id");
                 String note = rs.getString("note");
                 String approval = rs.getString("approval");
-                Request request = new Request(rid, id, note, Approval.valueOf(approval));
+                Request request = new Request(rid, id, note);
                 return Optional.of(request);
             } else {
                 return Optional.empty();
@@ -67,7 +67,7 @@ public class RequestDAO implements Request_DAO<Request>{
                 String id = rs.getString("id");
                 String note = rs.getString("note");
                 String approval = rs.getString("approval");
-                Request request = new Request(rid, id, note, Approval.valueOf(approval));
+                Request request = new Request(rid, id, note);
                 return request;
             } else {
                 return null;
