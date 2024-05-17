@@ -12,7 +12,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         Db_function db = new Db_function();
         db.connect_to_db();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Create-Dependent-PolicyOwner.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("get_all_dependent.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
         stage.setScene(scene); // Set the scene to the stage

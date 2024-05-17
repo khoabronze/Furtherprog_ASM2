@@ -31,5 +31,10 @@ class Dependent extends User {
     public void setPolicyHolder(PolicyHolder policyHolder) {
         this.policyHolder = policyHolder;
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
 
