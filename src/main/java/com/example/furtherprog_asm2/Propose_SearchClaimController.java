@@ -30,7 +30,7 @@ public class Propose_SearchClaimController {
         claimIdData = Claim_ID_Box.getText();
         Optional<Claim> optionalClaim = claimService.getClaim(claimIdData);
         if (optionalClaim.isPresent()) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Propose-Claim-Form.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Propose-Check-Claim-Form.fxml"));
             Parent newSceneParent = loader.load();
 
             // Get the controller of the scene

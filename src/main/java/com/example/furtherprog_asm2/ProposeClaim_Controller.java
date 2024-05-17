@@ -50,6 +50,8 @@ public class ProposeClaim_Controller {
 
     @FXML
     private ChoiceBox<ClaimStatus> CLaim_status_form;
+    @FXML
+    private Button requestForm;
     private ClaimService claimService;
     private String claimIdData;
 
@@ -70,10 +72,26 @@ public class ProposeClaim_Controller {
 
     public void initializeData(String claimIdData) {
         this.claimIdData = claimIdData;
+        Optional<Claim> optionalClaim = claimService.getClaim(claimIdData);
+        if (optionalClaim.isPresent()) {
+            Claim claim = optionalClaim.get();
+            Claim_ID_form.setText(claim.getId());
+            Claim_Date_form.setValue(convertToLocalDateViaSqlDate((java.sql.Date) claim.getClaimDate()));
+            Card_number_form.setText(claim.getCardNumber());
+            Claim_exam_date_form.setValue(convertToLocalDateViaSqlDate((java.sql.Date) claim.getExamDate()));
+            Claim_IP_form.setText(claim.getInsuredPerson());
+            Claim_amount_form.setText(String.valueOf(claim.getClaimAmount()));
+            Bank_form.setText(claim.getReiveBankingInfo().getBank());
+            Bank_name_form.setText(claim.getReiveBankingInfo().getName());
+            Bank_number_form.setText(claim.getReiveBankingInfo().getNumber());
+            CLaim_status_form.setValue(claim.getStatus());
+        }
+
+        // Make the fields uneditable
         Claim_ID_form.setEditable(false);
-        Claim_Date_form.setEditable(false);
+        Claim_Date_form.setDisable(true);
         Card_number_form.setEditable(false);
-        Claim_exam_date_form.setEditable(false);
+        Claim_exam_date_form.setDisable(true);
         Claim_IP_form.setEditable(false);
         Claim_amount_form.setEditable(false);
         Bank_form.setEditable(false);
@@ -82,7 +100,18 @@ public class ProposeClaim_Controller {
         CLaim_status_form.setDisable(true); // ChoiceBox does not have setEditable method, use setDisable instead
     }
 
-    public void handleRequestForm() throws IOException {
+    private LocalDate convertToLocalDateViaSqlDate(java.sql.Date dateToConvert) {
+        return dateToConvert.toLocalDate();
+    }
 
+    @FXML
+    public void handleRequestForm() throws IOException {
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Request-Form.fxml"));
+
+        Scene newScene = new Scene(newSceneParent);
+
+        Stage currentStage = (Stage) requestForm.getScene().getWindow();
+
+        currentStage.setScene(newScene);
     }
 }
