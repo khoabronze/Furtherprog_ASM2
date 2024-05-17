@@ -15,23 +15,23 @@ public class RequestDAO implements Request_DAO<Request>{
     private Db_function db = new Db_function();
     @Override
     public List<Request> getAll() {
-        List<Request> requestList = new ArrayList<>();
+        List<Request> requests = new ArrayList<>();
         Connection con = db.connect_to_db();
         String query = "SELECT * FROM \"Request\"";
-        try (Statement stmt = con.createStatement()){
-            ResultSet rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                String rid = rs.getString("rid");
-                String id = rs.getString("id");
-                String note = rs.getString("note");
-                String approval = rs.getString("approval");
-                Request request = new Request(rid, id, note);
-                requestList.add(request);
+        try (PreparedStatement stmt = con.prepareStatement(query)) {
+            ResultSet resultSet = stmt.executeQuery();
+            while (resultSet.next()) {
+                Request request = new Request();
+                request.setRid(resultSet.getString("rid"));
+                request.setId(resultSet.getString("id"));
+                request.setNote(resultSet.getString("note"));
+                request.setApproval(Approval.valueOf(resultSet.getString("approval")));
+                requests.add(request);
             }
         } catch (SQLException e) {
             System.out.println(e);
         }
-        return requestList;
+        return requests;
     }
 
     @Override
@@ -62,20 +62,19 @@ public class RequestDAO implements Request_DAO<Request>{
         String query = "SELECT * FROM \"Request\" WHERE \"rid\" = ?";
         try (PreparedStatement stmt = con.prepareStatement(query)) {
             stmt.setString(1, rid);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                String id = rs.getString("id");
-                String note = rs.getString("note");
-                String approval = rs.getString("approval");
-                Request request = new Request(rid, id, note);
+            ResultSet resultSet = stmt.executeQuery();
+            if (resultSet.next()) {
+                Request request = new Request();
+                request.setRid(resultSet.getString("rid"));
+                request.setId(resultSet.getString("id"));
+                request.setNote(resultSet.getString("note"));
+                request.setApproval(Approval.valueOf(resultSet.getString("approval")));
                 return request;
-            } else {
-                return null;
             }
         } catch (SQLException e) {
             System.out.println(e);
-            return null;
         }
+        return null;
     }
     @Override
     public boolean create(Request request) {
@@ -92,6 +91,23 @@ public class RequestDAO implements Request_DAO<Request>{
             }
             stmt.executeUpdate();
             return true;
+        } catch (SQLException e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    @Override
+    public boolean update(Request request) {
+        Connection con = db.connect_to_db();
+        String query = "UPDATE \"Request\" SET \"id\" = ?, \"note\" = ?, \"approval\" = ? WHERE \"rid\" = ?";
+        try (PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setString(1, request.getId());
+            stmt.setString(2, request.getNote());
+            stmt.setString(3, request.getApproval().toString());
+            stmt.setString(4, request.getRid());
+            int updatedRows = stmt.executeUpdate();
+            return updatedRows > 0;
         } catch (SQLException e) {
             System.out.println(e);
             return false;

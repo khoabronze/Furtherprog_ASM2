@@ -8,6 +8,7 @@ public interface Request_DAO<Request> {
     Optional<Request> get(String rid);
     Request getOne(String rid);
     boolean create(Request request);
+    boolean update(Request request);
     void processRequest(String rid, String id, String approval);
 
 }
