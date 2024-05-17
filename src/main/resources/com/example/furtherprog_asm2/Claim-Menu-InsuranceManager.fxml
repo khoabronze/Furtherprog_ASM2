@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="699.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="699.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.furtherprog_asm2.Navigation_Controller">
     <top>
         <HBox prefHeight="70.0" prefWidth="736.0" BorderPane.alignment="CENTER">
             <children>
@@ -56,9 +56,9 @@
     <center>
         <Pane prefHeight="366.0" prefWidth="551.0" BorderPane.alignment="CENTER">
             <children>
-                <VBox alignment="TOP_CENTER" layoutX="105.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
+                <VBox alignment="TOP_CENTER" layoutX="74.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
                     <children>
-                        <ImageView fitHeight="52.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="claimViewButton" fitHeight="52.0" fitWidth="80.0" onMouseClicked="#handleClaimViewNavigation" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../../IMG/view.png" />
                             </image>
@@ -66,14 +66,14 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                         </ImageView>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="62.0" text="View ">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="62.0" text="Claim">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </Label>
                     </children>
                 </VBox>
-                <VBox alignment="TOP_CENTER" layoutX="308.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
+                <VBox alignment="TOP_CENTER" layoutX="375.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
                     <children>
                         <ImageView fitHeight="52.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -90,6 +90,23 @@
                         </Label>
                     </children>
                 </VBox>
+            <VBox alignment="TOP_CENTER" layoutX="223.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
+               <children>
+                  <ImageView fx:id="requestViewButton" fitHeight="52.0" fitWidth="80.0" onMouseClicked="#handleRequestViewNavigation" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../IMG/view.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="62.0" text="Request">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
             </children>
         </Pane>
     </center>
