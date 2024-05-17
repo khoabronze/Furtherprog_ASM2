@@ -43,7 +43,7 @@
                             <Label alignment="TOP_CENTER" prefHeight="17.0" prefWidth="94.0" text="User" />
                         </children>
                     </HBox>
-                    <HBox alignment="CENTER" prefHeight="66.0" prefWidth="162.0">
+                    <HBox alignment="CENTER" prefHeight="66.0" prefWidth="162.0" >
                         <children>
                             <ImageView fitHeight="36.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                 <image>

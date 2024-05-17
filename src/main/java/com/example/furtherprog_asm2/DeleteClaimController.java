@@ -8,6 +8,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.fxml.FXMLLoader;
+
 import java.sql.Connection;
 import java.util.Optional;
 
@@ -48,4 +55,45 @@ public class DeleteClaimController {
             alert.showAndWait();
         }
     }
+
+    //    go to homepage
+    @FXML
+    private HBox homeHBox;
+    @FXML
+    private void handleHomeNavigation(MouseEvent event) {
+        navigateToHomePage();
     }
+
+    @FXML
+    private void navigateToHomePage() {
+        try {
+            Stage stage = (Stage) homeHBox.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/furtherprog_asm2/Homepage-Admin.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    //    go to user page
+    @FXML
+    private HBox userIcon;
+
+    @FXML
+    private void handleUserIconClick(MouseEvent event) {
+        navigateToUserProfile();
+    }
+    @FXML
+    private void navigateToUserProfile() {
+        try {
+            Stage stage = (Stage) userIcon.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/furtherprog_asm2/UserProfile.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

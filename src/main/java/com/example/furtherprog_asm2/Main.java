@@ -1,5 +1,10 @@
 package com.example.furtherprog_asm2;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 /**
  * @author <Dong Dang Khoa- s3986281>
  */
@@ -13,7 +18,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 // Main.java
-public class Main {
+public class Main extends Application{
+
+    public void start(Stage primaryStage) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/furtherprog_asm2/Update-InsuranceCard-Form.fxml"));
+            Scene scene = new Scene(root);
+            primaryStage.setTitle("Create Claim Form");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public static void main(String[] args) {
         // Create a new instance of Filereader
         //Filereader filereader = new Filereader();
@@ -31,6 +48,8 @@ public class Main {
         Db_function db = new Db_function();
         db.connect_to_db();
 
+        launch(args);
 
     }
+
 }
