@@ -47,6 +47,8 @@ public class GetAllClaimController {
     private TableColumn<Claim, String> nameColumn;
     @FXML
     private TableColumn<Claim, String> numberColumn;
+    @FXML
+    private TableColumn<Claim, String> documentsColumn;
 
     @FXML
     private TextField ID_BOX;
@@ -59,10 +61,12 @@ public class GetAllClaimController {
         examDateColumn.setCellValueFactory(new PropertyValueFactory<>("examDate"));
         claimAmountColumn.setCellValueFactory(new PropertyValueFactory<>("claimAmount"));
         statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
-
         bankColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getReiveBankingInfo().getBank()));
         nameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getReiveBankingInfo().getName()));
         numberColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getReiveBankingInfo().getNumber()));
+        documentsColumn.setCellValueFactory(new PropertyValueFactory<>("documents"));
+
+
     }
     public void handleSearchButtonAction() {
         String id = ID_BOX.getText();

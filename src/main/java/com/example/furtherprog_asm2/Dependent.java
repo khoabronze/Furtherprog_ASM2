@@ -1,34 +1,40 @@
 package com.example.furtherprog_asm2;
 
-/**
- * @author <Dong Dang Khoa- s3986281>
- */
 import java.util.ArrayList;
 
-
-class Dependent extends Customer{
-    // Attributes
+class Dependent extends User {
     private PolicyHolder policyHolder;
 
     // Default Constructor
-    public Dependent() {};
-
-    // Constructor
-    public Dependent(PolicyHolder policyHolder) {
-        this.policyHolder = policyHolder;
+    public Dependent() {
+        super();
+        this.setRole("Dependent");
     }
 
-    public Dependent(String id, String fullname, InsuranceCard insuranceCard, ArrayList<Claim> claims) {
-        super(id, fullname, insuranceCard, claims);
+    // Constructor with policyHolder
+    public Dependent(PolicyHolder policyHolder) {
+        super();
+        this.policyHolder = policyHolder;
+        this.setRole("Dependent");
+    }
+
+    // Constructor with parameters, ensuring role is set to "Dependent"
+    public Dependent(String id, String name, String phone, String email, String address, String password, InsuranceCard insuranceCard, ArrayList<Claim> claims) {
+        super(id, name, phone, email, address, password, insuranceCard, claims, "Dependent");
     }
 
     // Getters and Setters
-    protected PolicyHolder getPolicyHolder() {
+    public PolicyHolder getPolicyHolder() {
         return policyHolder;
     }
 
-    protected void setPolicyHolder(PolicyHolder policyHolder) {
+    public void setPolicyHolder(PolicyHolder policyHolder) {
         this.policyHolder = policyHolder;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }
 
