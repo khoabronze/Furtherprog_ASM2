@@ -21,11 +21,11 @@
       </AnchorPane>
    </left>
    <right>
-      <AnchorPane prefHeight="400.0" prefWidth="347.0" style="-fx-background-color: #2655F9;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="400.0" prefWidth="347.0" style="-fx-background-color: cornflowerblue;" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="Username_box" layoutX="104.0" layoutY="73.0" promptText="Username" />
             <PasswordField fx:id="Password_box" layoutX="104.0" layoutY="140.0" promptText="Password" />
-            <Button id="login_button" onAction="#login"  layoutX="106.0" layoutY="219.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Login" />
+            <Button id="login_button" layoutX="106.0" layoutY="219.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="145.0" text="Login" />
          </children>
       </AnchorPane>
    </right>
