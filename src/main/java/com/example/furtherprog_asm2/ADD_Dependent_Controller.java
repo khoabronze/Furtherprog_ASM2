@@ -63,5 +63,30 @@ public class ADD_Dependent_Controller {
 
         alert.showAndWait();
     }
+
+    // Public setters for testing purposes
+    public TextField getName_Form() {
+        return Name_Form;
     }
+
+    public TextField getID_Form() {
+        return ID_Form;
+    }
+
+    public TextField getPhone_Form() {
+        return Phone_Form;
+    }
+
+    public TextField getMail_Form() {
+        return Mail_Form;
+    }
+
+    public TextField getAddress_Form() {
+        return Address_Form;
+    }
+
+    public PasswordField getPassword_Form() {
+        return Password_Form;
+    }
+}
 
