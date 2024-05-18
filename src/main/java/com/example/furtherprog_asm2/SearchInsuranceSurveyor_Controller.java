@@ -60,6 +60,9 @@ public class SearchInsuranceSurveyor_Controller {
             idInput.clear();
         } else {
             showAlert("Information Dialog", "Search Result", "No Insurance Surveyor found with the provided ID");
+
+            //clear the input field
+            idInput.clear();
         }
     }
 
