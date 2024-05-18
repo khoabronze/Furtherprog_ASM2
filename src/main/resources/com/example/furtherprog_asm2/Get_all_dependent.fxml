@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="1151.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.furtherprog_asm2.GetDependentController">
+    <SplitPane dividerPositions="0.8022426095820592" layoutX="168.0" layoutY="2.0" prefHeight="398.0" prefWidth="1176.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="168.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
+        <items>
+            <!-- This is the TableView -->
+            <TableView fx:id="tableView" prefHeight="396.0" prefWidth="721.0">
+                <columns>
+                    <TableColumn id="idColumn" fx:id="idColumn" text="ID" />
+                    <TableColumn id="idColumn" fx:id="nameColumn" text="Name" />
+                    <TableColumn id="idColumn" fx:id="phoneColumn" text="Phone" />
+                    <TableColumn id="idColumn" fx:id="mailColumn" text="Email" />
+                    <TableColumn id="idColumn" fx:id="addressColumn" text="Address" />
+                    <TableColumn id="idColumn" fx:id="passColumn" text="Password" />
+                </columns>
+            </TableView>
+            <VBox alignment="CENTER" prefHeight="396.0" prefWidth="85.0" spacing="10">
+                <TextField fx:id="ID_BOX" minWidth="0.0" prefHeight="25.0" prefWidth="0.0" promptText="Enter ID" />
+                <Button fx:id="searchButton" onAction="#handleSearchButtonAction" text="Search" />
+                <Button fx:id="viewButton" onAction="#Viewall" text="View All" />
+            </VBox>
+        </items>
+    </SplitPane>
+    <VBox layoutX="-2.0" prefHeight="398.0" prefWidth="170.0">
+        <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                <children>
+                    <ImageView fitHeight="56.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../../../IMG/user-solid.png" />
+                        </image>
+                        <HBox.margin>
+                            <Insets />
+                        </HBox.margin>
+                    </ImageView>
+                    <Label alignment="CENTER" prefHeight="17.0" prefWidth="79.0" text="User" />
+                </children>
+                <VBox.margin>
+                    <Insets left="35.0" right="20.0" />
+                </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                <children>
+                    <ImageView fitHeight="55.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../../../IMG/house-solid.png" />
+                        </image>
+                    </ImageView>
+                    <Label alignment="CENTER" prefHeight="17.0" prefWidth="79.0" text="Home" />
+                </children>
+                <VBox.margin>
+                    <Insets left="30.0" right="20.0" />
+                </VBox.margin>
+            </HBox>
+        </children>
+    </VBox>
+</AnchorPane>
