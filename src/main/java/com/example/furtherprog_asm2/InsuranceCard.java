@@ -8,17 +8,22 @@ public class InsuranceCard {
     private String CardHolder;
     private String policyOwner;
     private String expirationDate;
+    private double rate; // The rate of the insurance card
+
     public InsuranceCard() {
         this.cardNumber = "default";
         CardHolder = "default";
         this.policyOwner = "default";
         this.expirationDate = "default";
+        this.rate = 0.3; // Set the default rate to 0.05
     }
+
     public InsuranceCard(String cardNumber, String cardHolder, String policyOwner, String expirationDate) {
         this.cardNumber = cardNumber;
         CardHolder = cardHolder;
         this.policyOwner = policyOwner;
         this.expirationDate = expirationDate;
+        this.rate = 0.3; // Set the default rate to 0.05
     }
 
     public String getCardNumber() {
@@ -51,6 +56,13 @@ public class InsuranceCard {
 
     public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
+    }
+    public double getRate() {
+        return rate;
+    }
+
+    public void setRate(double rate) {
+        this.rate = rate;
     }
 
     @Override
