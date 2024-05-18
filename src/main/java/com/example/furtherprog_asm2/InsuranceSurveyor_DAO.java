@@ -6,129 +6,150 @@ import java.util.List;
 import java.util.Optional;
 
 public class InsuranceSurveyor_DAO implements InsuranceSurveyorDAO <InsuranceSurveyor>{
-    private ArrayList<InsuranceSurveyor> insuranceSurveyors = new ArrayList<>();
-    private Db_function db = new Db_function();
+    private Db_function dbFunction = new Db_function();
+
+    private InsuranceSurveyor_Service insuranceSurveyorService;
+    private Connection connection;
+    public InsuranceSurveyor_DAO(Connection connection) {
+        this.connection = connection;
+    }
+
+    private static final String INSERT_INSURANCESURVEYOR_SQL = "INSERT INTO \"user\"" + " (id, name, phone, email, address, password, role) VALUES " + " (?, ?, ?, ?, ?, ?, 'Insurance Surveyor');";
+    private static final String UPDATE_INSURANCESURVEYOR_SQL = "UPDATE \"user\" SET phone = ?, email = ?, address = ?, password = ? WHERE id = ? AND role = 'Insurance Surveyor'";
+
+    private static final String DELETE_INSURANCESURVEYOR_SQL = "DELETE FROM \"user\" WHERE id = ? AND role = 'Insurance Surveyor'";
+    private static final String SELECT_ALL_INSURANCESURVEYORS_SQL = "SELECT * FROM \"user\" WHERE role = 'Insurance Surveyor'";
+    private static final String SELECT_INSURANCESURVEYOR_BY_ID_SQL = "SELECT * FROM \"user\" WHERE id = ? AND role = 'Insurance Surveyor'";
     @Override
     public List<InsuranceSurveyor> getAll() {
         List<InsuranceSurveyor> insuranceSurveyors = new ArrayList<>();
-        Connection con = db.connect_to_db();
-        String query = "SELECT * FROM \"user\" WHERE role = 'Insurance Surveyor'";
-        try (Statement stmt = con.createStatement()){
-            ResultSet rs = stmt.executeQuery(query);
-            while (rs.next()) {
+        try (Connection connection = dbFunction.connect_to_db();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_INSURANCESURVEYORS_SQL)) {
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
                 InsuranceSurveyor insuranceSurveyor = new InsuranceSurveyor();
-                insuranceSurveyor.setId(rs.getString("id"));
-                insuranceSurveyor.setName(rs.getString("name"));
-                insuranceSurveyor.setPhone(rs.getString("phone"));
-                insuranceSurveyor.setAddress(rs.getString("address"));
-                insuranceSurveyor.setEmail(rs.getString("email"));
-                insuranceSurveyor.setPassword(rs.getString("password"));
+                insuranceSurveyor.setId(resultSet.getString("id"));
+                insuranceSurveyor.setName(resultSet.getString("name"));
+                insuranceSurveyor.setPhone(resultSet.getString("phone"));
+                insuranceSurveyor.setAddress(resultSet.getString("address"));
+                insuranceSurveyor.setEmail(resultSet.getString("email"));
+                insuranceSurveyor.setPassword(resultSet.getString("password"));
                 insuranceSurveyors.add(insuranceSurveyor);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
 
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
+
         return insuranceSurveyors;
     }
 
     @Override
     public Optional<InsuranceSurveyor> get(String id) {
-        Connection con = db.connect_to_db();
-        String query = "SELECT * FROM \"user\" WHERE id = ? AND role = 'Insurance Surveyor'";
-        try (PreparedStatement stmt = con.prepareStatement(query)){
-            stmt.setString(1, id);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
+        try (Connection connection = dbFunction.connect_to_db();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_INSURANCESURVEYOR_BY_ID_SQL)) {
+
+            preparedStatement.setString(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
                 InsuranceSurveyor insuranceSurveyor = new InsuranceSurveyor();
-                insuranceSurveyor.setId(rs.getString("id"));
-                insuranceSurveyor.setName(rs.getString("name"));
-                insuranceSurveyor.setPhone(rs.getString("phone"));
-                insuranceSurveyor.setAddress(rs.getString("address"));
-                insuranceSurveyor.setEmail(rs.getString("email"));
-                insuranceSurveyor.setPassword(rs.getString("password"));
+                insuranceSurveyor.setId(resultSet.getString("id"));
+                insuranceSurveyor.setName(resultSet.getString("name"));
+                insuranceSurveyor.setPhone(resultSet.getString("phone"));
+                insuranceSurveyor.setAddress(resultSet.getString("address"));
+                insuranceSurveyor.setEmail(resultSet.getString("email"));
+                insuranceSurveyor.setPassword(resultSet.getString("password"));
                 return Optional.of(insuranceSurveyor);
-            } else {
-                return Optional.empty();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
+
         return Optional.empty();
     }
 
     @Override
     public InsuranceSurveyor getOne(String id) {
-        Connection con = db.connect_to_db();
-        String query = "SELECT * FROM \"user\" WHERE id = ? AND role = 'Insurance Surveyor'";
-        try (PreparedStatement stmt = con.prepareStatement(query)){
-            stmt.setString(1, id);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
+        try (Connection connection = dbFunction.connect_to_db();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_INSURANCESURVEYOR_BY_ID_SQL)) {
+
+            preparedStatement.setString(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
                 InsuranceSurveyor insuranceSurveyor = new InsuranceSurveyor();
-                insuranceSurveyor.setId(rs.getString("id"));
-                insuranceSurveyor.setName(rs.getString("name"));
-                insuranceSurveyor.setPhone(rs.getString("phone"));
-                insuranceSurveyor.setAddress(rs.getString("address"));
-                insuranceSurveyor.setEmail(rs.getString("email"));
-                insuranceSurveyor.setPassword(rs.getString("password"));
+                insuranceSurveyor.setId(resultSet.getString("id"));
+                insuranceSurveyor.setName(resultSet.getString("name"));
+                insuranceSurveyor.setPhone(resultSet.getString("phone"));
+                insuranceSurveyor.setAddress(resultSet.getString("address"));
+                insuranceSurveyor.setEmail(resultSet.getString("email"));
+                insuranceSurveyor.setPassword(resultSet.getString("password"));
                 return insuranceSurveyor;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
+
         return null;
     }
 
     @Override
-    public boolean add(InsuranceSurveyor is) {
-        Connection con = db.connect_to_db();
-        String query = "INSERT INTO \"user\" (id, name, phone, email, address, password, role) VALUES (?, ?, ?, ?, ?, ?, 'Insurance Surveyor')";
-        try (PreparedStatement stmt = con.prepareStatement(query)){
-            stmt.setString(1, is.getId());
-            stmt.setString(2, is.getName());
-            stmt.setString(3, is.getPhone());
-            stmt.setString(4, is.getEmail());
-            stmt.setString(5, is.getAddress());
-            stmt.setString(6, is.getPassword());
-            int affectedRows = stmt.executeUpdate();
+    public boolean add(InsuranceSurveyor insuranceSurveyor) {
+        try (Connection connection = dbFunction.connect_to_db();
+             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_INSURANCESURVEYOR_SQL)) {
+
+            preparedStatement.setString(1, insuranceSurveyor.getId());
+            preparedStatement.setString(2, insuranceSurveyor.getName());
+            preparedStatement.setString(3, insuranceSurveyor.getPhone());
+            preparedStatement.setString(4, insuranceSurveyor.getEmail());
+            preparedStatement.setString(5, insuranceSurveyor.getAddress());
+            preparedStatement.setString(6, insuranceSurveyor.getPassword());
+
+            int affectedRows = preparedStatement.executeUpdate();
             return affectedRows > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return false;
         }
-        return false;
     }
 
     @Override
-    public boolean update(String id, String name, String phone, String email, String address, String password) {
-        Connection con = db.connect_to_db();
-        String query = "UPDATE \"user\" SET name = ?, phone = ?, email = ?, address = ?, password = ? WHERE id = ? AND role = 'Insurance Surveyor'";
-        try (PreparedStatement stmt = con.prepareStatement(query)){
-            stmt.setString(1, name);
-            stmt.setString(2, phone);
-            stmt.setString(3, email);
-            stmt.setString(4, address);
-            stmt.setString(5, password);
-            stmt.setString(6, id);
-            int affectedRows = stmt.executeUpdate();
+    public boolean update(InsuranceSurveyor insuranceSurveyor) {
+        try (Connection connection = dbFunction.connect_to_db();
+             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_INSURANCESURVEYOR_SQL)) {
+
+            preparedStatement.setString(1, insuranceSurveyor.getPhone());
+            preparedStatement.setString(2, insuranceSurveyor.getEmail());
+            preparedStatement.setString(3, insuranceSurveyor.getAddress());
+            preparedStatement.setString(4, insuranceSurveyor.getPassword());
+            preparedStatement.setString(5, insuranceSurveyor.getId());
+
+            int affectedRows = preparedStatement.executeUpdate();
             return affectedRows > 0;
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Error updating InsuranceSurveyor", e);
         }
-        return false;
     }
 
     @Override
-    public boolean delete(InsuranceSurveyor is) {
-        Connection con = db.connect_to_db();
-        String query = "DELETE FROM \"user\" WHERE id = ? AND role = 'Insurance Surveyor'";
-        try (PreparedStatement stmt = con.prepareStatement(query)) {
-            stmt.setString(1, is.getId());
-            int affectedRows = stmt.executeUpdate();
+    public boolean delete(InsuranceSurveyor insuranceSurveyor) {
+        try (Connection connection = dbFunction.connect_to_db();
+             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_INSURANCESURVEYOR_SQL)) {
+
+            preparedStatement.setString(1, insuranceSurveyor.getId());
+
+            int affectedRows = preparedStatement.executeUpdate();
             return affectedRows > 0;
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Error deleting InsuranceSurveyor", e);
         }
-        return false;
     }
 }

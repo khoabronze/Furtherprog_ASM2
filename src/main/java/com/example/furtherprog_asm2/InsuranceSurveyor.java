@@ -10,7 +10,7 @@ public class InsuranceSurveyor extends User {
     }
 
     // Constructor
-    public InsuranceSurveyor(String id, String name, String phone, String email, String address, String password, InsuranceCard insuranceCard, ArrayList<Claim> claims) {
-        super(id, name, phone, email, address, password, insuranceCard, claims,"Insurance Surveyor");
+    public InsuranceSurveyor(String id, String name, String phone, String email, String address, String password, InsuranceCard insuranceCard, Request request, ArrayList<Claim> claims) {
+        super(id, name, phone, email, address, password, insuranceCard, request, claims,"Insurance Surveyor");
     }
 }

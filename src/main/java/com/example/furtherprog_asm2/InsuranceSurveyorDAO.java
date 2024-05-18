@@ -8,6 +8,6 @@ public interface InsuranceSurveyorDAO <InsuranceSurveyor>{
     Optional<InsuranceSurveyor> get(String id);
     InsuranceSurveyor getOne(String id);
     boolean add(InsuranceSurveyor is);
-    boolean update(String id, String name, String phone, String email, String address, String password);
+    boolean update(InsuranceSurveyor is);
     boolean delete(InsuranceSurveyor is);
 }
