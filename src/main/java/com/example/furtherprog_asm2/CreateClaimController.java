@@ -15,6 +15,14 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.Optional;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
+
+import java.sql.SQLException;
+import java.time.LocalDate;
+
 public class CreateClaimController {
     private String documentName; // new field to hold the name of the uploaded document
     private ClaimService ClaimService;
@@ -165,4 +173,6 @@ public class CreateClaimController {
             showAlert("Error Dialog", "Input Error", e.getMessage());
         }
     }
+
+
 }

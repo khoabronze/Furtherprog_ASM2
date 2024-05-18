@@ -8,6 +8,7 @@ package com.example.furtherprog_asm2;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
+import java.time.LocalDate;
 
 public class Claim {
     private String id;
@@ -130,6 +131,72 @@ public class Claim {
                 ", status=" + status +
                 ", reiveBankingInfo=" + reiveBankingInfo +
                 '}';
+    }
+    // for testing
+    private int claimId;
+    private int policyHolderId;
+    private int dependentId;
+    private double amount;
+    private LocalDate dateOfClaim;
+    private String description;
+
+    // Constructor
+    public Claim(int claimId, int policyHolderId, int dependentId, double amount, LocalDate dateOfClaim, String description) {
+        this.claimId = claimId;
+        this.policyHolderId = policyHolderId;
+        this.dependentId = dependentId;
+        this.amount = amount;
+        this.dateOfClaim = dateOfClaim;
+        this.description = description;
+    }
+
+    // Getter and Setter methods
+    public int getClaimId() {
+        return claimId;
+    }
+
+    public void setClaimId(int claimId) {
+        this.claimId = claimId;
+    }
+
+    public int getPolicyHolderId() {
+        return policyHolderId;
+    }
+
+    public void setPolicyHolderId(int policyHolderId) {
+        this.policyHolderId = policyHolderId;
+    }
+
+    public int getDependentId() {
+        return dependentId;
+    }
+
+    public void setDependentId(int dependentId) {
+        this.dependentId = dependentId;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public LocalDate getDateOfClaim() {
+        return dateOfClaim;
+    }
+
+    public void setDateOfClaim(LocalDate dateOfClaim) {
+        this.dateOfClaim = dateOfClaim;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
 

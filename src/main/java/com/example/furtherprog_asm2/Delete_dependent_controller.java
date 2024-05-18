@@ -7,6 +7,10 @@ import javafx.scene.control.TextField;
 import java.sql.Connection;
 import java.util.Optional;
 
+
+import javafx.scene.control.Button;
+
+
 public class Delete_dependent_controller {
     @FXML
     private TextField ID_DELETE_BOX;

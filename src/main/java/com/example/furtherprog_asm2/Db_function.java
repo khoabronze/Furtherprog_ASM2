@@ -2,6 +2,7 @@ package com.example.furtherprog_asm2;
 
 import java.sql.DriverManager;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 public class Db_function {
     public Connection connect_to_db(){
@@ -19,4 +20,15 @@ public class Db_function {
         }
         return conn;
     }
+
+    // for testing
+    private static final String URL = "jdbc:postgresql://localhost:5432/mydatabase";
+    private static final String USER = "myuser";
+    private static final String PASSWORD = "mypassword";
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASSWORD);
+    }
+
+
 }

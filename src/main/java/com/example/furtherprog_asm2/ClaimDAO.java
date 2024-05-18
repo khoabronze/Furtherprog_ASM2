@@ -193,4 +193,57 @@ public class ClaimDAO implements DAO<Claim> {
             throw new RuntimeException("Error deleting claim", e);
         }
     }
+
+    //for testing
+
+    public List<Claim> getAllClaims() throws SQLException {
+        List<Claim> claims = new ArrayList<>();
+        String query = "SELECT * FROM Claims";
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+
+        while (resultSet.next()) {
+            int claimId = resultSet.getInt("claim_id");
+            int policyHolderId = resultSet.getInt("policy_holder_id");
+            int dependentId = resultSet.getInt("dependent_id");
+            double amount = resultSet.getDouble("amount");
+            Date dateOfClaim = resultSet.getDate("date_of_claim");
+            String description = resultSet.getString("description");
+
+            Claim claim = new Claim(claimId, policyHolderId, dependentId, amount, dateOfClaim.toLocalDate(), description);
+            claims.add(claim);
+        }
+
+        return claims;
+    }
+
+    public void addClaim(Claim claim) throws SQLException {
+        String query = "INSERT INTO Claims (policy_holder_id, dependent_id, amount, date_of_claim, description) VALUES (?, ?, ?, ?, ?)";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setInt(1, claim.getPolicyHolderId());
+        statement.setInt(2, claim.getDependentId());
+        statement.setDouble(3, claim.getAmount());
+        statement.setDate(4, Date.valueOf(claim.getDateOfClaim()));
+        statement.setString(5, claim.getDescription());
+        statement.executeUpdate();
+    }
+
+    public void updateClaim(Claim claim) throws SQLException {
+        String query = "UPDATE Claims SET policy_holder_id = ?, dependent_id = ?, amount = ?, date_of_claim = ?, description = ? WHERE claim_id = ?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setInt(1, claim.getPolicyHolderId());
+        statement.setInt(2, claim.getDependentId());
+        statement.setDouble(3, claim.getAmount());
+        statement.setDate(4, Date.valueOf(claim.getDateOfClaim()));
+        statement.setString(5, claim.getDescription());
+        statement.setInt(6, claim.getClaimId());
+        statement.executeUpdate();
+    }
+
+    public void deleteClaim(int claimId) throws SQLException {
+        String query = "DELETE FROM Claims WHERE claim_id = ?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setInt(1, claimId);
+        statement.executeUpdate();
+    }
 }
