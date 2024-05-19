@@ -8,6 +8,6 @@ public interface InsuranceManagerDAO <InsuranceManager>{
     Optional<InsuranceManager> get(String id);
     InsuranceManager getOne(String id);
     boolean add(InsuranceManager im);
-    boolean update(String id, String name, String phone, String email, String address, String password);
+    boolean update(InsuranceManager im);
     boolean delete(InsuranceManager im);
 }
