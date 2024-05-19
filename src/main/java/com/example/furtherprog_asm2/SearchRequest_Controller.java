@@ -61,16 +61,4 @@ public class SearchRequest_Controller {
         tableView.getItems().clear();
         tableView.getItems().addAll(requestDao.getAll());
     }
-
-    @FXML
-    public void filter(ActionEvent event) {
-        RequestDAO requestDao = new RequestDAO();
-        List<Request> requests = requestDao.getAll();
-        // Sort the list in ascending order
-        Collections.sort(requests, Comparator.comparing(Request::getRid));
-
-        tableView.getItems().clear();
-        tableView.getItems().addAll(requests);
-
-    }
 }
