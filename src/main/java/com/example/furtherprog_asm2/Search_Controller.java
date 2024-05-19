@@ -7,6 +7,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 public class Search_Controller {
     @FXML
     private TextField cardNumberInput;
@@ -24,6 +28,8 @@ public class Search_Controller {
     private Button search;
     @FXML
     private Button viewAll;
+    @FXML
+    private Button filterButton;
 
     @FXML
     public void initialize() {
@@ -56,5 +62,16 @@ public class Search_Controller {
         InsuranceCardDao insuranceCardDao = new InsuranceCardDao();
         tableView.getItems().clear();
         tableView.getItems().addAll(insuranceCardDao.getAll());
+    }
+
+    @FXML
+    public void filter(ActionEvent event) {
+        InsuranceCardDao insuranceCardDao = new InsuranceCardDao();
+        List<InsuranceCard> insuranceCards = insuranceCardDao.getAll();
+        // Sort the list in ascending order
+        Collections.sort(insuranceCards, Comparator.comparing(InsuranceCard::getCardNumber));
+
+        tableView.getItems().clear();
+        tableView.getItems().addAll(insuranceCards);
     }
 }
