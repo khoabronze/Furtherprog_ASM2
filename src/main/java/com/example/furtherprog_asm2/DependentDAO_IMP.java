@@ -106,11 +106,12 @@ public class DependentDAO_IMP implements DependentDAO<Dependent>{
         try (Connection connection = dbFunction.connect_to_db();
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_DEPENDENT_SQL)) {
 
-            preparedStatement.setString(1, dependent.getPhone());
-            preparedStatement.setString(2, dependent.getEmail());
-            preparedStatement.setString(3, dependent.getAddress());
-            preparedStatement.setString(4, dependent.getPassword());
-
+            preparedStatement.setString(1, dependent.getId());
+            preparedStatement.setString(2, dependent.getName()); // Add this line
+            preparedStatement.setString(3, dependent.getPhone());
+            preparedStatement.setString(4, dependent.getEmail());
+            preparedStatement.setString(5, dependent.getAddress());
+            preparedStatement.setString(6, dependent.getPassword());
 
             int affectedRows = preparedStatement.executeUpdate();
             return affectedRows > 0;
