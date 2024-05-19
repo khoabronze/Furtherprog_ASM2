@@ -58,7 +58,7 @@
             <children>
                 <VBox alignment="TOP_CENTER" layoutX="526.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
                     <children>
-                        <ImageView fx:id="requestInsuranceSurveyorIcon" fitHeight="52.0" fitWidth="80.0" onDragDetected="#navigateRequestMenuInsuranceSurveyor" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="requestInsuranceSurveyorIcon" fitHeight="52.0" fitWidth="80.0" onMouseClicked="#navigateRequestMenuInsuranceSurveyor" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../../IMG/quote-request.png" />
                             </image>
@@ -75,7 +75,7 @@
                 </VBox>
                 <VBox alignment="TOP_CENTER" layoutX="220.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
                     <children>
-                        <ImageView fx:id="claimInsuranceSurveyorIcon" fitHeight="52.0" fitWidth="80.0" onDragDetected="#navigateClaimMenuInsuranceSurveyor" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="claimInsuranceSurveyorIcon" fitHeight="52.0" fitWidth="80.0" onMouseClicked="#navigateClaimMenuInsuranceSurveyor" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../../IMG/file-solid.png" />
                             </image>
@@ -92,7 +92,7 @@
                 </VBox>
                 <VBox alignment="TOP_CENTER" layoutX="371.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
                     <children>
-                        <ImageView fx:id="insurancecardInsuranceSurveyorIcon" fitHeight="52.0" fitWidth="80.0" onDragDetected="#navigateInsuranceCardMenuInsuranceSurveyor" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="insurancecardInsuranceSurveyorIcon" fitHeight="52.0" fitWidth="80.0" onMouseClicked="#navigateInsuranceCardMenuInsuranceSurveyor" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../../IMG/address-card-solid (1).png" />
                             </image>
@@ -109,7 +109,7 @@
                 </VBox>
             <VBox alignment="TOP_CENTER" layoutX="66.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
                <children>
-                  <ImageView fx:id="customersInsuranceSurveyorIcon" fitHeight="52.0" fitWidth="80.0" onDragDetected="#navigateCustomersMenuInsuranceSurveyor" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="customersInsuranceSurveyorIcon" fitHeight="52.0" fitWidth="80.0" onMouseClicked="#navigateCustomersMenuInsuranceSurveyor" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../IMG/users-solid.png" />
                      </image>
