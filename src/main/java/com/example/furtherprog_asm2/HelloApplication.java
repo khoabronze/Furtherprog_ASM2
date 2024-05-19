@@ -12,7 +12,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         Db_function db = new Db_function();
         db.connect_to_db();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Get-All-Claim.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("TableView-Display-Request.fxml"));
       
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Insurance Claim Management System");

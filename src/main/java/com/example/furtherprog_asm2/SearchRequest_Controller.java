@@ -5,6 +5,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 public class SearchRequest_Controller {
     @FXML
     private TextField requestIDInput;
@@ -54,5 +58,17 @@ public class SearchRequest_Controller {
         RequestDAO requestDao = new RequestDAO();
         tableView.getItems().clear();
         tableView.getItems().addAll(requestDao.getAll());
+    }
+
+    @FXML
+    public void filter(ActionEvent event) {
+        RequestDAO requestDao = new RequestDAO();
+        List<Request> requests = requestDao.getAll();
+        // Sort the list in ascending order
+        Collections.sort(requests, Comparator.comparing(Request::getRid));
+
+        tableView.getItems().clear();
+        tableView.getItems().addAll(requests);
+
     }
 }
