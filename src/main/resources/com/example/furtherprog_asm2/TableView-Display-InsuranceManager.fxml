@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.furtherprog_asm2.SearchInsuranceManager_Controller">
+    <top>
+        <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../IMG/Liberty-Mutual-Logo.png" />
+                    </image>
+                    <HBox.margin>
+                        <Insets left="40.0" />
+                    </HBox.margin>
+                </ImageView>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="INSURANCE MANAGER LIST">
+                    <font>
+                        <Font name="Microsoft Sans Serif" size="23.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="40.0" top="50.0" />
+                    </HBox.margin>
+                </Text>
+            </children>
+        </HBox>
+    </top>
+    <left>
+        <VBox prefHeight="200.0" prefWidth="130.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../IMG/user-solid.png" />
+                            </image>
+                            <HBox.margin>
+                                <Insets top="25.0" />
+                            </HBox.margin>
+                        </ImageView>
+                        <Label text="User">
+                            <HBox.margin>
+                                <Insets left="20.0" top="40.0" />
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../IMG/house-solid.png" />
+                            </image>
+                            <HBox.margin>
+                                <Insets top="25.0" />
+                            </HBox.margin>
+                        </ImageView>
+                        <Label text="Home">
+                            <HBox.margin>
+                                <Insets left="20.0" top="40.0" />
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                </HBox>
+            </children>
+            <BorderPane.margin>
+                <Insets left="50.0" />
+            </BorderPane.margin>
+        </VBox>
+    </left>
+    <center>
+        <TableView fx:id="insuranceManagerTableView" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="idData" maxWidth="10000.0" minWidth="100.0" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="nameData" maxWidth="10000.0" minWidth="100.0" prefWidth="75.0" text="NAME" />
+                <TableColumn fx:id="phoneData" minWidth="130.0" prefWidth="75.0" text="PHONE" />
+                <TableColumn fx:id="emailData" minWidth="130.0" prefWidth="75.0" text="EMAIL" />
+                <TableColumn fx:id="addressData" minWidth="130.0" prefWidth="75.0" text="ADDRESS" />
+                <TableColumn fx:id="passwordData" minWidth="130.0" prefWidth="75.0" text="PASSWORD" />
+            </columns>
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin>
+        </TableView>
+    </center>
+    <right>
+        <VBox prefHeight="200.0" prefWidth="150.0" style="-fx-background-color: cornflowerblue;" BorderPane.alignment="CENTER">
+            <children>
+                <HBox prefHeight="100.0" prefWidth="300.0">
+                    <children>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../IMG/avatar.png" />
+                            </image>
+                            <HBox.margin>
+                                <Insets left="20.0" top="25.0" />
+                            </HBox.margin>
+                        </ImageView>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Console">
+                            <HBox.margin>
+                                <Insets left="10.0" top="40.0" />
+                            </HBox.margin>
+                        </Text>
+                    </children>
+                </HBox>
+                <TextField fx:id="idInput" maxHeight="23.0" maxWidth="130.0" promptText="ID">
+                    <VBox.margin>
+                        <Insets left="10.0" />
+                    </VBox.margin>
+                </TextField>
+                <Button fx:id="searchButton" maxHeight="23.0" maxWidth="60.0" mnemonicParsing="false" onAction="#handleSearchInsuranceManager" text="Search">
+                    <VBox.margin>
+                        <Insets left="45.0" top="15.0" />
+                    </VBox.margin>
+                </Button>
+                <Button fx:id="viewAllButton" maxHeight="23.0" maxWidth="60.0" mnemonicParsing="false" onAction="#handleViewAllInsuranceManager" text="View all">
+                    <VBox.margin>
+                        <Insets left="45.0" top="15.0" />
+                    </VBox.margin>
+                </Button>
+            </children>
+        </VBox>
+    </right>
+</BorderPane>
