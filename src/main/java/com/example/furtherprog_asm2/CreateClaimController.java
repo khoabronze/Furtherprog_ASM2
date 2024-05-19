@@ -78,8 +78,8 @@ public class CreateClaimController {
         try {
             // Validate the claim id
             String id = Claim_ID_form.getText();
-            if (!id.matches("\\d{10}")) {
-                showAlert("Error Dialog", "Input Error", "Invalid claim id. Must be 10 numbers.");
+            if (!id.matches("C-\\d{10}")) {
+                showAlert("Error Dialog", "Input Error", "ID must be in the format 'C-10 numbers'");
                 return;
             }
 

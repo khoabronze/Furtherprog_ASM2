@@ -7,10 +7,9 @@ import javafx.scene.control.TextField;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.HashMap;
 
-public class ADD_Dependent_Controller {
-    private PolicyHolder policyHolder; // the PolicyHolder who is creating the Dependent
-
+public class Create_PH_controller {
     @FXML
     private TextField Name_Form;
     @FXML
@@ -26,12 +25,14 @@ public class ADD_Dependent_Controller {
 
     @FXML
     private PasswordField Password_Form;
-    private DependentService DepService;
-    public ADD_Dependent_Controller() {
+    private PolicyHolder_Service policyHolderService;
+
+    public Create_PH_controller() {
         Db_function dbFunction = new Db_function();
         Connection connection = dbFunction.connect_to_db();
-        this.DepService = new DependentService(new DependentDAO_IMP(connection));
+        this.policyHolderService = new PolicyHolder_Service(new PolicyHolderDAO_IMP(connection));
     }
+
     public void Create(){
         String Name = Name_Form.getText();
         String ID = ID_Form.getText();
@@ -44,19 +45,17 @@ public class ADD_Dependent_Controller {
             showAlert("Error Dialog", "Input Error", "All fields are required");
             return;
         }
-        if (!ID.matches("D-\\d{10}")) {
-            showAlert("Error Dialog", "Input Error", "ID must be in the format 'D-10 numbers'");
+        if (!ID.matches("PH-\\d{10}")) {
+            showAlert("Error Dialog", "Input Error", "ID must be in the format 'PH-10 numbers'");
             return;
         }
         // Create a new InsuranceCard object
         InsuranceCard insuranceCard = new InsuranceCard();
-        Request request = new Request();
 
-        // Create a new Dependent object
-        Dependent dependent = new Dependent(ID, Name, Phone, Mail, Address, Password, insuranceCard, request, new ArrayList<Claim>());
-        dependent.setPolicyHolder(policyHolder); // set the Dependent's PolicyHolder
+        // Create a new PolicyHolder object
+        PolicyHolder policyHolder = new PolicyHolder(ID, Name, Phone, Mail, Address, Password, insuranceCard, new ArrayList<>(), "PolicyHolder", new HashMap<>());
 
-        DepService.addDependent(dependent);
+        policyHolderService.addPolicyHolder(policyHolder);
     }
 
     public void showAlert(String title, String header, String content) {
@@ -67,5 +66,4 @@ public class ADD_Dependent_Controller {
 
         alert.showAndWait();
     }
-    }
-
+}
