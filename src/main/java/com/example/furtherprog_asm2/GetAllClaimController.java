@@ -53,8 +53,6 @@ public class GetAllClaimController {
     @FXML
     private TextField ID_BOX;
     @FXML
-    private Button filterButton;
-    @FXML
     public void initialize() {
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         claimDateColumn.setCellValueFactory(new PropertyValueFactory<>("claimDate"));

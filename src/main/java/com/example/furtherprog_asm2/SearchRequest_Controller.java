@@ -26,8 +26,6 @@ public class SearchRequest_Controller {
     private Button searchButton;
     @FXML
     private Button viewAllButton;
-    @FXML
-    private Button filterButton;
 
     @FXML
     public void initialize() {
