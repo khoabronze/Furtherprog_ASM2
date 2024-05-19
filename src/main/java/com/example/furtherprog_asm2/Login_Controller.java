@@ -46,7 +46,7 @@ public class Login_Controller {
                 if (rs.next()) {
                     String dbPassword = rs.getString("Password");
                     if (dbPassword.equals(Password)) {
-                        System.out.println("Login successful");
+                        System.out.println("Login successfully");
                         role = database;
                         break;
                     }

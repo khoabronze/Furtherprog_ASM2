@@ -23,6 +23,8 @@ public class Navigation_Controller {
     private ImageView viewInsuranceSurveyorIcon;
     @FXML
     private ImageView viewInsuranceManagerIcon;
+    @FXML
+    private ImageView viewRequestButton;
 
     // Insurance Surveyor buttons and logos
     @FXML
@@ -48,7 +50,7 @@ public class Navigation_Controller {
 
     // Navigation between pages (Main)
     @FXML
-    private void navigateTableViewDisplayInsuranceCard() throws IOException {
+    public void navigateTableViewDisplayInsuranceCard() throws IOException {
         // Load the FXML file for the new scene
         Parent newSceneParent = FXMLLoader.load(getClass().getResource("TableView-Display-InsuranceCard.fxml"));
 
@@ -62,7 +64,7 @@ public class Navigation_Controller {
         currentStage.setScene(newScene);
     }
     @FXML
-    private void navigateViewPO() throws IOException {
+    public void navigateViewPO() throws IOException {
         // Load the FXML file for the new scene
         Parent newSceneParent = FXMLLoader.load(getClass().getResource("View_PO.fxml"));
 
@@ -76,7 +78,7 @@ public class Navigation_Controller {
         currentStage.setScene(newScene);
     }
     @FXML
-    private void navigateViewPH() throws IOException {
+    public void navigateViewPH() throws IOException {
         // Load the FXML file for the new scene
         Parent newSceneParent = FXMLLoader.load(getClass().getResource("View_PH.fxml"));
 
@@ -90,7 +92,7 @@ public class Navigation_Controller {
         currentStage.setScene(newScene);
     }
     @FXML
-    private void navigateGetAllDependent() throws IOException {
+    public void navigateGetAllDependent() throws IOException {
         // Load the FXML file for the new scene
         Parent newSceneParent = FXMLLoader.load(getClass().getResource("Get-all-dependent.fxml"));
 
@@ -131,11 +133,25 @@ public class Navigation_Controller {
         // Set the new scene on the current stage
         currentStage.setScene(newScene);
     }
+    @FXML
+    public void navigateTableViewDisplayRequest() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("TableView-Display-Request.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) viewRequestButton.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
     // Navigation between pages (Insurance Surveyor)
     @FXML
-    private void navigateClaimMenuInsuranceSurveyor() throws IOException {
+    public void navigateClaimMenuInsuranceSurveyor() throws IOException {
         // Load the FXML file for the new scene
-        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Claim-Menu-Insurance-Surveyor.fxml"));
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Claim-Menu-InsuranceSurveyor.fxml"));
 
         // Create a new scene
         Scene newScene = new Scene(newSceneParent);
@@ -147,7 +163,7 @@ public class Navigation_Controller {
         currentStage.setScene(newScene);
     }
     @FXML
-    private void navigateInsuranceCardMenuInsuranceSurveyor() throws IOException {
+    public void navigateInsuranceCardMenuInsuranceSurveyor() throws IOException {
         // Load the FXML file for the new scene
         Parent newSceneParent = FXMLLoader.load(getClass().getResource("InsuranceCard-Menu-InsuranceSurveyor.fxml"));
 
@@ -161,7 +177,7 @@ public class Navigation_Controller {
         currentStage.setScene(newScene);
     }
     @FXML
-    private void navigateRequestMenuInsuranceSurveyor() throws IOException {
+    public void navigateRequestMenuInsuranceSurveyor() throws IOException {
         // Load the FXML file for the new scene
         Parent newSceneParent = FXMLLoader.load(getClass().getResource("Request-Menu-InsuranceSurveyor.fxml"));
 
@@ -175,7 +191,7 @@ public class Navigation_Controller {
         currentStage.setScene(newScene);
     }
     @FXML
-    private void navigateCustomersMenuInsuranceSurveyor() throws IOException {
+    public void navigateCustomersMenuInsuranceSurveyor() throws IOException {
         // Load the FXML file for the new scene
         Parent newSceneParent = FXMLLoader.load(getClass().getResource("Customers-Menu-InsuranceSurveyor.fxml"));
 
@@ -189,7 +205,7 @@ public class Navigation_Controller {
         currentStage.setScene(newScene);
     }
     @FXML
-    private void navigateHomepageInsuranceSurveyor() throws IOException {
+    public void navigateHomepageInsuranceSurveyor() throws IOException {
         // Load the FXML file for the new scene
         Parent newSceneParent = FXMLLoader.load(getClass().getResource("Homepage-InsuranceSurveyor.fxml"));
 
@@ -204,7 +220,7 @@ public class Navigation_Controller {
     }
     // -------------------
     @FXML
-    private void handleClaimViewNavigation() throws IOException {
+    public void handleClaimViewNavigation() throws IOException {
         // Load the FXML file for the new scene
         Parent newSceneParent = FXMLLoader.load(getClass().getResource("Get-All-Claim.fxml"));
 
@@ -219,7 +235,7 @@ public class Navigation_Controller {
     }
 
     @FXML
-    private void handleSwitchStatusNavigation() throws IOException {
+    public void handleSwitchStatusNavigation() throws IOException {
         // Load the FXML file for the new scene
         Parent newSceneParent = FXMLLoader.load(getClass().getResource("Switch-Status-NavBar.fxml"));
 
@@ -234,7 +250,7 @@ public class Navigation_Controller {
     }
 
     @FXML
-    private void handleRequestFormNavigation() throws IOException {
+    public void handleRequestFormNavigation() throws IOException {
         // Load the FXML file for the new scene
         Parent newSceneParent = FXMLLoader.load(getClass().getResource("Propose-Search-Claim-NavBar.fxml"));
 
@@ -249,7 +265,7 @@ public class Navigation_Controller {
     }
 
     @FXML
-    private void handleRequestViewNavigation() throws IOException {
+    public void handleRequestViewNavigation() throws IOException {
         // Load the FXML file for the new scene
         Parent newSceneParent = FXMLLoader.load(getClass().getResource("TableView-Display-Request.fxml"));
 
@@ -264,7 +280,7 @@ public class Navigation_Controller {
     }
 
     @FXML
-    private void handleApproveDeclineRequest() throws IOException{
+    public void handleApproveDeclineRequest() throws IOException{
         // Load the FXML file for the new scene
         Parent newSceneParent = FXMLLoader.load(getClass().getResource("Approve-Decline-NavBar.fxml"));
 
