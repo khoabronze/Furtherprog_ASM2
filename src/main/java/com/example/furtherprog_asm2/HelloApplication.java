@@ -15,7 +15,7 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Update-InsuranceManager-Search.fxml"));
       
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
+        stage.setTitle("Insurance Claim Management System");
         stage.setScene(scene); // Set the scene to the stage
         stage.show(); // Show the stage
     }
