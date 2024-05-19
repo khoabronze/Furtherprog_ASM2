@@ -12,7 +12,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         Db_function db = new Db_function();
         db.connect_to_db();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Create-InsuranceSurveyor-Form.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Update-InsuranceManager-Search.fxml"));
       
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
