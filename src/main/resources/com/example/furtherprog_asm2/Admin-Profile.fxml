@@ -13,11 +13,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.furtherprog_asm2.Update_Depedent_Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
     <top>
         <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-                <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../../IMG/Liberty-Mutual-Logo.png" />
                     </image>
@@ -25,12 +25,12 @@
                         <Insets left="40.0" />
                     </HBox.margin>
                 </ImageView>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="UPDATE DEPENDENT">
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ADMIN PROFILE">
                     <font>
                         <Font name="Microsoft Sans Serif" size="23.0" />
                     </font>
                     <HBox.margin>
-                        <Insets left="30.0" top="60.0" />
+                        <Insets left="40.0" top="50.0" />
                     </HBox.margin>
                 </Text>
             </children>
@@ -82,85 +82,97 @@
     <center>
         <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <children>
-                <HBox prefHeight="100.0" prefWidth="200.0">
+                <HBox prefHeight="50.0" prefWidth="200.0">
                     <children>
                         <Label text="ID">
                             <HBox.margin>
-                                <Insets left="90.0" top="40.0" />
+                                <Insets left="60.0" top="15.0" />
                             </HBox.margin>
                         </Label>
-                        <TextField fx:id="Dependent_ID_Box1">
+                        <TextField>
                             <HBox.margin>
-                                <Insets left="30.0" top="35.0" />
-                            </HBox.margin>
-                        </TextField>
-                        <Label text="Name">
-                            <HBox.margin>
-                                <Insets left="50.0" top="40.0" />
-                            </HBox.margin>
-                        </Label>
-                        <TextField fx:id="Name_Dependent_Box">
-                            <HBox.margin>
-                                <Insets left="30.0" top="35.0" />
+                                <Insets left="60.0" top="10.0" />
                             </HBox.margin>
                         </TextField>
                     </children>
                 </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="Phone">
-                     <HBox.margin>
-                        <Insets left="90.0" top="40.0" />
-                     </HBox.margin>
-                  </Label>
-                  <TextField fx:id="Phone_Dependent_box">
-                     <HBox.margin>
-                        <Insets left="30.0" top="35.0" />
-                     </HBox.margin>
-                  </TextField>
-                  <Label text="Adress">
-                     <HBox.margin>
-                        <Insets left="50.0" top="40.0" />
-                     </HBox.margin>
-                  </Label>
-                  <TextField fx:id="Address_Dependent_box">
-                     <HBox.margin>
-                        <Insets left="30.0" top="35.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="Email">
-                     <HBox.margin>
-                        <Insets left="90.0" top="40.0" />
-                     </HBox.margin>
-                  </Label>
-                  <TextField fx:id="Mail_dependent_box">
-                     <HBox.margin>
-                        <Insets left="30.0" top="35.0" />
-                     </HBox.margin>
-                  </TextField>
-                  <Label text="Password">
-                     <HBox.margin>
-                        <Insets left="50.0" top="40.0" />
-                     </HBox.margin>
-                  </Label>
-                  <TextField fx:id="Password_dependent_box">
-                     <HBox.margin>
-                        <Insets left="30.0" top="35.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-            </HBox>
+                <HBox prefHeight="50.0" prefWidth="200.0">
+                    <children>
+                        <Label text="Name">
+                            <HBox.margin>
+                                <Insets left="60.0" top="15.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField>
+                            <HBox.margin>
+                                <Insets left="40.0" top="10.0" />
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox prefHeight="50.0" prefWidth="200.0">
+                    <children>
+                        <Label text="Phone">
+                            <HBox.margin>
+                                <Insets left="60.0" top="15.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField>
+                            <HBox.margin>
+                                <Insets left="40.0" top="10.0" />
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox prefHeight="50.0" prefWidth="200.0">
+                    <children>
+                        <Label text="Address">
+                            <HBox.margin>
+                                <Insets left="60.0" top="15.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField>
+                            <HBox.margin>
+                                <Insets left="30.0" top="10.0" />
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox prefHeight="50.0" prefWidth="200.0">
+                    <children>
+                        <Label text="Email">
+                            <HBox.margin>
+                                <Insets left="60.0" top="15.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField>
+                            <HBox.margin>
+                                <Insets left="45.0" top="10.0" />
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox prefHeight="50.0" prefWidth="200.0">
+                    <children>
+                        <Label text="Password">
+                            <HBox.margin>
+                                <Insets left="60.0" top="15.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField>
+                            <HBox.margin>
+                                <Insets left="20.0" top="10.0" />
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                </HBox>
             </children>
         </VBox>
     </center>
     <bottom>
-        <Button id="update_button" mnemonicParsing="false" onAction="#update" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: cornflowerblue;" text="Submit" textFill="WHITE" BorderPane.alignment="CENTER">
+        <Button mnemonicParsing="false" style="-fx-background-color: cornflowerblue;" text="Go Back" BorderPane.alignment="CENTER">
             <BorderPane.margin>
-                <Insets bottom="20.0" left="120.0" />
+                <Insets bottom="50.0" />
             </BorderPane.margin>
             <effect>
                 <DropShadow height="13.0" offsetX="1.3" offsetY="1.3" radius="6.0" width="13.0" />

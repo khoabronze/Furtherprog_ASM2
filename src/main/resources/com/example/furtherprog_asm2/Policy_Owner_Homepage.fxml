@@ -18,7 +18,7 @@
                         <Image url="@../../../IMG/Liberty-Mutual-Logo.png" />
                     </image>
                 </ImageView>
-                <Label alignment="CENTER" prefHeight="70.0" prefWidth="247.0" text="Claim Management System">
+                <Label alignment="CENTER" prefHeight="70.0" prefWidth="305.0" text="Insurance Claim Management System">
                     <font>
                         <Font size="18.0" />
                     </font>

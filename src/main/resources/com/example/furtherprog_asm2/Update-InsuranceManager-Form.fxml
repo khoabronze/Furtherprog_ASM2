@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.furtherprog_asm2.Update_Depedent_Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.furtherprog_asm2.UpdateInsuranceManager_Controller">
     <top>
         <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
@@ -25,7 +26,7 @@
                         <Insets left="40.0" />
                     </HBox.margin>
                 </ImageView>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="UPDATE DEPENDENT">
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="UPDATE INSURANCE MANAGER">
                     <font>
                         <Font name="Microsoft Sans Serif" size="23.0" />
                     </font>
@@ -84,81 +85,81 @@
             <children>
                 <HBox prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Label text="ID">
+                        <Label text="Name">
                             <HBox.margin>
                                 <Insets left="90.0" top="40.0" />
                             </HBox.margin>
                         </Label>
-                        <TextField fx:id="Dependent_ID_Box1">
+                        <TextField fx:id="nameBox">
                             <HBox.margin>
                                 <Insets left="30.0" top="35.0" />
                             </HBox.margin>
                         </TextField>
-                        <Label text="Name">
+                        <Label text="ID">
                             <HBox.margin>
                                 <Insets left="50.0" top="40.0" />
                             </HBox.margin>
                         </Label>
-                        <TextField fx:id="Name_Dependent_Box">
+                        <TextField fx:id="idBox">
                             <HBox.margin>
                                 <Insets left="30.0" top="35.0" />
                             </HBox.margin>
                         </TextField>
                     </children>
                 </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="Phone">
-                     <HBox.margin>
-                        <Insets left="90.0" top="40.0" />
-                     </HBox.margin>
-                  </Label>
-                  <TextField fx:id="Phone_Dependent_box">
-                     <HBox.margin>
-                        <Insets left="30.0" top="35.0" />
-                     </HBox.margin>
-                  </TextField>
-                  <Label text="Adress">
-                     <HBox.margin>
-                        <Insets left="50.0" top="40.0" />
-                     </HBox.margin>
-                  </Label>
-                  <TextField fx:id="Address_Dependent_box">
-                     <HBox.margin>
-                        <Insets left="30.0" top="35.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="Email">
-                     <HBox.margin>
-                        <Insets left="90.0" top="40.0" />
-                     </HBox.margin>
-                  </Label>
-                  <TextField fx:id="Mail_dependent_box">
-                     <HBox.margin>
-                        <Insets left="30.0" top="35.0" />
-                     </HBox.margin>
-                  </TextField>
-                  <Label text="Password">
-                     <HBox.margin>
-                        <Insets left="50.0" top="40.0" />
-                     </HBox.margin>
-                  </Label>
-                  <TextField fx:id="Password_dependent_box">
-                     <HBox.margin>
-                        <Insets left="30.0" top="35.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-            </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Label text="Phone">
+                            <HBox.margin>
+                                <Insets left="90.0" top="40.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="phoneBox">
+                            <HBox.margin>
+                                <Insets left="30.0" top="35.0" />
+                            </HBox.margin>
+                        </TextField>
+                        <Label text="Address">
+                            <HBox.margin>
+                                <Insets left="50.0" top="40.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="addressBox">
+                            <HBox.margin>
+                                <Insets left="30.0" top="35.0" />
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Label text="Email">
+                            <HBox.margin>
+                                <Insets left="90.0" top="40.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="emailBox">
+                            <HBox.margin>
+                                <Insets left="30.0" top="35.0" />
+                            </HBox.margin>
+                        </TextField>
+                        <Label text="Password">
+                            <HBox.margin>
+                                <Insets left="50.0" top="40.0" />
+                            </HBox.margin>
+                        </Label>
+                        <PasswordField fx:id="passwordBox">
+                            <HBox.margin>
+                                <Insets left="30.0" top="35.0" />
+                            </HBox.margin>
+                        </PasswordField>
+                    </children>
+                </HBox>
             </children>
         </VBox>
     </center>
     <bottom>
-        <Button id="update_button" mnemonicParsing="false" onAction="#update" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: cornflowerblue;" text="Submit" textFill="WHITE" BorderPane.alignment="CENTER">
+        <Button id="submit" fx:id="updateButton" mnemonicParsing="false" onAction="#handleUpdateInsuranceManager" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: cornflowerblue;" text="Update" textFill="WHITE" BorderPane.alignment="CENTER">
             <BorderPane.margin>
                 <Insets bottom="20.0" left="120.0" />
             </BorderPane.margin>

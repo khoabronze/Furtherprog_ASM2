@@ -82,12 +82,12 @@
     <center>
         <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <children>
-                <TextField fx:id="Dependent_ID_Box" maxHeight="28.0" maxWidth="180.0" promptText="CLAIM ID" text="Dependent ID">
+                <TextField fx:id="Dependent_ID_Box" maxHeight="28.0" maxWidth="180.0" promptText="Dependent ID">
                     <VBox.margin>
                         <Insets left="60.0" top="80.0" />
                     </VBox.margin>
                 </TextField>
-                <Button fx:id="search_button" maxHeight="23.0" maxWidth="100.0" mnemonicParsing="false" onAction="#search" style="-fx-background-color: blue;" text="Search" textFill="WHITE">
+                <Button fx:id="search_button" maxHeight="23.0" maxWidth="100.0" mnemonicParsing="false" onAction="#search" style="-fx-background-color: cornflowerblue;" text="Search" textFill="WHITE">
                     <VBox.margin>
                         <Insets left="105.0" top="80.0" />
                     </VBox.margin>

@@ -47,9 +47,10 @@ public class ADD_Dependent_Controller {
 
         // Create a new InsuranceCard object
         InsuranceCard insuranceCard = new InsuranceCard();
+        Request request = new Request();
 
         // Create a new Dependent object
-        Dependent dependent = new Dependent(ID, Name, Phone, Mail, Address, Password, insuranceCard, new ArrayList<Claim>());
+        Dependent dependent = new Dependent(ID, Name, Phone, Mail, Address, Password, insuranceCard, request, new ArrayList<Claim>());
         dependent.setPolicyHolder(policyHolder); // set the Dependent's PolicyHolder
 
         DepService.addDependent(dependent);

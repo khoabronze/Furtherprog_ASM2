@@ -5,15 +5,14 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.Connection;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class GetAllClaimController {
 
@@ -49,6 +48,7 @@ public class GetAllClaimController {
     private TableColumn<Claim, String> numberColumn;
     @FXML
     private TableColumn<Claim, String> documentsColumn;
+
 
     @FXML
     private TextField ID_BOX;
