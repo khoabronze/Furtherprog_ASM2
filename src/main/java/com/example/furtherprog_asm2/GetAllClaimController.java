@@ -92,16 +92,4 @@ public class GetAllClaimController {
         ObservableList<Claim> data = FXCollections.observableArrayList(claims);
         tableView.setItems(data);
     }
-
-    public void filter() {
-        Db_function dbFunction = new Db_function();
-        Connection connection = dbFunction.connect_to_db();
-        ClaimDAO claimDAO = new ClaimDAO(connection);
-        List<Claim> claims = claimDAO.getAll();
-        // Sort the list in ascending order
-        Collections.sort(claims, Comparator.comparing(Claim::getId));
-
-        tableView.getItems().clear();
-        tableView.getItems().addAll(claims);
-    }
 }

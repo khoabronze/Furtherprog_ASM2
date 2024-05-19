@@ -40,7 +40,6 @@
                 <TextField fx:id="ID_BOX" minWidth="0.0" prefHeight="25.0" prefWidth="0.0" promptText="Enter ID" />
                 <Button fx:id="searchButton" onAction="#handleSearchButtonAction" text="Search" />
                 <Button fx:id="viewButton" onAction="#Viewall" text="View All" />
-            <Button fx:id="filterButton" onAction="#filter" text="Filter" />
             </VBox>
         </items>
     </SplitPane>
