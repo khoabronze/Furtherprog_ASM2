@@ -26,12 +26,12 @@ public class RequestClaim_Controller {
     private void processRequest() {
         String ridText = rid.getText();
 
-        // Check if the rid matches the pattern "r-" followed by 3 digits
-        if (!ridText.matches("r-\\d{3}")) {
+        // Check if the rid matches the format of r-10 numbers
+        if (!ridText.matches("r-\\d{10}")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Invalid rid. It must start with 'r-' followed by 3 digits.");
+            alert.setContentText("Invalid rid. It must start with 'r-' followed by 10 digits.");
             alert.showAndWait();
 
             // Clear the user input

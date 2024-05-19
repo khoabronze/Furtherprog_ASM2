@@ -38,9 +38,9 @@ public class CreateInsuranceManager_Controller {
             return;
         }
 
-        // Check if the ID follows the format "im-XXXX"
-        if (!id.matches("im-\\d{4}")) {
-            showAlert("Error Dialog", "Input Error", "ID must be in the format 'is-XXXX' where XXXX are four numbers");
+        // Check if the ID follows the format "im-10 numbers"
+        if (!id.matches("im-\\d{10}")) {
+            showAlert("Error Dialog", "Input Error", "ID must be in the format 'is-10 numbers'");
             return;
         }
 
