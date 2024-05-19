@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="736.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.furtherprog_asm2.Navigation_Controller">
     <top>
         <HBox prefHeight="70.0" prefWidth="736.0" BorderPane.alignment="CENTER">
             <children>
@@ -55,26 +56,32 @@
     <center>
         <Pane prefHeight="383.0" prefWidth="787.0" BorderPane.alignment="CENTER">
             <children>
-                <VBox alignment="TOP_CENTER" layoutX="59.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
+                <VBox alignment="TOP_CENTER" layoutX="526.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
                     <children>
                         <ImageView fitHeight="52.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../IMG/users-solid.png" />
+                                <Image url="@../../../IMG/quote-request.png" />
                             </image>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
                         </ImageView>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="62.0" text="Account">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="62.0" text="Request">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </Label>
                     </children>
                 </VBox>
-                <VBox alignment="TOP_CENTER" layoutX="218.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
+                <VBox fx:id="claimInsuranceSurveyorIcon" alignment="TOP_CENTER" layoutX="220.0" layoutY="82.0" onDragDetected="#navigateClaimMenuInsuranceSureyor" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
                     <children>
-                        <ImageView fitHeight="52.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="claimInsuranceSurveyorIcon" fitHeight="52.0" fitWidth="80.0" onDragDetected="#navigateClaimMenuInsuranceSurveyor" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../../IMG/file-solid.png" />
                             </image>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
                         </ImageView>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="62.0" text="Claim">
                             <font>
@@ -83,12 +90,15 @@
                         </Label>
                     </children>
                 </VBox>
-                <VBox alignment="TOP_CENTER" layoutX="378.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
+                <VBox alignment="TOP_CENTER" layoutX="371.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
                     <children>
                         <ImageView fitHeight="52.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../../IMG/address-card-solid (1).png" />
                             </image>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
                         </ImageView>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="98.0" text="Insurance Card">
                             <font>
@@ -97,6 +107,23 @@
                         </Label>
                     </children>
                 </VBox>
+            <VBox alignment="TOP_CENTER" layoutX="66.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
+               <children>
+                  <ImageView fitHeight="52.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../IMG/users-solid.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="98.0" text="Customers">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
             </children>
         </Pane>
     </center>
