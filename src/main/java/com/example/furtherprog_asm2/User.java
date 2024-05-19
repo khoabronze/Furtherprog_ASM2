@@ -11,6 +11,7 @@ public abstract class User  {
     private String Address;
     private String Password;
     private InsuranceCard insuranceCard;
+    private Request request;
     private ArrayList<Claim> claims;
     private String role; // Added role attribute
 
@@ -18,6 +19,7 @@ public abstract class User  {
         this.id = generateUniqueId();
         this.Name = "default";
         this.insuranceCard = new InsuranceCard();
+        this.request = new Request();
         this.claims = new ArrayList<>();
         this.Email = "default";
         this.Phone = "default";
@@ -26,7 +28,7 @@ public abstract class User  {
         this.role = "default";
     }
 
-    public User(String id, String name, String phone, String email, String address, String password, InsuranceCard insuranceCard, ArrayList<Claim> claims, String role) {
+    public User(String id, String name, String phone, String email, String address, String password, InsuranceCard insuranceCard, Request request, ArrayList<Claim> claims, String role) {
         this.id = id;
         Name = name;
         Phone = phone;
@@ -34,6 +36,7 @@ public abstract class User  {
         Address = address;
         Password = password;
         this.insuranceCard = insuranceCard;
+        this.request = request;
         this.claims = claims;
     }
 
@@ -68,6 +71,14 @@ public abstract class User  {
 
     public void setInsuranceCard(InsuranceCard insuranceCard) {
         this.insuranceCard = insuranceCard;
+    }
+
+    public Request getRequest() {
+        return request;
+    }
+
+    public void setRequest(Request request) {
+        this.request = request;
     }
 
     public ArrayList<Claim> getClaims() {

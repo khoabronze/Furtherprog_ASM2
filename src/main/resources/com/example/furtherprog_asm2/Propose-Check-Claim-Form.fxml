@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.furtherprog_asm2.ProposeClaim_Controller">
+    <top>
+        <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../IMG/Liberty-Mutual-Logo.png" />
+                    </image>
+                    <HBox.margin>
+                        <Insets left="40.0" />
+                    </HBox.margin>
+                </ImageView>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="PROPOSE CLAIM">
+                    <font>
+                        <Font name="Microsoft Sans Serif" size="23.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="30.0" top="60.0" />
+                    </HBox.margin>
+                </Text>
+            </children>
+        </HBox>
+    </top>
+    <left>
+        <VBox prefHeight="200.0" prefWidth="130.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../IMG/user-solid.png" />
+                            </image>
+                            <HBox.margin>
+                                <Insets top="25.0" />
+                            </HBox.margin>
+                        </ImageView>
+                        <Label text="User">
+                            <HBox.margin>
+                                <Insets left="20.0" top="40.0" />
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../IMG/house-solid.png" />
+                            </image>
+                            <HBox.margin>
+                                <Insets top="25.0" />
+                            </HBox.margin>
+                        </ImageView>
+                        <Label text="Home">
+                            <HBox.margin>
+                                <Insets left="20.0" top="40.0" />
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                </HBox>
+            </children>
+            <BorderPane.margin>
+                <Insets left="50.0" />
+            </BorderPane.margin>
+        </VBox>
+    </left>
+    <center>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Label text="Claim ID">
+                            <HBox.margin>
+                                <Insets left="90.0" top="40.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="Claim_ID_form">
+                            <HBox.margin>
+                                <Insets left="30.0" top="35.0" />
+                            </HBox.margin>
+                        </TextField>
+                        <Label text="Claim Date">
+                            <HBox.margin>
+                                <Insets left="90.0" top="40.0" />
+                            </HBox.margin>
+                        </Label>
+                        <DatePicker fx:id="Claim_Date_form">
+                            <HBox.margin>
+                                <Insets left="30.0" top="35.0" />
+                            </HBox.margin>
+                        </DatePicker>
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Label text="Card Number">
+                            <HBox.margin>
+                                <Insets left="90.0" top="40.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="Card_number_form">
+                            <HBox.margin>
+                                <Insets left="30.0" top="35.0" />
+                            </HBox.margin>
+                        </TextField>
+                        <Label text="Exam Date">
+                            <HBox.margin>
+                                <Insets left="60.0" top="40.0" />
+                            </HBox.margin>
+                        </Label>
+                        <DatePicker fx:id="Claim_exam_date_form">
+                            <HBox.margin>
+                                <Insets left="30.0" top="35.0" />
+                            </HBox.margin>
+                        </DatePicker>
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Label text="Insured Person">
+                            <HBox.margin>
+                                <Insets left="90.0" top="40.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="Claim_IP_form">
+                            <HBox.margin>
+                                <Insets left="30.0" top="35.0" />
+                            </HBox.margin>
+                        </TextField>
+                        <Label text="Claim Amount">
+                            <HBox.margin>
+                                <Insets left="50.0" top="40.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="Claim_amount_form">
+                            <HBox.margin>
+                                <Insets left="30.0" top="35.0" />
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Label text="List of Documents">
+                            <HBox.margin>
+                                <Insets left="90.0" top="40.0" />
+                            </HBox.margin>
+                        </Label>
+                        <Button mnemonicParsing="false" onAction="#chooseFile" text="Choose File">
+                            <HBox.margin>
+                                <Insets left="30.0" top="37.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Label text="Status">
+                            <HBox.margin>
+                                <Insets left="130.0" top="40.0" />
+                            </HBox.margin>
+                        </Label>
+                        <ChoiceBox fx:id="CLaim_status_form" prefWidth="150.0">
+                            <HBox.margin>
+                                <Insets left="30.0" top="35.0" />
+                            </HBox.margin>
+                        </ChoiceBox>
+                    </children>
+                </HBox>
+                <VBox prefHeight="100.0" prefWidth="100.0">
+                    <children>
+                        <Label text="Reciever Banking Info">
+                            <VBox.margin>
+                                <Insets left="320.0" />
+                            </VBox.margin>
+                        </Label>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <Label text="Bank">
+                                    <HBox.margin>
+                                        <Insets left="40.0" top="20.0" />
+                                    </HBox.margin>
+                                </Label>
+                                <TextField fx:id="Bank_form">
+                                    <HBox.margin>
+                                        <Insets left="30.0" top="15.0" />
+                                    </HBox.margin>
+                                </TextField>
+                                <Label text="Name">
+                                    <HBox.margin>
+                                        <Insets left="30.0" top="20.0" />
+                                    </HBox.margin>
+                                </Label>
+                                <TextField fx:id="Bank_name_form">
+                                    <HBox.margin>
+                                        <Insets left="30.0" top="15.0" />
+                                    </HBox.margin>
+                                </TextField>
+                                <Label text="Number">
+                                    <HBox.margin>
+                                        <Insets left="30.0" top="20.0" />
+                                    </HBox.margin>
+                                </Label>
+                                <TextField fx:id="Bank_number_form">
+                                    <HBox.margin>
+                                        <Insets left="30.0" top="15.0" />
+                                    </HBox.margin>
+                                </TextField>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </center>
+    <bottom>
+        <Button id="update_button" fx:id="requestForm" mnemonicParsing="false" onAction="#handleRequestForm" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: cornflowerblue;" text="Request" textFill="WHITE" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="20.0" left="120.0" />
+            </BorderPane.margin>
+            <effect>
+                <DropShadow height="13.0" offsetX="1.3" offsetY="1.3" radius="6.0" width="13.0" />
+            </effect>
+        </Button>
+    </bottom>
+</BorderPane>

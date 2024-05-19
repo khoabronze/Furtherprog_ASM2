@@ -19,15 +19,15 @@
             <!-- This is the TableView -->
             <TableView fx:id="tableView" prefHeight="396.0" prefWidth="721.0">
                 <columns>
-                    <TableColumn id="idColumn" fx:id="idColumn" text="ID" />
-                    <TableColumn id="idColumn" fx:id="nameColumn" text="Name" />
-                    <TableColumn id="idColumn" fx:id="phoneColumn" text="Phone" />
-                    <TableColumn id="idColumn" fx:id="mailColumn" text="Email" />
-                    <TableColumn id="idColumn" fx:id="addressColumn" text="Address" />
-                    <TableColumn id="idColumn" fx:id="passColumn" text="Password" />
+                    <TableColumn id="idColumn" fx:id="idColumn" minWidth="100.0" text="ID" />
+                    <TableColumn id="idColumn" fx:id="nameColumn" minWidth="100.0" text="Name" />
+                    <TableColumn id="idColumn" fx:id="phoneColumn" minWidth="140.0" text="Phone" />
+                    <TableColumn id="idColumn" fx:id="mailColumn" minWidth="150.0" text="Email" />
+                    <TableColumn id="idColumn" fx:id="addressColumn" minWidth="150.0" text="Address" />
+                    <TableColumn id="idColumn" fx:id="passColumn" minWidth="150.0" text="Password" />
                 </columns>
             </TableView>
-            <VBox alignment="CENTER" prefHeight="396.0" prefWidth="85.0" spacing="10">
+            <VBox alignment="CENTER" prefHeight="396.0" prefWidth="85.0" spacing="10" style="-fx-background-color: cornflowerblue;">
                 <TextField fx:id="ID_BOX" minWidth="0.0" prefHeight="25.0" prefWidth="0.0" promptText="Enter ID" />
                 <Button fx:id="searchButton" onAction="#handleSearchButtonAction" text="Search" />
                 <Button fx:id="viewButton" onAction="#Viewall" text="View All" />

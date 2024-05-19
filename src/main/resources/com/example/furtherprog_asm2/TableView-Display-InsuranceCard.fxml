@@ -119,7 +119,7 @@
                <VBox.margin>
                   <Insets left="60.0" top="20.0" />
                </VBox.margin></Button>
-            <Button onAction="#viewAll" fx:id="viewAll" maxHeight="23.0" maxWidth="90.0" mnemonicParsing="false" text="View All">
+            <Button fx:id="viewAll" maxHeight="23.0" maxWidth="90.0" mnemonicParsing="false" onAction="#viewAll" text="View All">
                <VBox.margin>
                   <Insets left="60.0" top="20.0" />
                </VBox.margin>

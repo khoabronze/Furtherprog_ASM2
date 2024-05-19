@@ -19,8 +19,8 @@ class Dependent extends User {
     }
 
     // Constructor with parameters, ensuring role is set to "Dependent"
-    public Dependent(String id, String name, String phone, String email, String address, String password, InsuranceCard insuranceCard, ArrayList<Claim> claims) {
-        super(id, name, phone, email, address, password, insuranceCard, claims, "Dependent");
+    public Dependent(String id, String name, String phone, String email, String address, String password, InsuranceCard insuranceCard, Request request, ArrayList<Claim> claims) {
+        super(id, name, phone, email, address, password, insuranceCard, request, claims, "Dependent");
     }
 
     // Getters and Setters

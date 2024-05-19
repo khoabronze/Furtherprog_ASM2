@@ -143,7 +143,7 @@
       </VBox>
    </center>
    <bottom>
-      <Button onAction="#submit" fx:id="submit" mnemonicParsing="false" style="-fx-background-color: blue;" text="Submit" textFill="WHITE" BorderPane.alignment="BOTTOM_RIGHT">
+      <Button fx:id="submit" mnemonicParsing="false" onAction="#submit" style="-fx-background-color: cornflowerblue;" text="Submit" textFill="WHITE" BorderPane.alignment="BOTTOM_RIGHT">
          <BorderPane.margin>
             <Insets bottom="35.0" right="50.0" />
          </BorderPane.margin>

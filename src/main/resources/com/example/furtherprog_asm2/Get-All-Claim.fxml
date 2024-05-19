@@ -36,10 +36,10 @@
                     <TableColumn id="documentsColumn" fx:id="documentsColumn" text="Documents" />
                 </columns>
             </TableView>
-            <VBox alignment="CENTER" prefHeight="396.0" prefWidth="85.0" spacing="10">
+            <VBox alignment="CENTER" prefHeight="396.0" prefWidth="85.0" spacing="10" style="-fx-background-color: cornflowerblue;">
                 <TextField fx:id="ID_BOX" minWidth="0.0" prefHeight="25.0" prefWidth="0.0" promptText="Enter ID" />
                 <Button fx:id="searchButton" onAction="#handleSearchButtonAction" text="Search" />
-            <Button fx:id="viewButton" onAction="#Viewall" text="View All" />
+                <Button fx:id="viewButton" onAction="#Viewall" text="View All" />
             </VBox>
         </items>
     </SplitPane>
