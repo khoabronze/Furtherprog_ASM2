@@ -5,15 +5,14 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.Connection;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class GetAllClaimController {
 
@@ -50,8 +49,11 @@ public class GetAllClaimController {
     @FXML
     private TableColumn<Claim, String> documentsColumn;
 
+
     @FXML
     private TextField ID_BOX;
+    @FXML
+    private Button filterButton;
     @FXML
     public void initialize() {
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -89,5 +91,17 @@ public class GetAllClaimController {
         List<Claim> claims = claimService.getAllClaims();
         ObservableList<Claim> data = FXCollections.observableArrayList(claims);
         tableView.setItems(data);
+    }
+
+    public void filter() {
+        Db_function dbFunction = new Db_function();
+        Connection connection = dbFunction.connect_to_db();
+        ClaimDAO claimDAO = new ClaimDAO(connection);
+        List<Claim> claims = claimDAO.getAll();
+        // Sort the list in ascending order
+        Collections.sort(claims, Comparator.comparing(Claim::getId));
+
+        tableView.getItems().clear();
+        tableView.getItems().addAll(claims);
     }
 }
