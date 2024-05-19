@@ -44,7 +44,10 @@ public class ADD_Dependent_Controller {
             showAlert("Error Dialog", "Input Error", "All fields are required");
             return;
         }
-
+        if (!ID.matches("D-\\d{10}")) {
+            showAlert("Error Dialog", "Input Error", "ID must be in the format 'D-10 numbers'");
+            return;
+        }
         // Create a new InsuranceCard object
         InsuranceCard insuranceCard = new InsuranceCard();
 

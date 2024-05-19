@@ -45,7 +45,10 @@ public class Create_PH_controller {
             showAlert("Error Dialog", "Input Error", "All fields are required");
             return;
         }
-
+        if (!ID.matches("PH-\\d{10}")) {
+            showAlert("Error Dialog", "Input Error", "ID must be in the format 'PH-10 numbers'");
+            return;
+        }
         // Create a new InsuranceCard object
         InsuranceCard insuranceCard = new InsuranceCard();
 
