@@ -4,19 +4,15 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import org.junit.Before;
-
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-
-import static org.mockito.Mockito.when;
-
-import static org.mockito.Mockito.*;
-
 import java.sql.Connection;
 import java.time.LocalDate;
+
+import static org.mockito.Mockito.*;
 
 class CreateClaimControllerTest {
     @Mock
