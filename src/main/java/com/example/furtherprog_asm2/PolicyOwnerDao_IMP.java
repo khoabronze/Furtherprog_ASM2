@@ -23,7 +23,7 @@ public class PolicyOwnerDao_IMP implements PolicyOwnerDAO<PolicyOwner> {
     private PolicyOwnerService policyOwnerService;
     private Connection connection;
 
-        // ...
+
 
         public PolicyOwnerDao_IMP(Connection connection) {
             this.connection = connection;
