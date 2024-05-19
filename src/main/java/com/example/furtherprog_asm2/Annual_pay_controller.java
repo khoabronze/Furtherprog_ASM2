@@ -19,6 +19,23 @@ public class Annual_pay_controller {
         Connection conn = dbFunction.connect_to_db();
         this.dependentDAO = new DependentDAO_IMP(conn);
     }
+
+    public TextField getAnnual_pay() {
+        return Annual_pay;
+    }
+
+    public void setAnnual_pay(TextField annual_pay) {
+        Annual_pay = annual_pay;
+    }
+
+    public DependentDAO<Dependent> getDependentDAO() {
+        return dependentDAO;
+    }
+
+    public void setDependentDAO(DependentDAO<Dependent> dependentDAO) {
+        this.dependentDAO = dependentDAO;
+    }
+
     @FXML
     public void Calculate() {
         // Create a PolicyOwner

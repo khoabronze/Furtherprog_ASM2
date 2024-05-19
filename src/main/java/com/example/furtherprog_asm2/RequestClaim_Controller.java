@@ -23,7 +23,7 @@ public class RequestClaim_Controller {
     private Button requestButton;
 
     @FXML
-    private void processRequest() {
+    public void processRequest() {
         String ridText = rid.getText();
 
         // Check if the rid matches the pattern "r-" followed by 3 digits
