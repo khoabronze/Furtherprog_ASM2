@@ -33,6 +33,31 @@ class Dependent extends User {
     }
 
     @Override
+    public void setAddress(String address) {
+        super.setAddress(address);
+    }
+
+    @Override
+    public void setClaims(ArrayList<Claim> claims) {
+        super.setClaims(claims);
+    }
+
+    @Override
+    public void setPhone(String phone) {
+        super.setPhone(phone);
+    }
+
+    @Override
+    public void setEmail(String email) {
+        super.setEmail(email);
+    }
+
+    @Override
+    public void setPassword(String password) {
+        super.setPassword(password);
+    }
+
+    @Override
     public String toString() {
         return super.toString();
     }

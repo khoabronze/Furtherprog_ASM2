@@ -103,14 +103,19 @@ public class DependentDAO_IMP implements DependentDAO<Dependent>{
 
     @Override
     public boolean add(Dependent dependent) {
+        if (dependent.getPhone() == null || dependent.getEmail() == null || dependent.getAddress() == null || dependent.getPassword() == null) {
+            return false;
+        }
+
         try (Connection connection = dbFunction.connect_to_db();
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_DEPENDENT_SQL)) {
 
-            preparedStatement.setString(1, dependent.getPhone());
-            preparedStatement.setString(2, dependent.getEmail());
-            preparedStatement.setString(3, dependent.getAddress());
-            preparedStatement.setString(4, dependent.getPassword());
-
+            preparedStatement.setString(1, dependent.getId());
+            preparedStatement.setString(2, dependent.getName());
+            preparedStatement.setString(3, dependent.getEmail());
+            preparedStatement.setString(4, dependent.getPhone());
+            preparedStatement.setString(5, dependent.getAddress());
+            preparedStatement.setString(6, dependent.getPassword());
 
             int affectedRows = preparedStatement.executeUpdate();
             return affectedRows > 0;
@@ -122,7 +127,7 @@ public class DependentDAO_IMP implements DependentDAO<Dependent>{
     }
 
     @Override
-    public boolean update(Dependent dependent) {
+    public boolean update(Dependent dependent)  {
         try (Connection connection = dbFunction.connect_to_db();
              PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_DEPENDENT_SQL)) {
             preparedStatement.setString(1, dependent.getPhone());

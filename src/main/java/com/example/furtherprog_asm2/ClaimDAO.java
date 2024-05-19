@@ -161,6 +161,10 @@ public class ClaimDAO implements DAO<Claim> {
 
     @Override
     public boolean update(Claim claim) {
+        if (claim.getClaimAmount() < 0) {
+            throw new IllegalArgumentException("Claim amount cannot be negative");
+        }
+
         try (Connection connection = dbFunction.connect_to_db();
              PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CLAIM_SQL)) {
             preparedStatement.setDate(1, new java.sql.Date(claim.getClaimDate().getTime()));
@@ -186,6 +190,9 @@ public class ClaimDAO implements DAO<Claim> {
 
     @Override
     public boolean delete(Claim claim) {
+        if (claim.getId() == null) {
+            throw new RuntimeException("Claim ID cannot be null");
+        }
         try (Connection connection = dbFunction.connect_to_db();
              PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CLAIM_BY_ID_SQL)) {
             preparedStatement.setString(1, claim.getId());
