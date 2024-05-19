@@ -15,9 +15,9 @@ class PolicyHolder extends User {
         this.dependentList = dependentList;
     }
 
-    public PolicyHolder(String id, String name, String phone, String email, String address, String password, InsuranceCard insuranceCard, Request request, ArrayList<Claim> claims, String role, HashMap<String, Dependent> dependentList) {
-        super(id, name, phone, email, address, password, insuranceCard, request, claims, role);
-        this.dependentList = dependentList;
+    public PolicyHolder(String id, String name, String phone, String email, String address, String password, InsuranceCard insuranceCard, ArrayList<Object> list, String role, HashMap<Object, Object> map) {
+        super(id, name, phone, email, address, password, insuranceCard, new Request(), new ArrayList<>(), role);
+        this.dependentList = new HashMap<>();
     }
 
     protected HashMap<String, Dependent> getDependentList() {
