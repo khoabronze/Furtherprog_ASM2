@@ -24,7 +24,7 @@ public class Navigation_Controller {
     @FXML
     private ImageView viewInsuranceManagerIcon;
     @FXML
-    private ImageView viewRequestButton;
+    private ImageView viewRequestIcon;
 
     // Insurance Surveyor buttons and logos
     @FXML
@@ -142,7 +142,7 @@ public class Navigation_Controller {
         Scene newScene = new Scene(newSceneParent);
 
         // Get the current stage
-        Stage currentStage = (Stage) viewRequestButton.getScene().getWindow();
+        Stage currentStage = (Stage) viewRequestIcon.getScene().getWindow();
 
         // Set the new scene on the current stage
         currentStage.setScene(newScene);
