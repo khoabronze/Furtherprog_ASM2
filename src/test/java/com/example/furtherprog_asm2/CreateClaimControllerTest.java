@@ -3,18 +3,13 @@ package com.example.furtherprog_asm2;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import org.junit.Before;
-
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-
-import static org.mockito.Mockito.when;
-
 import static org.mockito.Mockito.*;
-
 import java.sql.Connection;
 import java.time.LocalDate;
 
@@ -55,9 +50,9 @@ class CreateClaimControllerTest {
     @InjectMocks
     private CreateClaimController controller;
 
-    @Before
+    @BeforeEach
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
         controller.initialize();
         Db_function dbFunction = new Db_function();
         Connection connection = dbFunction.connect_to_db();
@@ -81,13 +76,13 @@ class CreateClaimControllerTest {
         when(Claim_exam_date_form.getValue()).thenReturn(LocalDate.now());
         when(Claim_IP_form.getText()).thenReturn("John Doe");
         when(Claim_amount_form.getText()).thenReturn("100.00");
-        when(CLaim_status_form.getValue()).thenReturn(ClaimStatus.New);
+        when(CLaim_status_form.getValue()).thenReturn(ClaimStatus.Processing);
         when(Bank_form.getText()).thenReturn("Bank");
         when(Bank_name_form.getText()).thenReturn("Bank Name");
         when(Bank_number_form.getText()).thenReturn("1234567890");
 
         controller.submit();
-        verify(claimServiceMock, times(1)).submitClaim(any());
+        verify(claimServiceMock, times(1)).submitClaim(any(Claim.class));
     }
 
     @Test
@@ -127,6 +122,4 @@ class CreateClaimControllerTest {
         verify(controller, times(1)).showAlert(eq("Error Dialog"), eq("Input Error"), eq("Claim date is required"));
         verify(claimServiceMock, never()).submitClaim(any());
     }
-
-
 }

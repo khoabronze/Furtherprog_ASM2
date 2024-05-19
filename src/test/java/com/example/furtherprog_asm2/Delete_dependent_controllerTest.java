@@ -1,19 +1,17 @@
 package com.example.furtherprog_asm2;
 
-
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import org.junit.Before;
-import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.sql.Connection;
 import java.util.Optional;
 
 import static org.mockito.Mockito.*;
+
 class Delete_dependent_controllerTest {
     @Mock
     private TextField ID_DELETE_BOX;
@@ -29,7 +27,7 @@ class Delete_dependent_controllerTest {
 
     @BeforeEach
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
