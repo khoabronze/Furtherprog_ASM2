@@ -3,7 +3,14 @@ package com.example.furtherprog_asm2;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import org.junit.Before;
+//import org.junit.Before;
+
+
+// added here-------------------------
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -55,7 +62,7 @@ class CreateClaimControllerTest {
     @InjectMocks
     private CreateClaimController controller;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         controller.initialize();

@@ -1,31 +1,30 @@
 package com.example.furtherprog_asm2;
 
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-
-
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ADD_Dependent_ControllerTest {
     @Mock
-    private TextField Name_Form;
+    private TextFieldWrapper Name_Form;
     @Mock
-    private TextField ID_Form;
+    private TextFieldWrapper ID_Form;
     @Mock
-    private TextField Phone_Form;
+    private TextFieldWrapper Phone_Form;
     @Mock
-    private TextField Mail_Form;
+    private TextFieldWrapper Mail_Form;
     @Mock
-    private TextField Address_Form;
+    private TextFieldWrapper Address_Form;
     @Mock
-    private PasswordField Password_Form;
+    private PasswordFieldWrapper Password_Form;
 
     @Mock
     private DependentService depService;
@@ -33,11 +32,20 @@ class ADD_Dependent_ControllerTest {
     @InjectMocks
     private ADD_Dependent_Controller controller;
 
+    @BeforeAll
+    static void initToolkit() {
+        // Ensure JavaFX toolkit is initialized
+        if (!Platform.isFxApplicationThread()) {
+            new JFXPanel(); // Initializes the JavaFX toolkit
+            Platform.startup(() -> {});
+        }
+    }
+
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
     }
-    //check điền thiếu trường thì không cho thêm dependent
+
     @Test
     public void testCreateEmptyFieldsShowAlert() {
         when(Name_Form.getText()).thenReturn("");
@@ -51,7 +59,7 @@ class ADD_Dependent_ControllerTest {
 
         verify(depService, never()).addDependent(any());
     }
-    // check điền tất cả các trường
+
     @Test
     public void testCreateAllFieldsFilledAddDependentCalled() {
         when(Name_Form.getText()).thenReturn("John Doe");
@@ -65,7 +73,7 @@ class ADD_Dependent_ControllerTest {
 
         verify(depService, times(1)).addDependent(any(Dependent.class));
     }
-    //check điền thiếu trường có hiện thông baos k
+
     @Test
     public void testCreateShowAlertCalledWhenFieldsEmpty() {
         when(Name_Form.getText()).thenReturn("");

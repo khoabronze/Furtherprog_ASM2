@@ -63,5 +63,6 @@ public class ADD_Dependent_Controller {
 
         alert.showAndWait();
     }
-    }
+
+}
 

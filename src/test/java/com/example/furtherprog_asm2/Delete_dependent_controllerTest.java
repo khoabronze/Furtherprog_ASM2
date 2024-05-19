@@ -3,12 +3,15 @@ package com.example.furtherprog_asm2;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import org.junit.Before;
-import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
+// Added here--------------------------------
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.Connection;
 import java.util.Optional;
