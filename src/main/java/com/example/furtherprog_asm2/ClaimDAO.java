@@ -25,6 +25,8 @@ public class ClaimDAO implements DAO<Claim> {
         this.connection = connection;
     }
 
+    public ClaimDAO() {}
+
     @Override
     public List<Claim> getAll() {
         List<Claim> claims = new ArrayList<>();
@@ -200,7 +202,10 @@ public class ClaimDAO implements DAO<Claim> {
              PreparedStatement preparedStatement = connection.prepareStatement("UPDATE claims SET status = ? WHERE id = ?")) {
             preparedStatement.setString(1, status);
             preparedStatement.setString(2, id);
-            preparedStatement.executeUpdate();
+            int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new RuntimeException("No claim found with id: " + id);
+            }
         } catch (SQLException e) {
             throw new RuntimeException("Error updating claim status", e);
         }

@@ -121,9 +121,12 @@ public class RequestDAO implements Request_DAO<Request>{
         try (PreparedStatement stmt = con.prepareStatement(query)) {
             stmt.setString(1, approval);
             stmt.setString(2, rid);
-            stmt.executeUpdate();
+            int affectedRows = stmt.executeUpdate();
+            if (affectedRows == 0) {
+                throw new RuntimeException("No request found with id: " + rid);
+            }
         } catch (SQLException e) {
-            System.out.println(e);
+            throw new RuntimeException("Error updating request status", e);
         }
     }
 }
