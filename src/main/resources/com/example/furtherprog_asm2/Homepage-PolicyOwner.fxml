@@ -109,7 +109,7 @@
                 </VBox>
             <VBox alignment="TOP_CENTER" layoutX="541.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
                <children>
-                  <ImageView fx:id="viewInsuranceCardIcon1" fitHeight="52.0" fitWidth="80.0" onMouseClicked="#navigateTableViewDisplayInsuranceCard" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="calFeeIcon" fitHeight="52.0" fitWidth="80.0" onMouseClicked="#navigatePolicyOwnerCalRate" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../IMG/fee.png" />
                      </image>
@@ -117,7 +117,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </ImageView>
-                  <Label fx:id="calFeeIcon" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#navigatePolicyOwnerCalRate" prefHeight="20.0" prefWidth="98.0" text="Calculate Fee">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="98.0" text="Calculate Fee">
                      <font>
                         <Font size="14.0" />
                      </font>
