@@ -1,4 +1,5 @@
 package com.example.furtherprog_asm2;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Connection;
@@ -7,19 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class DependentDAO_IMP implements DependentDAO<Dependent>{
+public class DependentDAO_IMP implements DependentDAO<Dependent> {
     private Db_function dbFunction = new Db_function();
-
-    private DependentService DependentService;
     private Connection connection;
 
     private static final String INSERT_DEPENDENT_SQL = "INSERT INTO \"user\"" + " (id, name, phone, email, address, password, role) VALUES " + " (?, ?, ?, ?, ?, ?, 'Dependent');";
     private static final String UPDATE_DEPENDENT_SQL = "UPDATE \"user\" SET phone = ?, email = ?, address = ?, password = ? WHERE id = ? AND role = 'Dependent'";
-
     private static final String DELETE_DEPENDENT_SQL = "DELETE FROM \"user\" WHERE id = ? AND role = 'Dependent'";
     private static final String SELECT_ALL_DEPENDENTS_SQL = "SELECT * FROM \"user\" WHERE role = 'Dependent'";
     private static final String SELECT_DEPENDENT_BY_ID_SQL = "SELECT * FROM \"user\" WHERE id = ? AND role = 'Dependent'";
 
+    public DependentDAO_IMP(Connection connection) {
+        this.connection = connection;
+    }
 
     @Override
     public List<Dependent> getAll() {
@@ -40,7 +41,7 @@ public class DependentDAO_IMP implements DependentDAO<Dependent>{
             }
 
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("Error in getAll: " + ex.getMessage());
         }
 
         return dependents;
@@ -48,7 +49,6 @@ public class DependentDAO_IMP implements DependentDAO<Dependent>{
 
     @Override
     public Optional<Dependent> get(String id) {
-
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_DEPENDENT_BY_ID_SQL)) {
             preparedStatement.setString(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -62,11 +62,10 @@ public class DependentDAO_IMP implements DependentDAO<Dependent>{
                 dependent.setEmail(resultSet.getString("email"));
                 dependent.setPassword(resultSet.getString("password"));
                 return Optional.of(dependent);
-
             }
 
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("Error in get: " + ex.getMessage());
         }
 
         return Optional.empty();
@@ -74,31 +73,7 @@ public class DependentDAO_IMP implements DependentDAO<Dependent>{
 
     @Override
     public Dependent getOne(String id) {
-
-        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_DEPENDENT_BY_ID_SQL)) {
-            preparedStatement.setString(1, id);
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            if (resultSet.next()) {
-                Dependent dependent = new Dependent();
-                dependent.setId(resultSet.getString("id"));
-                dependent.setName(resultSet.getString("name"));
-                dependent.setPhone(resultSet.getString("phone"));
-                dependent.setAddress(resultSet.getString("address"));
-                dependent.setEmail(resultSet.getString("email"));
-                dependent.setPassword(resultSet.getString("password"));
-                return dependent;
-            }
-
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        return null;
-    }
-
-    public DependentDAO_IMP(Connection connection) {
-        this.connection = connection;
+        return get(id).orElse(null);
     }
 
     @Override
@@ -112,8 +87,8 @@ public class DependentDAO_IMP implements DependentDAO<Dependent>{
 
             preparedStatement.setString(1, dependent.getId());
             preparedStatement.setString(2, dependent.getName());
-            preparedStatement.setString(3, dependent.getEmail());
-            preparedStatement.setString(4, dependent.getPhone());
+            preparedStatement.setString(3, dependent.getPhone());
+            preparedStatement.setString(4, dependent.getEmail());
             preparedStatement.setString(5, dependent.getAddress());
             preparedStatement.setString(6, dependent.getPassword());
 
@@ -121,13 +96,13 @@ public class DependentDAO_IMP implements DependentDAO<Dependent>{
             return affectedRows > 0;
 
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("Error in add: " + ex.getMessage());
             return false;
         }
     }
 
     @Override
-    public boolean update(Dependent dependent)  {
+    public boolean update(Dependent dependent) {
         try (Connection connection = dbFunction.connect_to_db();
              PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_DEPENDENT_SQL)) {
             preparedStatement.setString(1, dependent.getPhone());
@@ -138,8 +113,10 @@ public class DependentDAO_IMP implements DependentDAO<Dependent>{
             int affectedRows = preparedStatement.executeUpdate();
             return affectedRows > 0;
         } catch (SQLException e) {
-            throw new RuntimeException("Error updating dependent", e);
-        }}
+            System.out.println("Error in update: " + e.getMessage());
+            return false;
+        }
+    }
 
     @Override
     public boolean delete(Dependent dependent) {
@@ -149,6 +126,8 @@ public class DependentDAO_IMP implements DependentDAO<Dependent>{
             int affectedRows = preparedStatement.executeUpdate();
             return affectedRows > 0;
         } catch (SQLException e) {
-            throw new RuntimeException("Error deleting dependent", e);
+            System.out.println("Error in delete: " + e.getMessage());
+            return false;
         }
-    }}
+    }
+}

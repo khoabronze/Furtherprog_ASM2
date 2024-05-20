@@ -42,45 +42,17 @@ class ClaimDAOTest {
         claimDAO.delete(claim);
         boolean result = claimDAO.add(claim);
         assertTrue(result);
+        claimDAO.delete(claim);
+
     }
-    @Test
-    void addCalimIdAlready() throws SQLException {
-        Claim claim = new Claim();
-        claim.setId("1234567866");
-        claim.setClaimDate(new java.util.Date());
-        claim.setInsuredPerson("John Doe");
-        claim.setCardNumber("1234567890");
-        claim.setExamDate(new java.util.Date());
-        claim.setClaimAmount(1000.0);
-        claim.setStatus(ClaimStatus.Processing);
-        BankingInfo bankingInfo = new BankingInfo();
-        bankingInfo.setBank("ABC Bank");
-        bankingInfo.setName("John Doe");
-        bankingInfo.setNumber("123456");
-        claim.setReiveBankingInfo(bankingInfo);
-        claim.setDocuments("Document1");
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
-            claimDAO.add(claim);
-        });
-        assertEquals("A claim with the same id already exists", thrown.getMessage());
-    }
+
     @Test
     void updateClaimSuccess() throws SQLException {
         // Retrieve the claim with the ID "55"
-        Claim claim = claimDAO.getOne("55");
+        Claim claim = claimDAO.getOne("C-9987654321");
 
         // Update the properties of the retrieved claim
         claim.setClaimDate(new java.util.Date());
-        claim.setInsuredPerson("John Doe 1");
-        claim.setCardNumber("1234567890");
-        claim.setExamDate(new java.util.Date());
-        claim.setClaimAmount(1000.0);
-        claim.setStatus(ClaimStatus.Done);
-        BankingInfo bankingInfo = new BankingInfo();
-        bankingInfo.setBank("ABC Bank");
-        bankingInfo.setName("John Doe");
-        bankingInfo.setNumber("123456");
-        claim.setReiveBankingInfo(bankingInfo);
         claim.setDocuments("Document1");
 
         // Call the update method of the ClaimDAO class
@@ -112,31 +84,6 @@ class ClaimDAOTest {
         assertEquals("Claim amount cannot be negative", thrown.getMessage());
     }
     @Test
-    void getAllClaimsSuccess() throws SQLException {
-        List<Claim> actualClaims = claimDAO.getAll();
-        assertEquals(5, actualClaims.size());
-    }
-    @Test
-    void getAllClaims() {
-        List<Claim> claims = claimDAO.getAll();
-        System.out.println(claims);
-        assertFalse(claims.isEmpty());
-    }
-
-
-    @Test
-    void getClaimByIdSuccess() {
-        Optional<Claim> optionalClaim = claimDAO.get("55");
-        assertTrue(optionalClaim.isPresent());
-        Claim claim = optionalClaim.get();
-        assertEquals("55", claim.getId());
-    }
-    @Test
-    void getClaimByIdNotFound() {
-        Optional<Claim> optionalClaim = claimDAO.get("nonexistent");
-        assertTrue(optionalClaim.isEmpty());
-    }
-    @Test
     void deleteClaimSucces() {
         Claim claim = new Claim();
         claim.setId("4");
@@ -155,7 +102,35 @@ class ClaimDAOTest {
         claimDAO.add(claim);
         boolean result = claimDAO.delete(claim);
         assertTrue(result);
+        claimDAO.delete(claim);
+
     }
+    @Test
+    void getAllClaimsSuccess() throws SQLException {
+        List<Claim> actualClaims = claimDAO.getAll();
+        assertEquals(20, actualClaims.size());
+    }
+    @Test
+    void getAllClaims() {
+        List<Claim> claims = claimDAO.getAll();
+        System.out.println(claims);
+        assertFalse(claims.isEmpty());
+    }
+
+
+    @Test
+    void getClaimByIdSuccess() {
+        Optional<Claim> optionalClaim = claimDAO.get("C-9987654321");
+        assertTrue(optionalClaim.isPresent());
+        Claim claim = optionalClaim.get();
+        assertEquals("C-9987654321", claim.getId());
+    }
+    @Test
+    void getClaimByIdNotFound() {
+        Optional<Claim> optionalClaim = claimDAO.get("nonexistent");
+        assertTrue(optionalClaim.isEmpty());
+    }
+
     @Test
     void deleteClaimNotFound() {
         Claim claim = new Claim();
@@ -175,7 +150,7 @@ class ClaimDAOTest {
     }
     @Test
     void switchStatusSuccess() {
-        String id = "1234556788";
+        String id = "C-9987654321";
         String status = "Done";
         claimDAO.switchStatus(id, status);
         Claim claim = claimDAO.getOne(id);

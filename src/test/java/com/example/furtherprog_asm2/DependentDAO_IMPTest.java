@@ -36,7 +36,7 @@ class DependentDAO_IMPTest {
 
     @Test
     void getDependentSuccess() {
-        String validId = "c-0637375";
+        String validId = "D-1357593140";
 
         Optional<Dependent> optionalDependent = dependentDAOImp.get(validId);
         assertTrue(optionalDependent.isPresent(), "The Optional<Dependent> should not be empty");
@@ -46,7 +46,7 @@ class DependentDAO_IMPTest {
     }
     @Test
     void getDepedentByIdNotFound() {
-        Optional<Dependent> optionalDependent = dependentDAOImp.get("c-0637375");
+        Optional<Dependent> optionalDependent = dependentDAOImp.get("D-1357593140");
         assertTrue(optionalDependent.isPresent());
         Dependent dependent = optionalDependent.get();
         assertTrue( optionalDependent.isEmpty());
