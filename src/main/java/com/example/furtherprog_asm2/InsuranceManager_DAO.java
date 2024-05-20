@@ -14,6 +14,8 @@ public class InsuranceManager_DAO implements InsuranceManagerDAO <InsuranceManag
         this.connection = connection;
     }
 
+    public InsuranceManager_DAO() {}
+
     private static final String INSERT_INSURANCEMANAGER_SQL = "INSERT INTO \"user\"" + " (id, name, phone, email, address, password, role) VALUES " + " (?, ?, ?, ?, ?, ?, 'Insurance Manager');";
     private static final String UPDATE_INSURANCEMANAGER_SQL = "UPDATE \"user\" SET phone = ?, email = ?, address = ?, password = ? WHERE id = ? AND role = 'Insurance Manager'";
 

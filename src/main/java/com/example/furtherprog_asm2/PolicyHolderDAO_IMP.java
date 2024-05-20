@@ -24,10 +24,14 @@ public class PolicyHolderDAO_IMP implements PolicyHolderDAO<PolicyHolder> {
         this.connection = connection;
     }
 
+    public PolicyHolderDAO_IMP() {
+    }
+
     @Override
     public List<PolicyHolder> getAll() {
         List<PolicyHolder> policyHolders = new ArrayList<>();
-        try (PreparedStatement preparedStatement = this.connection.prepareStatement(GET_ALL_PH_SQL)) {
+        try (Connection connection = dbFunction.connect_to_db();// đã sửa
+             PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_PH_SQL)) {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -51,7 +55,9 @@ public class PolicyHolderDAO_IMP implements PolicyHolderDAO<PolicyHolder> {
     @Override
     public Optional<PolicyHolder> get(String id) {
 
-        try (PreparedStatement preparedStatement = this.connection.prepareStatement(GET_PH_SQL)) {
+        try (
+                Connection connection = dbFunction.connect_to_db();// đã sửa
+                PreparedStatement preparedStatement = connection.prepareStatement(GET_PH_SQL)) {
             preparedStatement.setString(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -81,7 +87,8 @@ public class PolicyHolderDAO_IMP implements PolicyHolderDAO<PolicyHolder> {
 
     @Override
     public boolean add(PolicyHolder po) {
-        try (PreparedStatement preparedStatement = this.connection.prepareStatement(INSERT_PH_SQL)) {
+        try (Connection connection = dbFunction.connect_to_db();// đã sửa
+             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PH_SQL)) {
             preparedStatement.setString(1, po.getId());
             preparedStatement.setString(2, po.getName());
             preparedStatement.setString(3, po.getPhone());
@@ -100,7 +107,8 @@ public class PolicyHolderDAO_IMP implements PolicyHolderDAO<PolicyHolder> {
 
     @Override
     public boolean update(PolicyHolder po) {
-        try (PreparedStatement preparedStatement = this.connection.prepareStatement(UPDATE_PH_SQL)) {
+        try (Connection connection = dbFunction.connect_to_db();// đã sửa
+             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PH_SQL)) {
             preparedStatement.setString(1, po.getName());
             preparedStatement.setString(2, po.getPhone());
             preparedStatement.setString(3, po.getEmail());
@@ -121,7 +129,8 @@ public class PolicyHolderDAO_IMP implements PolicyHolderDAO<PolicyHolder> {
     @Override
     public boolean delete(PolicyHolder po) {
 
-        try (PreparedStatement preparedStatement = this.connection.prepareStatement(DELETE_PH_SQL)) {
+        try (Connection connection = dbFunction.connect_to_db();// đã sửa
+             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_PH_SQL)) {
             // Set the ID parameter
             preparedStatement.setString(1, po.getId());
 
