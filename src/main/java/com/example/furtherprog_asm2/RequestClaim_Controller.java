@@ -11,6 +11,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class RequestClaim_Controller {
     @FXML
@@ -22,6 +26,26 @@ public class RequestClaim_Controller {
     @FXML
     private Button requestButton;
 
+    // Method to get claimID from the database
+    public String getClaimID(String id) {
+        // Replace with your actual database connection code
+        Db_function db = new Db_function();
+        Connection con = db.connect_to_db();
+        String query = "SELECT id FROM \"claims\" WHERE \"id\" = ?";
+        try (PreparedStatement stmt = con.prepareStatement(query)){
+            stmt.setString(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("id");
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
     @FXML
     private void processRequest() {
         String ridText = rid.getText();
@@ -32,6 +56,22 @@ public class RequestClaim_Controller {
             alert.setTitle("Error");
             alert.setHeaderText(null);
             alert.setContentText("Invalid rid. It must start with 'r-' followed by 10 digits.");
+            alert.showAndWait();
+
+            // Clear the user input
+            rid.clear();
+            id.clear();
+            note.clear();
+
+            return;
+        }
+
+        String claimID = getClaimID(id.getText());
+        if (claimID == null || !claimID.equals(id.getText())) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Invalid ID. No claim with this ID exists in the database.");
             alert.showAndWait();
 
             // Clear the user input
