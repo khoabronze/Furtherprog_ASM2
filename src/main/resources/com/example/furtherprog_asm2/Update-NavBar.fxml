@@ -25,7 +25,7 @@
                   <Insets left="40.0" />
                </HBox.margin>
             </ImageView>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="UPDATE CLAIM">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="UPDATE INSURANCE CARD">
                <font>
                   <Font name="Microsoft Sans Serif" size="23.0" />
                </font>

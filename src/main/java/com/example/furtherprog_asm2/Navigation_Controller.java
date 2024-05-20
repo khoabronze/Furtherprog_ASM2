@@ -30,19 +30,50 @@ public class Navigation_Controller {
     @FXML
     private ImageView updateDependentIcon;
     @FXML
+    private ImageView updateInsuranceCardIcon;
+    @FXML
     private ImageView updateClaimIcon;
+    @FXML
+    private ImageView updatePolicyOwnerIcon;
+    @FXML
+    private ImageView updateInsuranceSurveyorIcon;
+    @FXML
+    private ImageView updateInsuranceManagerIcon;
     @FXML
     private ImageView createClaimIcon;
     @FXML
     private ImageView createDependentIcon;
     @FXML
+    private ImageView createInsuranceCardIcon;
+    @FXML
+    private ImageView createPolicyOwnerIcon;
+    @FXML
+    private ImageView createPolicyHolderIcon;
+    @FXML
+    private ImageView createInsuranceSurveyorIcon;
+    @FXML
+    private ImageView createInsuranceManagerIcon;
+    @FXML
+    private ImageView deleteInsuranceManagerIcon;
+
+    @FXML
+    private ImageView deleteInsuranceSurveyorIcon;
+    @FXML
+    private ImageView deletePolicyHolderIcon;
+    @FXML
+    private ImageView deletePolicyOwnerIcon;
+    @FXML
     private ImageView deleteDependentIcon;
     @FXML
     private ImageView deleteClaimIcon;
     @FXML
+    private ImageView deleteInsuranceCardIcon;
+    @FXML
     private ImageView claimViewButton;
     @FXML
     private ImageView switchStatusButton;
+    @FXML
+    private ImageView proposeRequestButton;
     @FXML
     private ImageView requestViewButton;
     @FXML
@@ -90,6 +121,27 @@ public class Navigation_Controller {
     private ImageView claimPolicyOwnerIcon;
     @FXML
     private ImageView homePolicyOwnerIcon;
+
+    // -------------------------------------------------------------------------------------------
+    // Admin buttons and logos
+    @FXML
+    private ImageView usersAdminIcon;
+    @FXML
+    private ImageView requestAdminIcon;
+    @FXML
+    private ImageView insurancecardAdminIcon;
+    @FXML
+    private ImageView homeAdminIcon;
+    @FXML
+    private ImageView policyownerAdminIcon;
+    @FXML
+    private ImageView policyholderAdminIcon;
+    @FXML
+    private ImageView dependentAdminIcon;
+    @FXML
+    private ImageView insurancesurveyorAdminIcon;
+    @FXML
+    private ImageView insurancemanagerAdminIcon;
 
     // -------------------------------------------------------------------------------------------
     // Navigation between pages (Main)
@@ -234,6 +286,76 @@ public class Navigation_Controller {
         currentStage.setScene(newScene);
     }
     @FXML
+    public void navigateUpdatePOSearch() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Update_PO_search.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) updatePolicyOwnerIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
+    @FXML
+    public void navigateUpdateNavBar() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Update-NavBar.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) updateInsuranceCardIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
+    @FXML
+    public void navigateUpdateInsuranceSurveyorSearch() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Update-InsuranceSurveyor-Search.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) updateInsuranceSurveyorIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
+    @FXML
+    public void navigateUpdateInsuranceManagerSearch() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Update-InsuranceManager-Search.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) updateInsuranceManagerIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
+    @FXML
+    public void navigateCreateInsuranceManagerForm() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Create-InsuranceManager-Form.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) createInsuranceManagerIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
+    @FXML
     public void navigateCreateClaimForm() throws IOException {
         // Load the FXML file for the new scene
         Parent newSceneParent = FXMLLoader.load(getClass().getResource("Create-Claim-Form.fxml"));
@@ -262,6 +384,118 @@ public class Navigation_Controller {
         currentStage.setScene(newScene);
     }
     @FXML
+    public void navigateCreateInsuranceCardForm() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Create-InsuranceCard-Form.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) createInsuranceCardIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
+    @FXML
+    public void navigateCreatePolicyOwnerForm() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("create_PolicyOwner_form.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) createPolicyOwnerIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
+    @FXML
+    public void navigateCreatePHForm() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Create_PH_form.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) createPolicyHolderIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
+    @FXML
+    public void navigateCreateInsuranceSurveyorForm() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Create-InsuranceSurveyor-Form.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) createInsuranceSurveyorIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
+    @FXML
+    public void navigateDeleteInsuranceSurveyorNavBar() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Delete-InsuranceSurveyor-NavBar.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) deleteInsuranceSurveyorIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
+    @FXML
+    public void navigateDeleteInsuranceManagerNavBar() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Delete-InsuranceManager-NavBar.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) deleteInsuranceManagerIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
+    @FXML
+    public void navigateDeletePHForm() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Delete_PH_form.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) deletePolicyHolderIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
+    @FXML
+    public void navigateDeletePO() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Delete_PO.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) deletePolicyOwnerIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
+    @FXML
     public void navigateDeleteClaimForm() throws IOException {
         // Load the FXML file for the new scene
         Parent newSceneParent = FXMLLoader.load(getClass().getResource("Delete-Claim-Form.fxml"));
@@ -285,6 +519,20 @@ public class Navigation_Controller {
 
         // Get the current stage
         Stage currentStage = (Stage) deleteDependentIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
+    @FXML
+    public void navigateDeleteInsuranceCardNavBar() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Delete-InsuranceCard-NavBar.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) deleteInsuranceCardIcon.getScene().getWindow();
 
         // Set the new scene on the current stage
         currentStage.setScene(newScene);
@@ -328,7 +576,7 @@ public class Navigation_Controller {
         Scene newScene = new Scene(newSceneParent);
 
         // Get the current stage
-        Stage currentStage = (Stage) switchStatusButton.getScene().getWindow();
+        Stage currentStage = (Stage) proposeRequestButton.getScene().getWindow();
 
         // Set the new scene on the current stage
         currentStage.setScene(newScene);
@@ -579,6 +827,135 @@ public class Navigation_Controller {
 
         // Get the current stage
         Stage currentStage = (Stage) homePolicyOwnerIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
+
+    // -------------------------------------------------------------------------------------------
+    // Navigation between pages (Admin)
+    @FXML
+    public void navigateAdminMenuUsers() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Admin-Menu-Users.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) usersAdminIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
+    @FXML
+    public void navigateAdminMenuRequest() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Admin-Menu-Request.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) requestAdminIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
+    @FXML
+    public void navigateAdminMenuInsuranceCard() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Admin-Menu-InsuranceCard.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) insurancecardAdminIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
+    @FXML
+    public void navigateHomepageAdmin() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Homepage-Admin.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) homeAdminIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
+    @FXML
+    public void navigateAdminMenuPolicyOwner() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Admin-Menu-PolicyOwner.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) policyownerAdminIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
+    @FXML
+    public void navigationAdminMenuPolicyHolder() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Admin-Menu-PolicyHolder.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) policyholderAdminIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
+    @FXML
+    public void navigateAdminMenuDependent() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Admin-Menu-Dependent.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) dependentAdminIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
+    @FXML
+    public void navigateAdminMenuInsuranceSurveyor() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Admin-Menu-InsuranceSurveyor.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) insurancesurveyorAdminIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
+    }
+    @FXML
+    public void navigateAdminMenuInsuranceManager() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("Admin-Menu-InsuranceManager.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) insurancemanagerAdminIcon.getScene().getWindow();
 
         // Set the new scene on the current stage
         currentStage.setScene(newScene);
