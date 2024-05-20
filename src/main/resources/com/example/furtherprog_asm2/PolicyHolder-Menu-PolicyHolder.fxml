@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="736.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.furtherprog_asm2.Navigation_Controller">
     <top>
         <HBox prefHeight="70.0" prefWidth="736.0" BorderPane.alignment="CENTER">
             <children>
@@ -18,7 +19,7 @@
                         <Image url="@../../../IMG/Liberty-Mutual-Logo.png" />
                     </image>
                 </ImageView>
-                <Label alignment="CENTER" prefHeight="70.0" prefWidth="305.0" text="Insurance Claim Management System">
+                <Label alignment="CENTER" prefHeight="70.0" prefWidth="300.0" text="Insurance Claim Management System">
                     <font>
                         <Font size="18.0" />
                     </font>
@@ -41,7 +42,7 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="66.0" prefWidth="162.0">
                     <children>
-                        <ImageView fitHeight="36.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="homeInsuranceSurveyorIcon" fitHeight="36.0" fitWidth="32.0" onMouseClicked="#navigateHomepageInsuranceSurveyor" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../../IMG/house-solid.png" />
                             </image>
@@ -55,42 +56,34 @@
     <center>
         <Pane prefHeight="383.0" prefWidth="787.0" BorderPane.alignment="CENTER">
             <children>
-                <VBox alignment="TOP_CENTER" layoutX="59.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
+                <VBox alignment="TOP_CENTER" layoutX="292.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
                     <children>
-                        <ImageView fitHeight="52.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="updatePolicyHolderIcon" fitHeight="52.0" fitWidth="80.0" onMouseClicked="#navigateUpdatePHSearch" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../IMG/users-solid.png" />
+                                <Image url="@../../../IMG/update.png" />
                             </image>
+                            <VBox.margin>
+                                <Insets top="10.0" />
+                            </VBox.margin>
                         </ImageView>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="84.0" text="Beneficiaries">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Update">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </Label>
                     </children>
                 </VBox>
-                <VBox alignment="TOP_CENTER" layoutX="218.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
+                <VBox alignment="TOP_CENTER" layoutX="115.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
                     <children>
-                        <ImageView fitHeight="52.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="viewPolicyHolderIcon" fitHeight="52.0" fitWidth="80.0" onMouseClicked="#navigateViewPH" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../IMG/file-solid.png" />
+                                <Image url="@../../../IMG/view.png" />
                             </image>
+                            <VBox.margin>
+                                <Insets top="10.0" />
+                            </VBox.margin>
                         </ImageView>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="62.0" text="Claim">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </VBox>
-                <VBox alignment="TOP_CENTER" layoutX="378.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
-                    <children>
-                        <ImageView fitHeight="52.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../../IMG/address-card-solid (1).png" />
-                            </image>
-                        </ImageView>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="98.0" text="Insurance Card">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="98.0" text="View">
                             <font>
                                 <Font size="14.0" />
                             </font>

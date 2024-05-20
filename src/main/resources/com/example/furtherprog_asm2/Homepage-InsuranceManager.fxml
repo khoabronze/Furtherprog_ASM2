@@ -75,7 +75,7 @@
                 </VBox>
                 <VBox alignment="TOP_CENTER" layoutX="346.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
                     <children>
-                        <ImageView fx:id="insurancecardInsuranceManagerIcon" fitHeight="52.0" fitWidth="80.0" onMouseClicked="#navigateInsuranceCardMenuInsuranceManager" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="viewInsuranceCardIcon" fitHeight="52.0" fitWidth="80.0" onMouseClicked="#navigateTableViewDisplayInsuranceCard" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../../IMG/address-card-solid (1).png" />
                             </image>
