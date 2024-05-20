@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -21,6 +22,8 @@ import java.time.ZoneId;
 import java.util.Optional;
 
 public class Switch_Status_Controller {
+    @FXML
+    private ImageView homeIcon;
     @FXML
     private TextField Claim_ID_form;
 
@@ -171,5 +174,45 @@ public class Switch_Status_Controller {
         alert.setContentText(content);
 
         alert.showAndWait();
+    }
+
+    @FXML
+    public void handleHomeIconClick() {
+        String role = Login_Controller.loggedInRole;
+        String homepageFile = null;
+
+        switch (role) {
+            case "Admin":
+                homepageFile = "Homepage-Admin.fxml";
+                break;
+            case "Dependent":
+                homepageFile = "Homepage-Dependent.fxml";
+                break;
+            case "PolicyHolder":
+                homepageFile = "Homepage-PolicyHolder.fxml";
+                break;
+            case "PolicyOwner":
+                homepageFile = "Homepage-PolicyOwner.fxml";
+                break;
+            case "InsuranceManager":
+                homepageFile = "Homepage-InsuranceManager.fxml";
+                break;
+            case "InsuranceSurveyor":
+                homepageFile = "Homepage-InsuranceSurveyor.fxml";
+                break;
+            default:
+                // handle unknown role
+                break;
+        }
+
+        if (homepageFile != null) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource(homepageFile));
+                Stage stage = (Stage) homeIcon.getScene().getWindow();
+                stage.setScene(new Scene(root));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

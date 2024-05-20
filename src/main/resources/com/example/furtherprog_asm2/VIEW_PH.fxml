@@ -27,7 +27,7 @@
                     <TableColumn id="idColumn" fx:id="passColumn" text="Password" />
                 </columns>
             </TableView>
-            <VBox alignment="CENTER" prefHeight="396.0" prefWidth="85.0" spacing="10">
+            <VBox alignment="CENTER" prefHeight="396.0" prefWidth="85.0" spacing="10" style="-fx-background-color: CORNFLOWERBLUE;">
                 <TextField fx:id="ID_BOX" minWidth="0.0" prefHeight="25.0" prefWidth="0.0" promptText="Enter ID" />
                 <Button fx:id="searchButton" onAction="#handleSearchButtonAction" text="Search" />
                 <Button fx:id="viewButton" onAction="#Viewall" text="View All" />
@@ -54,7 +54,7 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                 <children>
-                    <ImageView fitHeight="55.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                    <ImageView fx:id="homeIcon" fitHeight="55.0" fitWidth="57.0" onMouseClicked="#handleHomeIconClick" pickOnBounds="true" preserveRatio="true">
                         <image>
                             <Image url="@../../../IMG/house-solid.png" />
                         </image>

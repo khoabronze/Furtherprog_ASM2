@@ -5,17 +5,24 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.util.*;
 
 public class GetAllClaimController {
-
+    @FXML
+    private ImageView homeIcon;
     private ClaimService claimService;
 
     public GetAllClaimController() {
@@ -89,5 +96,45 @@ public class GetAllClaimController {
         List<Claim> claims = claimService.getAllClaims();
         ObservableList<Claim> data = FXCollections.observableArrayList(claims);
         tableView.setItems(data);
+    }
+
+    @FXML
+    public void handleHomeIconClick() {
+        String role = Login_Controller.loggedInRole;
+        String homepageFile = null;
+
+        switch (role) {
+            case "Admin":
+                homepageFile = "Homepage-Admin.fxml";
+                break;
+            case "Dependent":
+                homepageFile = "Homepage-Dependent.fxml";
+                break;
+            case "PolicyHolder":
+                homepageFile = "Homepage-PolicyHolder.fxml";
+                break;
+            case "PolicyOwner":
+                homepageFile = "Homepage-PolicyOwner.fxml";
+                break;
+            case "InsuranceManager":
+                homepageFile = "Homepage-InsuranceManager.fxml";
+                break;
+            case "InsuranceSurveyor":
+                homepageFile = "Homepage-InsuranceSurveyor.fxml";
+                break;
+            default:
+                // handle unknown role
+                break;
+        }
+
+        if (homepageFile != null) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource(homepageFile));
+                Stage stage = (Stage) homeIcon.getScene().getWindow();
+                stage.setScene(new Scene(root));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

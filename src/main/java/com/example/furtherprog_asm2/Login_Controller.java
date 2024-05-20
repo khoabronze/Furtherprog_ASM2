@@ -29,6 +29,8 @@ public class Login_Controller {
 
     private Db_function db = new Db_function();
 
+    public static String loggedInRole = null;
+
     @FXML
     public void login() {
         String Username = Username_box.getText();
@@ -56,6 +58,7 @@ public class Login_Controller {
             }
         }
         if (role != null) {
+            loggedInRole = role;
             // Navigate to the appropriate homepage based on the role
             switch (role) {
                 case "Admin":

@@ -2,13 +2,19 @@
 package com.example.furtherprog_asm2;
 import com.example.furtherprog_asm2.*;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -16,6 +22,8 @@ import java.util.Date;
 import java.util.Optional;
 
 public class CreateClaimController {
+    @FXML
+    private ImageView homeIcon;
     private String documentName; // new field to hold the name of the uploaded document
     private ClaimService ClaimService;
     @FXML
@@ -163,6 +171,46 @@ public class CreateClaimController {
             showAlert("Error Dialog", "Input Error", "Invalid number format");
         } catch (IllegalArgumentException e) {
             showAlert("Error Dialog", "Input Error", e.getMessage());
+        }
+    }
+
+    @FXML
+    public void handleHomeIconClick() {
+        String role = Login_Controller.loggedInRole;
+        String homepageFile = null;
+
+        switch (role) {
+            case "Admin":
+                homepageFile = "Homepage-Admin.fxml";
+                break;
+            case "Dependent":
+                homepageFile = "Homepage-Dependent.fxml";
+                break;
+            case "PolicyHolder":
+                homepageFile = "Homepage-PolicyHolder.fxml";
+                break;
+            case "PolicyOwner":
+                homepageFile = "Homepage-PolicyOwner.fxml";
+                break;
+            case "InsuranceManager":
+                homepageFile = "Homepage-InsuranceManager.fxml";
+                break;
+            case "InsuranceSurveyor":
+                homepageFile = "Homepage-InsuranceSurveyor.fxml";
+                break;
+            default:
+                // handle unknown role
+                break;
+        }
+
+        if (homepageFile != null) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource(homepageFile));
+                Stage stage = (Stage) homeIcon.getScene().getWindow();
+                stage.setScene(new Scene(root));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
