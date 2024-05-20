@@ -60,7 +60,7 @@ public class CreateClaimController {
 
     public void chooseFile(){
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
         File selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) {
             documentName = selectedFile.getName(); // store the name of the file
@@ -143,6 +143,7 @@ public class CreateClaimController {
 
             // Create a new BankingInfo object and set its properties
             BankingInfo bankingInfo = new BankingInfo();
+            bankingInfo.setBank(Bank);
             bankingInfo.setName(bankName);
             bankingInfo.setNumber(bankNumber);
             // Create a new Claim object and set its properties
