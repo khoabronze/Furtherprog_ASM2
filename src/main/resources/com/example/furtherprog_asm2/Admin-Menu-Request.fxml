@@ -75,7 +75,7 @@
                 </VBox>
                 <VBox alignment="TOP_CENTER" layoutX="536.0" layoutY="82.0" prefHeight="104.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;">
                     <children>
-                        <ImageView fx:id="viewRequestIcon" fitHeight="52.0" fitWidth="80.0" onMouseClicked="#handleRequestViewNavigation" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="requestViewButton" fitHeight="52.0" fitWidth="80.0" onMouseClicked="#handleRequestViewNavigation" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../../IMG/view.png" />
                             </image>
