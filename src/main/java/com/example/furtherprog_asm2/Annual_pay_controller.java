@@ -1,14 +1,22 @@
 package com.example.furtherprog_asm2;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.util.HashMap;
 import java.util.List;
 
 public class Annual_pay_controller {
+    @FXML
+    private ImageView homeIcon;
     @FXML
     private TextField Annual_pay;
 
@@ -44,5 +52,45 @@ public class Annual_pay_controller {
 
         // Display the annual pay in the TextField
         Annual_pay.setText(String.valueOf(roundedAnnualPay));
+    }
+
+    @FXML
+    public void handleHomeIconClick() {
+        String role = Login_Controller.loggedInRole;
+        String homepageFile = null;
+
+        switch (role) {
+            case "Admin":
+                homepageFile = "Homepage-Admin.fxml";
+                break;
+            case "Dependent":
+                homepageFile = "Homepage-Dependent.fxml";
+                break;
+            case "PolicyHolder":
+                homepageFile = "Homepage-PolicyHolder.fxml";
+                break;
+            case "PolicyOwner":
+                homepageFile = "Homepage-PolicyOwner.fxml";
+                break;
+            case "InsuranceManager":
+                homepageFile = "Homepage-InsuranceManager.fxml";
+                break;
+            case "InsuranceSurveyor":
+                homepageFile = "Homepage-InsuranceSurveyor.fxml";
+                break;
+            default:
+                // handle unknown role
+                break;
+        }
+
+        if (homepageFile != null) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource(homepageFile));
+                Stage stage = (Stage) homeIcon.getScene().getWindow();
+                stage.setScene(new Scene(root));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

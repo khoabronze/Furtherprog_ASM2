@@ -60,7 +60,7 @@
                 </HBox>
                 <HBox prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="homeIcon" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleHomeIconClick" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../../IMG/house-solid.png" />
                             </image>
@@ -230,7 +230,7 @@
         </VBox>
     </center>
     <bottom>
-        <Button id="update_button" mnemonicParsing="false" onAction="#updateStatus" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: blue;" text="Submit" textFill="WHITE" BorderPane.alignment="CENTER">
+        <Button id="update_button" mnemonicParsing="false" onAction="#updateStatus" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: cornflowerblue;" text="Submit" textFill="WHITE" BorderPane.alignment="CENTER">
             <BorderPane.margin>
                 <Insets bottom="20.0" left="120.0" />
             </BorderPane.margin>
