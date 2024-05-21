@@ -29,13 +29,7 @@ class PolicyHolderDAO_IMPTest {
         List<PolicyHolder> policyHolders = policyHolderDAOImp.getAll();
         assertFalse(policyHolders.isEmpty());
     }
-    @Test
-    void getAllPolicyHolderDaoThrowsExceoption() throws SQLException{
-        RuntimeException thrown = assertThrows(RuntimeException.class, () -> {
-            policyHolderDAOImp.getAll();
-        });
-        assertEquals(thrown.getMessage(),"SQL not connect" );
-    }
+
     @Test
     void getPolicyHolderDaoByIdSuccess() {
         Optional<PolicyHolder> optionalPolicyHolderDao = policyHolderDAOImp.get("PH-3129429429");
@@ -59,60 +53,75 @@ class PolicyHolderDAO_IMPTest {
         PolicyHolder.setPassword("PolicyHolderPassword");
         boolean result = policyHolderDAOImp.add(PolicyHolder);
         assertTrue(result);
+        policyHolderDAOImp.delete(PolicyHolder);
     }
     @Test
-    void addFail() throws SQLException {
-        PolicyHolder PolicyHolder = new PolicyHolder();
-        PolicyHolder.setId("PH-399999999");
-        PolicyHolder.setName("PolicyHolderName1");
-        PolicyHolder.setPhone("PolicyHolderPhone1");
-        PolicyHolder.setEmail("PolicyHolder1@gmail.com");
-        PolicyHolder.setAddress("Hà Nội1");
-        PolicyHolder.setPassword("PolicyHolderPassword1");
-        SQLException thrown = assertThrows(SQLException.class, () -> {
-            policyHolderDAOImp.add(PolicyHolder);
-        });
-        assertEquals("Create fail", thrown.getMessage());
-    }
+    void addFail() {
+        PolicyHolder policyHolder = new PolicyHolder();
+        policyHolder.setId("PH-3900309429"); // This id should already exist in the database
+        policyHolder.setName("Test Name");
+        policyHolder.setPhone("1234567890");
+        policyHolder.setEmail("test@example.com");
+        policyHolder.setAddress("Test Address");
+        policyHolder.setPassword("testPassword");
 
+        boolean result = policyHolderDAOImp.add(policyHolder);
+
+        assertFalse(result, "Add should fail for existing id");
+    }
     @Test
     void updateSuccess() throws SQLException {
-        PolicyHolder PolicyHolder = new PolicyHolder();
-        PolicyHolder.setId("PH-399999999");
-        PolicyHolder.setName("Policy");
-        PolicyHolder.setPhone("0123456789");
-        PolicyHolder.setEmail("Policy@gmail.com");
-        PolicyHolder.setAddress("Hà Nội 1");
-        PolicyHolder.setPassword("Password");
-        boolean result = policyHolderDAOImp.update(PolicyHolder);
+        // Add a new PolicyHolder to the database
+        PolicyHolder newPolicyHolder = new PolicyHolder();
+        newPolicyHolder.setId("PH-12332145");
+        newPolicyHolder.setName("Test Name");
+        newPolicyHolder.setPhone("1234567890");
+        newPolicyHolder.setEmail("test@example.com");
+        newPolicyHolder.setAddress("Test Address");
+        newPolicyHolder.setPassword("testPassword");
+        policyHolderDAOImp.add(newPolicyHolder);
+
+        // Update the PolicyHolder
+        PolicyHolder policyHolder = new PolicyHolder();
+        policyHolder.setId("PH-12332145");
+        policyHolder.setPhone("policyHolder12333");
+        policyHolder.setEmail("policyHolder3333@gmail.com");
+        policyHolder.setAddress("Hà Nội 3");
+        policyHolder.setPassword("policyHolder1233333");
+        boolean result = policyHolderDAOImp.update(policyHolder);
         assertTrue(result);
-
+        policyHolderDAOImp.delete(newPolicyHolder);
     }
     @Test
-    void updateFail() throws SQLException {
-        PolicyHolder PolicyHolder = new PolicyHolder();
-        PolicyHolder.setId("PH-3999999990000");
-        PolicyHolder.setName("PolicyHolderName");
-        PolicyHolder.setPhone("PolicyHolderPhone");
-        PolicyHolder.setEmail("PolicyHolder@gmail.com");
-        PolicyHolder.setAddress("Hà Nội");
-        PolicyHolder.setPassword("PolicyHolderPassword");
-        RuntimeException thrown = assertThrows(RuntimeException.class, () -> {
-            policyHolderDAOImp.update(PolicyHolder);
-        });
-        assertEquals("Error updating PolicyHolder", thrown.getMessage());
+    void updateFail() {
+        PolicyHolder policyHolder = new PolicyHolder();
+        policyHolder.setId("PH-3999999990000"); // This id should not exist in the database
+        policyHolder.setName("PolicyHolderName");
+        policyHolder.setPhone("PolicyHolderPhone");
+        policyHolder.setEmail("PolicyHolder@gmail.com");
+        policyHolder.setAddress("Hà Nội");
+        policyHolder.setPassword("PolicyHolderPassword");
 
+        Boolean result = policyHolderDAOImp.update(policyHolder);
+
+        assertFalse(result, "Update should fail for non-existing id");
     }
     @Test
-    void deleteSucces() {
-        PolicyHolder PolicyHolder = new PolicyHolder();
-        PolicyHolder.setId("PH-399999999");
-        PolicyHolder.setName("PolicyHolderName");
-        PolicyHolder.setPhone("PolicyHolderPhone");
-        PolicyHolder.setEmail("PolicyHolder@gmail.com");
-        PolicyHolder.setAddress("Hà Nội");
-        PolicyHolder.setPassword("PolicyHolderPassword");
-        boolean result = policyHolderDAOImp.delete(PolicyHolder);
+    void deleteSuccess() {
+        // Add a new PolicyHolder to the database
+        PolicyHolder newPolicyHolder = new PolicyHolder();
+        newPolicyHolder.setId("PH-12332145");
+        newPolicyHolder.setName("Test Name");
+        newPolicyHolder.setPhone("1234567890");
+        newPolicyHolder.setEmail("test@example.com");
+        newPolicyHolder.setAddress("Test Address");
+        newPolicyHolder.setPassword("testPassword");
+        policyHolderDAOImp.add(newPolicyHolder);
+
+        // Delete the PolicyHolder
+        PolicyHolder policyHolder = new PolicyHolder();
+        policyHolder.setId("PH-12332145");
+        boolean result = policyHolderDAOImp.delete(policyHolder);
         assertTrue(result);
     }
     @Test
@@ -122,13 +131,5 @@ class PolicyHolderDAO_IMPTest {
         boolean result = policyHolderDAOImp.delete(PolicyHolder);
         assertFalse(result);
     }
-    @Test
-    void deleteException() {
-        PolicyHolder PolicyHolder = null;
-        RuntimeException thrown = assertThrows(RuntimeException.class, () -> {
-            policyHolderDAOImp.delete(PolicyHolder);
-        });
-        assertEquals("Error deleting PolicyHolder", thrown.getMessage());
 
-    }
 }

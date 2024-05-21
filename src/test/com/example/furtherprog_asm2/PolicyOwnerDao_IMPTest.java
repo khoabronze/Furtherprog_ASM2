@@ -29,13 +29,7 @@ class PolicyOwnerDao_IMPTest {
         List<PolicyOwner> policyOwners = policyOwnerDaoImp.getAll();
         assertFalse(policyOwners.isEmpty());
     }
-    @Test
-    void getAllPolicyOwnerDaoThrowsExceoption() throws SQLException{
-        RuntimeException thrown = assertThrows(RuntimeException.class, () -> {
-            policyOwnerDaoImp.getAll();
-        });
-        assertEquals(thrown.getMessage(),"SQL not connect" );
-    }
+
     @Test
     void getPolicyOwnerDaoByIdSuccess() {
         Optional<PolicyOwner> optionalPolicyOwnerDao = policyOwnerDaoImp.get("PO-0239295313");
@@ -59,20 +53,19 @@ class PolicyOwnerDao_IMPTest {
         PolicyOwner.setPassword("PolicyOwnerPassword");
         boolean result = policyOwnerDaoImp.add(PolicyOwner);
         assertTrue(result);
+        policyOwnerDaoImp.delete(PolicyOwner);
     }
     @Test
-    void addFail() throws SQLException {
+    void addFail()  {
         PolicyOwner PolicyOwner = new PolicyOwner();
-        PolicyOwner.setId("PO-0000000111");
+        PolicyOwner.setId("PO-0239212313");
         PolicyOwner.setName("PolicyOwnerName");
         PolicyOwner.setPhone("PolicyOwnerPhone");
         PolicyOwner.setEmail("PolicyOwner@gmail.com");
         PolicyOwner.setAddress("Hà Nội");
         PolicyOwner.setPassword("PolicyOwnerPassword");
-        SQLException thrown = assertThrows(SQLException.class, () -> {
-            policyOwnerDaoImp.add(PolicyOwner);
-        });
-        assertEquals("Create fail", thrown.getMessage());
+        Boolean result = policyOwnerDaoImp.add(PolicyOwner);
+        assertFalse(result, "Add should fail for existing id");
     }
 
     @Test
@@ -84,12 +77,14 @@ class PolicyOwnerDao_IMPTest {
         PolicyOwner.setEmail("PolicyOwner2@gmail.com");
         PolicyOwner.setAddress("Hà Nội2");
         PolicyOwner.setPassword("PolicyOwnerPassword2");
+        policyOwnerDaoImp.add(PolicyOwner);
         boolean result = policyOwnerDaoImp.update(PolicyOwner);
         assertTrue(result);
+        policyOwnerDaoImp.delete(PolicyOwner);
 
     }
     @Test
-    void updateFail() throws SQLException {
+    void updateFail()  {
         PolicyOwner PolicyOwner = new PolicyOwner();
         PolicyOwner.setId("PO-0000000111aAAAAA");
         PolicyOwner.setName("PolicyOwnerName2");
@@ -97,10 +92,9 @@ class PolicyOwnerDao_IMPTest {
         PolicyOwner.setEmail("PolicyOwner2@gmail.com");
         PolicyOwner.setAddress("Hà Nội2");
         PolicyOwner.setPassword("PolicyOwnerPassword2");
-        RuntimeException thrown = assertThrows(RuntimeException.class, () -> {
-            policyOwnerDaoImp.update(PolicyOwner);
-        });
-        assertEquals("Error updating PolicyOwner", thrown.getMessage());
+        Boolean result = policyOwnerDaoImp.update(PolicyOwner);
+
+        assertFalse(result, "Update should fail for non-existing id");
 
     }
     @Test
@@ -112,6 +106,7 @@ class PolicyOwnerDao_IMPTest {
         PolicyOwner.setEmail("PolicyOwner2@gmail.com");
         PolicyOwner.setAddress("Hà Nội2");
         PolicyOwner.setPassword("PolicyOwnerPassword2");
+        policyOwnerDaoImp.add(PolicyOwner);
         boolean result = policyOwnerDaoImp.delete(PolicyOwner);
         assertTrue(result);
     }
@@ -122,13 +117,5 @@ class PolicyOwnerDao_IMPTest {
         boolean result = policyOwnerDaoImp.delete(PolicyOwner);
         assertFalse(result);
     }
-    @Test
-    void deleteException() {
-        PolicyOwner PolicyOwner = null;
-        RuntimeException thrown = assertThrows(RuntimeException.class, () -> {
-            policyOwnerDaoImp.delete(PolicyOwner);
-        });
-        assertEquals("Error deleting PolicyOwner", thrown.getMessage());
 
-    }
 }

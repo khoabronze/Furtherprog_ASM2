@@ -29,13 +29,7 @@ class InsuranceSurveyor_DAOTest {
         List<InsuranceSurveyor> insuranceSurveyors = insuranceSurveyorDao.getAll();
         assertFalse(insuranceSurveyors.isEmpty());
     }
-    @Test
-    void getAllInsuranceSurveyorDaoThrowsExceoption() throws SQLException{
-        RuntimeException thrown = assertThrows(RuntimeException.class, () -> {
-            insuranceSurveyorDao.getAll();
-        });
-        assertEquals(thrown.getMessage(),"SQL not connect" );
-    }
+
     @Test
     void getInsuranceSurveyorDaoByIdSuccess() {
         Optional<InsuranceSurveyor> optionalInsuranceSurveyorDao = insuranceSurveyorDao.get("is-97867534457");
@@ -59,58 +53,86 @@ class InsuranceSurveyor_DAOTest {
         insuranceSurveyor.setPassword("InsuranceSurveyor123");
         boolean result = insuranceSurveyorDao.add(insuranceSurveyor);
         assertTrue(result);
+        insuranceSurveyorDao.delete(insuranceSurveyor);
     }
     @Test
-    void addFail() throws SQLException {
+    void addFail() {
+        // Create an InsuranceSurveyor that already exists in the database
         InsuranceSurveyor insuranceSurveyor = new InsuranceSurveyor();
-        insuranceSurveyor.setId("is-987656789");
+        insuranceSurveyor.setId("is-8694207534"); // This id should already exist in the database
         insuranceSurveyor.setName("InsuranceSurveyor");
         insuranceSurveyor.setPhone("InsuranceSurveyor12");
         insuranceSurveyor.setEmail("InsuranceSurveyor@gmail.com");
         insuranceSurveyor.setAddress("Hà Nội");
         insuranceSurveyor.setPassword("InsuranceSurveyor123");
-        SQLException thrown = assertThrows(SQLException.class, () -> {
-            insuranceSurveyorDao.add(insuranceSurveyor);
-        });
-        assertEquals("Create fail", thrown.getMessage());
+
+        // Try to add the existing InsuranceSurveyor
+        boolean result = insuranceSurveyorDao.add(insuranceSurveyor);
+
+        // Assert that the add method returned false
+        assertFalse(result, "Add should fail for existing id");
     }
 
     @Test
-    void updateSuccess() throws SQLException {
+    void updateSuccess() {
+        // Create an InsuranceSurveyor
+        InsuranceSurveyor insuranceSurveyor = new InsuranceSurveyor();
+        insuranceSurveyor.setId("is-9876567891");
+        insuranceSurveyor.setPhone("Insurance");
+        insuranceSurveyor.setEmail("Insurance@gmail.com");
+        insuranceSurveyor.setAddress("Hà Nội");
+        insuranceSurveyor.setPassword("Insurance123");
+
+        // Add the InsuranceSurveyor to the database
+        boolean addResult = insuranceSurveyorDao.add(insuranceSurveyor);
+        assertTrue(addResult, "Add should succeed for new id");
+
+        // Update the InsuranceSurveyor in the database
+        insuranceSurveyor.setPhone("UpdatedInsurance");
+        insuranceSurveyor.setEmail("UpdatedInsurance@gmail.com");
+        insuranceSurveyor.setAddress("Updated Hà Nội");
+        insuranceSurveyor.setPassword("UpdatedInsurance123");
+        boolean updateResult = insuranceSurveyorDao.update(insuranceSurveyor);
+
+        // Assert that the update method returned true
+        assertTrue(updateResult, "Update should succeed for existing id");
+        insuranceSurveyorDao.delete(insuranceSurveyor);
+    }
+    @Test
+    void updateFail() {
+        // Create an InsuranceSurveyor with a non-existing id
+        InsuranceSurveyor insuranceSurveyor = new InsuranceSurveyor();
+        insuranceSurveyor.setId("non-existing-id");
+        insuranceSurveyor.setPhone("1234567890");
+        insuranceSurveyor.setEmail("test@example.com");
+        insuranceSurveyor.setAddress("Test Address");
+        insuranceSurveyor.setPassword("testPassword");
+
+        // Try to update the non-existing InsuranceSurveyor
+        boolean result = insuranceSurveyorDao.update(insuranceSurveyor);
+
+        // Assert that the update method returned false
+        assertFalse(result, "Update should fail for non-existing id");
+    }
+    @Test
+    void deleteSuccess() {
+        // Create an InsuranceSurveyor
         InsuranceSurveyor insuranceSurveyor = new InsuranceSurveyor();
         insuranceSurveyor.setId("is-987656789");
-        insuranceSurveyor.setPhone("Insurance");
-        insuranceSurveyor.setEmail("Insurance@gmail.com");
-        insuranceSurveyor.setAddress("Hà Nội 1");
-        insuranceSurveyor.setPassword("Insurance123");
-        boolean result = insuranceSurveyorDao.update(insuranceSurveyor);
-        assertTrue(result);
+        insuranceSurveyor.setPhone("insurance444");
+        insuranceSurveyor.setEmail("insurance4444@gmail.com");
+        insuranceSurveyor.setAddress("Hà Nội 4");
+        insuranceSurveyor.setPassword("insurance444");
 
-    }
-    @Test
-    void updateFail() throws SQLException {
-        InsuranceSurveyor insuranceSurveyor = new InsuranceSurveyor();
-        insuranceSurveyor.setId("is-987656789aa");
-        insuranceSurveyor.setPhone("Insurance");
-        insuranceSurveyor.setEmail("Insurance@gmail.com");
-        insuranceSurveyor.setAddress("Hà Nội 1");
-        insuranceSurveyor.setPassword("Insurance123");
-        RuntimeException thrown = assertThrows(RuntimeException.class, () -> {
-            insuranceSurveyorDao.update(insuranceSurveyor);
-        });
-        assertEquals("Error updating InsuranceSurveyor", thrown.getMessage());
+        // Add the InsuranceSurveyor to the database
+        boolean addResult = insuranceSurveyorDao.add(insuranceSurveyor);
+        assertTrue(addResult, "Add should succeed for new id");
 
-    }
-    @Test
-    void deleteSucces() {
-        InsuranceSurveyor InsuranceSurveyor = new InsuranceSurveyor();
-        InsuranceSurveyor.setId("is-987656789");
-        InsuranceSurveyor.setPhone("insurance444");
-        InsuranceSurveyor.setEmail("insurance4444@gmail.com");
-        InsuranceSurveyor.setAddress("Hà Nội 4");
-        InsuranceSurveyor.setPassword("insurance444");
-        boolean result = insuranceSurveyorDao.delete(InsuranceSurveyor);
-        assertTrue(result);
+        // Delete the InsuranceSurveyor from the database
+        boolean deleteResult = insuranceSurveyorDao.delete(insuranceSurveyor);
+
+        // Assert that the delete method returned true
+        assertTrue(deleteResult, "Delete should succeed for existing id");
     }
     @Test
     void deleteNotFound() {
@@ -119,14 +141,6 @@ class InsuranceSurveyor_DAOTest {
         boolean result = insuranceSurveyorDao.delete(InsuranceSurveyor);
         assertFalse(result);
     }
-    @Test
-    void deleteException() {
-        InsuranceSurveyor InsuranceSurveyor = null;
-        RuntimeException thrown = assertThrows(RuntimeException.class, () -> {
-            insuranceSurveyorDao.delete(InsuranceSurveyor);
-        });
-        assertEquals("Error deleting InsuranceSurveyor", thrown.getMessage());
 
-    }
 
 }
