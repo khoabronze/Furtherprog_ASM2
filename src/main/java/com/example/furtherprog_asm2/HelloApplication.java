@@ -13,6 +13,7 @@ public class HelloApplication extends Application {
         Db_function db = new Db_function();
         db.connect_to_db();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Insurance Claim Management System");
         stage.setScene(scene); // Set the scene to the stage

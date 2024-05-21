@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 public class PolicyHolder_Service {
-    private final PolicyHolderDAO policyHolderDAO;
+    private final PolicyHolderDAO_IMP policyHolderDAO;
 
-    public PolicyHolder_Service(PolicyHolderDAO policyHolderDAO) {
+    public PolicyHolder_Service(PolicyHolderDAO_IMP policyHolderDAO) {
         this.policyHolderDAO = policyHolderDAO;
     }
 

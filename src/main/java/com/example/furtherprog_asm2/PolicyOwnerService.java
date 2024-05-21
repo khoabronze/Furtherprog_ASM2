@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 public class PolicyOwnerService {
-    private PolicyOwnerDAO<PolicyOwner> policyOwnerDAO;
+    private PolicyOwnerDao_IMP policyOwnerDAO;
 
-    public PolicyOwnerService(PolicyOwnerDAO<PolicyOwner> policyOwnerDAO) {
+    public PolicyOwnerService(PolicyOwnerDao_IMP policyOwnerDAO) {
         this.policyOwnerDAO = policyOwnerDAO;
     }
 

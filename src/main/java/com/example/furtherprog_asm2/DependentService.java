@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 public class DependentService {
-    private DependentDAO<Dependent> dependentDAO;
+    private DependentDAO_IMP dependentDAO;
 
-    public DependentService(DependentDAO<Dependent> dependentDAO) {
+    public DependentService(DependentDAO_IMP dependentDAO) {
         this.dependentDAO = dependentDAO;
     }
 
