@@ -14,6 +14,9 @@ public class InsuranceSurveyor_DAO implements InsuranceSurveyorDAO <InsuranceSur
         this.connection = connection;
     }
 
+    public InsuranceSurveyor_DAO() {
+    }
+
     private static final String INSERT_INSURANCESURVEYOR_SQL = "INSERT INTO \"user\"" + " (id, name, phone, email, address, password, role) VALUES " + " (?, ?, ?, ?, ?, ?, 'Insurance Surveyor');";
     private static final String UPDATE_INSURANCESURVEYOR_SQL = "UPDATE \"user\" SET phone = ?, email = ?, address = ?, password = ? WHERE id = ? AND role = 'Insurance Surveyor'";
 

@@ -29,12 +29,16 @@ public class PolicyOwnerDao_IMP implements PolicyOwnerDAO<PolicyOwner> {
             this.connection = connection;
         }
 
+    public PolicyOwnerDao_IMP() {
+    }
+
 
     @Override
     public List<PolicyOwner> getAll() {
         List<PolicyOwner> policyOwners = new ArrayList<>();
 
-        try (PreparedStatement preparedStatement = this.connection.prepareStatement(GET_ALL_PO_SQL)) {
+        try (Connection connection = dbFunction.connect_to_db();// đã sửa
+             PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_PO_SQL)) {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -59,7 +63,8 @@ public class PolicyOwnerDao_IMP implements PolicyOwnerDAO<PolicyOwner> {
     @Override
     public Optional<PolicyOwner> get(String id) {
 
-        try (PreparedStatement preparedStatement = this.connection.prepareStatement(GET_PO_SQL)) {
+        try (Connection connection = dbFunction.connect_to_db();// đã sửa
+             PreparedStatement preparedStatement = connection.prepareStatement(GET_PO_SQL)) {
             preparedStatement.setString(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -88,7 +93,8 @@ public class PolicyOwnerDao_IMP implements PolicyOwnerDAO<PolicyOwner> {
 
     @Override
     public boolean add(PolicyOwner policyOwner) {
-        try (PreparedStatement preparedStatement = this.connection.prepareStatement(INSERT_PO_SQL)) {
+        try (Connection connection = dbFunction.connect_to_db();// đã sửa
+             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PO_SQL)) {
             preparedStatement.setString(1, policyOwner.getId());
             preparedStatement.setString(2, policyOwner.getName());
             preparedStatement.setString(3, policyOwner.getPhone());
@@ -107,7 +113,8 @@ public class PolicyOwnerDao_IMP implements PolicyOwnerDAO<PolicyOwner> {
 
     @Override
     public boolean update(PolicyOwner policyOwner) {
-        try (PreparedStatement preparedStatement = this.connection.prepareStatement(UPDATE_PO_SQL)) {
+        try (Connection connection = dbFunction.connect_to_db();// đã sửa
+             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PO_SQL)) {
             preparedStatement.setString(1, policyOwner.getName());
             preparedStatement.setString(2, policyOwner.getPhone());
             preparedStatement.setString(3, policyOwner.getEmail());
@@ -127,7 +134,8 @@ public class PolicyOwnerDao_IMP implements PolicyOwnerDAO<PolicyOwner> {
 
     @Override
     public boolean delete(PolicyOwner policyOwner) {
-        try (PreparedStatement preparedStatement = this.connection.prepareStatement(DELETE_PO_SQL)) {
+        try (Connection connection = dbFunction.connect_to_db();// đã sửa
+             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_PO_SQL)) {
             preparedStatement.setString(1, policyOwner.getId());
 
             int affectedRows = preparedStatement.executeUpdate();
