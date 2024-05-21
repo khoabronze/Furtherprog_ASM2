@@ -174,16 +174,16 @@ public class UpdateInsuranceSurveyor_Controller {
             case "Dependent":
                 homepageFile = "Homepage-Dependent.fxml";
                 break;
-            case "PolicyHolder":
+            case "Policy Holder":
                 homepageFile = "Homepage-PolicyHolder.fxml";
                 break;
-            case "PolicyOwner":
+            case "Policy Owner":
                 homepageFile = "Homepage-PolicyOwner.fxml";
                 break;
-            case "InsuranceManager":
+            case "Insurance Manager":
                 homepageFile = "Homepage-InsuranceManager.fxml";
                 break;
-            case "InsuranceSurveyor":
+            case "Insurance Surveyor":
                 homepageFile = "Homepage-InsuranceSurveyor.fxml";
                 break;
             default:

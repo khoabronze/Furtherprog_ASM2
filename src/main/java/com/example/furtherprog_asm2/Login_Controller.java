@@ -37,7 +37,7 @@ public class Login_Controller {
         String Password = Password_box.getText();
 
         Connection con = db.connect_to_db();
-        String[] roles = {"Admin", "Dependent", "PolicyHolder", "PolicyOwner", "InsuranceManager", "InsuranceSurveyor"};
+        String[] roles = {"Admin", "Dependent", "Policy Holder", "Policy Owner", "Insurance Manager", "Insurance Surveyor"};
         String role = null;
         for (String database : roles) {
             String query = "SELECT * FROM \"" + database + "\" WHERE \"Username\" = ?";
@@ -46,7 +46,7 @@ public class Login_Controller {
                 ResultSet rs = stmt.executeQuery();
 
                 if (rs.next()) {
-                    String dbPassword = rs.getString("Password");
+                    String dbPassword = rs.getString("password");
                     if (dbPassword.equals(Password)) {
                         System.out.println("Login successfully");
                         role = database;
@@ -79,7 +79,7 @@ public class Login_Controller {
                         e.printStackTrace();
                     }
                     break;
-                case "PolicyHolder":
+                case "Policy Holder":
                     try {
                         Parent root = FXMLLoader.load(getClass().getResource("Homepage-PolicyHolder.fxml"));
                         Stage stage = (Stage) login_button.getScene().getWindow();
@@ -88,7 +88,7 @@ public class Login_Controller {
                         e.printStackTrace();
                     }
                     break;
-                case "PolicyOwner":
+                case "Policy Owner":
                     try {
                         Parent root = FXMLLoader.load(getClass().getResource("Homepage-PolicyOwner.fxml"));
                         Stage stage = (Stage) login_button.getScene().getWindow();
@@ -97,7 +97,7 @@ public class Login_Controller {
                         e.printStackTrace();
                     }
                     break;
-                case "InsuranceManager":
+                case "Insurance Manager":
                     try {
                         Parent root = FXMLLoader.load(getClass().getResource("Homepage-InsuranceManager.fxml"));
                         Stage stage = (Stage) login_button.getScene().getWindow();
@@ -106,7 +106,7 @@ public class Login_Controller {
                         e.printStackTrace();
                     }
                     break;
-                case "InsuranceSurveyor":
+                case "Insurance Surveyor":
                     try {
                         Parent root = FXMLLoader.load(getClass().getResource("Homepage-InsuranceSurveyor.fxml"));
                         Stage stage = (Stage) login_button.getScene().getWindow();
