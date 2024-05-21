@@ -41,7 +41,7 @@
             <children>
                 <HBox prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="profileIcon" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#navigateUserProfile" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../../IMG/user-solid.png" />
                             </image>
@@ -87,7 +87,7 @@
                         <Insets left="60.0" top="80.0" />
                     </VBox.margin>
                 </TextField>
-                <Button maxHeight="23.0" maxWidth="100.0" mnemonicParsing="false" onAction="#Delete" style="-fx-background-color: blue;" text="Delete" textFill="WHITE">
+                <Button maxHeight="23.0" maxWidth="100.0" mnemonicParsing="false" onAction="#Delete" style="-fx-background-color: cornflowerblue;" text="Delete" textFill="WHITE">
                     <VBox.margin>
                         <Insets left="105.0" top="80.0" />
                     </VBox.margin>

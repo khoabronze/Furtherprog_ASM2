@@ -32,7 +32,7 @@
             <children>
                 <HBox alignment="CENTER" prefHeight="66.0" prefWidth="162.0">
                     <children>
-                        <ImageView fitHeight="36.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="profileIcon" fitHeight="36.0" fitWidth="32.0" onMouseClicked="#navigateUserProfile" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../../IMG/user-solid.png" />
                             </image>

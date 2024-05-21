@@ -47,7 +47,7 @@
         <children>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                 <children>
-                    <ImageView fitHeight="56.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                    <ImageView fx:id="profileIcon" fitHeight="56.0" fitWidth="62.0" onMouseClicked="#navigateUserProfile" pickOnBounds="true" preserveRatio="true">
                         <image>
                             <Image url="@../../../IMG/user-solid.png" />
                         </image>

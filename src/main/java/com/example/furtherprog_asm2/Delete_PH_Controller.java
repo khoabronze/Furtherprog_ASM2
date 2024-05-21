@@ -17,6 +17,8 @@ public class Delete_PH_Controller {
     @FXML
     private ImageView homeIcon;
     @FXML
+    private ImageView profileIcon;
+    @FXML
     private TextField ID_DELETE_BOX;
 
     private PolicyHolder_Service policyHolderService;
@@ -91,5 +93,20 @@ public class Delete_PH_Controller {
                 e.printStackTrace();
             }
         }
+    }
+
+    @FXML
+    public void navigateUserProfile() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("User-Profile.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) profileIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
     }
 }

@@ -16,6 +16,8 @@ import java.util.Optional;
 public class Status_SearchClaimController {
     @FXML
     private ImageView homeIcon;
+    @FXML
+    private ImageView profileIcon;
     private ClaimService claimService;
 
     @FXML
@@ -99,5 +101,20 @@ public class Status_SearchClaimController {
                 e.printStackTrace();
             }
         }
+    }
+
+    @FXML
+    public void navigateUserProfile() throws IOException {
+        // Load the FXML file for the new scene
+        Parent newSceneParent = FXMLLoader.load(getClass().getResource("User-Profile.fxml"));
+
+        // Create a new scene
+        Scene newScene = new Scene(newSceneParent);
+
+        // Get the current stage
+        Stage currentStage = (Stage) profileIcon.getScene().getWindow();
+
+        // Set the new scene on the current stage
+        currentStage.setScene(newScene);
     }
 }
