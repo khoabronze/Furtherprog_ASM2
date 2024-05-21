@@ -1,3 +1,6 @@
+/**
+ * @author <Group 24>
+ */
 package com.example.furtherprog_asm2;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import org.junit.jupiter.api.BeforeEach;

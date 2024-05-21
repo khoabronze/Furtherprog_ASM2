@@ -1,7 +1,7 @@
 package com.example.furtherprog_asm2;
 
 /**
- * @author <Dong Dang Khoa- s3986281>
+ * @author <Group 24>
  */
 public class InsuranceCard {
     private String cardNumber;
